@@ -23739,17 +23739,28 @@ var App = function (_React$Component) {
     function App(props) {
         _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+        _this.state = { pictures: [] };
+
+        return _this;
     }
 
     _createClass(App, [{
+        key: 'onDrop',
+        value: function onDrop(picture) {
+            this.setState({
+                pictures: this.state.pictures.concat(picture)
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(_navbar2.default, null),
-                _react2.default.createElement(_pictureUpload2.default, null)
+                _react2.default.createElement(_pictureUpload2.default, { onDrop: this.onDrop })
             );
         }
     }]);
@@ -23886,21 +23897,10 @@ var ImageUpLoader = function (_React$Component) {
     function ImageUpLoader(props) {
         _classCallCheck(this, ImageUpLoader);
 
-        var _this = _possibleConstructorReturn(this, (ImageUpLoader.__proto__ || Object.getPrototypeOf(ImageUpLoader)).call(this, props));
-
-        _this.state = { pictures: [] };
-        _this.onDrop = _this.onDrop.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (ImageUpLoader.__proto__ || Object.getPrototypeOf(ImageUpLoader)).call(this, props));
     }
 
     _createClass(ImageUpLoader, [{
-        key: 'onDrop',
-        value: function onDrop(picture) {
-            this.setState({
-                pictures: this.state.pictures.concat(picture)
-            });
-        }
-    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -23926,7 +23926,7 @@ var ImageUpLoader = function (_React$Component) {
                             _react2.default.createElement('input', { type: 'file', className: 'input' }),
                             _react2.default.createElement(
                                 'div',
-                                { className: 'upload-btn', onClick: this.onDrop },
+                                { className: 'upload-btn', onClick: this.props.onDrop() },
                                 'Upload file'
                             )
                         )
