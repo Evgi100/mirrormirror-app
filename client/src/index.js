@@ -15,12 +15,19 @@ class App extends React.Component {
         });
     }
 
+    deletePic(index){
+        this.setState((prevState) => ({
+            pictures:prevState.pictures.filter((item,i)=>
+            i!==index)
+        }));
+    }
     
     render() {
         return (
             <div>
                 <Navbar />
                 <ImageUpLoader onDrop={this.onDrop} />
+                <UsersList deletePic={this.deletePic} pictures={this.state.pictures} />
             </div>
         );
     }
