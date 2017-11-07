@@ -8,8 +8,6 @@ class ImageUpLoader extends React.Component {
     }
 
    
-
-
     render() {
         return (
             <div className="frame">
@@ -21,7 +19,7 @@ class ImageUpLoader extends React.Component {
                             <img src="http://100dayscss.com/codepen/upload.svg" className="upload"></img>
                             <span className="filename"></span>
                             <input type="file" className="input"></input>
-                            <div className="upload-btn" onClick={this.props.onDrop()}>Upload file</div>
+                            <div className="upload-btn" onDrop={this.props.onDrop(picture)}>Upload file</div>
                         </div>
                     </div>
                 </div>
