@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import Header from './common/Header';
-import Routes from './Routes';
+import Routes from './routes';
 import {BrowserRouter} from 'react-router-dom';
 
 class AppWrapper extends React.Component {

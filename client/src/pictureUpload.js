@@ -5,16 +5,9 @@ class ImageUpLoader extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { pictures: [] };
-        this.onDrop = this.onDrop.bind(this);
     }
 
-    onDrop(picture) {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
-    }
-
+   
     render() {
         return (
             <div className="frame">
@@ -27,6 +20,7 @@ class ImageUpLoader extends React.Component {
                         <div className="content">
                             <span className="filename"></span>
                             <input type="file" className="input"></input>
+                            <div className="upload-btn" onDrop={this.props.onDrop()}>Upload file</div>
                         </div>
                     </div>
                 </div>
