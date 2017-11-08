@@ -1,8 +1,9 @@
 import React from 'react';
 import Navbar from './navbar.js';
 import ImageUpLoader from './pictureUpload.js';
-import UsersList from './UsersList.js';
-import UsersDataForm from './usersDataForm'
+import UsersListBox from './UsersList.js';
+import userBox from './userBox'
+
 
 class App extends React.Component {
     constructor(props) {
@@ -28,9 +29,9 @@ class App extends React.Component {
         return (
             <div>
                 <Navbar />
+                <UsersListBox deletePic={this.deletePic} pictures={this.state.pictures} />
                 <ImageUpLoader onDrop={this.onDrop} />
-                <UsersDataForm />
-                <UsersList deletePic={this.deletePic} pictures={this.state.pictures} />
+                <userBox />
             </div>
         );
     }

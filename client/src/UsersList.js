@@ -1,10 +1,12 @@
 import React from 'react';
 import UserBox from './userBox';
+import UsersDataForm from './UsersDataForm'
 class UsersListBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state={users:[]}
-        this.addUser=this.addUser.bind(this);
+        this.state = { users: [] }
+        this.addUser = this.addUser.bind(this);
+        this.deleteUser = this.deleteUser.bind(this);
     }
 
     renderPictures() {
@@ -12,13 +14,22 @@ class UsersListBox extends React.Component {
             <UserBox key={index} index={index} img={img} deleteImg={this.props.deleteImg} />);
     }
 
-    addUser(user){
-        this.set
+    addUser(user) {
+        this.setState({ users: this.state.users.concat(user) });
+    }
+
+    deleteUser(index) {
+        this.setState((prevState) => ({
+            users: prevState.users.filter((item, i) => i !== index)
+        }));
     }
 
     render() {
+        const renderUsers = this.state.users.map((user, index) =>
+            <UserBox user={user} index={index} deleteUser={this.deleteUser} key={index} />)
         return (
             <div>
+                <UsersDataForm addUser={this.addUser} /> {renderUsers}
                 <ul className="row">
                     {this.renderPictures()}
                 </ul>
