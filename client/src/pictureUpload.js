@@ -18,7 +18,7 @@ class ImageUpLoader extends React.Component {
                         <div className="content">
                             <span className="filename"></span>
                             <input type="file" className="input"></input>
-                            <div className="upload-btn">Upload file</div>
+                            <div className="upload-btn" >Upload file</div>
                         </div>
                     </div>
                 </div>
