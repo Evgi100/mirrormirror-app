@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './navbar.js';
 import ImageUpLoader from './pictureUpload.js';
+import UsersList from './UsersList.js';
 
 class App extends React.Component {
     constructor(props) {
@@ -10,9 +11,9 @@ class App extends React.Component {
     }
 
     onDrop(picture) {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
+    //     this.setState({
+    //         pictures: this.state.pictures.concat(picture),
+    //     });
     }
 
     deletePic(index){

@@ -1,5 +1,5 @@
 import React from 'react';
-import  UsersListBox from './CommentsListBox';
+import  UsersList from './UsersList';
 
 class UserBox extends React.Component {
     constructor(props) {

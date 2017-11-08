@@ -6,14 +6,10 @@ class ImageUpLoader extends React.Component {
     constructor(props) {
         super(props);
     }
-
-   
     render() {
         return (
             <div className="frame">
-                 
                 <div className="center">
-                
                     <div className="bar"></div>
                     <div className="title">Drop file to upload</div>
                     <div className="dropzone">
