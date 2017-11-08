@@ -8,6 +8,7 @@ class ImageUpLoader extends React.Component {
     }
     render() {
         return (
+
             <div className="frame">
                 <div className="center">
                     <div className="bar"></div>
@@ -22,9 +23,6 @@ class ImageUpLoader extends React.Component {
                 </div>
                 <div className="upload-btn input" onClick={this.onDrop}></div>
             </div>
-            
-
-
         );
     }
 }
