@@ -10,9 +10,7 @@ class ImageUpLoader extends React.Component {
 
             <div className="frame">
                 <div className="center">
-
-            </div>
-            <div className="upload-btn input" onClick={this.onDrop}></div>
+                    <div className="upload-btn input" onClick={this.onDrop}></div>
 
                     <div className="bar"></div>
                     <div className="title">Drop file to upload</div>
@@ -25,7 +23,6 @@ class ImageUpLoader extends React.Component {
                     </div>
                 </div>
                 <div className="upload-btn input"></div>
-
             </div>
         );
     }
