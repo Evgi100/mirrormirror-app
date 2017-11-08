@@ -104,3 +104,5 @@ body {
         background: linear-gradient(#AEADAA,#BAB7AE);
         margin:42px auto;
       }
+
+      span { cursor: pointer; }
