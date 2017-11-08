@@ -29098,37 +29098,58 @@ var UsersDataForm = function (_React$Component) {
     function UsersDataForm(props) {
         _classCallCheck(this, UsersDataForm);
 
-        return _possibleConstructorReturn(this, (UsersDataForm.__proto__ || Object.getPrototypeOf(UsersDataForm)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (UsersDataForm.__proto__ || Object.getPrototypeOf(UsersDataForm)).call(this, props));
+
+        _this.state = { name: "", event: "" };
+        _this.sendUsersData = _this.sendUsersData.bind(_this);
+        return _this;
     }
 
     _createClass(UsersDataForm, [{
+        key: "sendUsersData",
+        value: function sendUsersData() {
+            this.props.addUser(this.state);
+            this.setState({ name: "", event: "" });
+        }
+    }, {
         key: "render",
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 "div",
                 null,
                 _react2.default.createElement(
                     "h2",
                     null,
-                    "Fill in your user-name and your event "
+                    "Fill in your name and your event "
                 ),
                 _react2.default.createElement(
                     "div",
-                    { "class": "input-group-justified" },
+                    { className: "input-group-justified" },
                     _react2.default.createElement(
                         "div",
-                        { "class": "input-group" },
-                        _react2.default.createElement("input", { "class": "form-control input-lg", type: "email", placeholder: "user-name..." }),
-                        _react2.default.createElement("input", { "class": "form-control input-lg", type: "text", placeholder: "event..." }),
+                        { className: "input-group" },
+                        _react2.default.createElement("input", { className: "form-control input-lg", type: "email", placeholder: "name...", id: "name", value: this.state.name, onChange: function onChange(event) {
+                                return _this2.setState({ name: event.target.value }, function () {
+                                    return console.log(_this2.state);
+                                });
+                            } }),
+                        _react2.default.createElement("input", { className: "form-control input-lg", type: "text", placeholder: "event...", id: "event", value: this.state.event, onChange: function onChange(event) {
+                                return _this2.setState({ event: event.target.value }, function () {
+                                    return console.log(_this2.state);
+                                });
+                            } }),
                         _react2.default.createElement(
                             "button",
-                            { "class": "form-control input-lg btn-success" },
+                            { className: "form-control input-lg btn-success" },
                             "Send it ",
-                            _react2.default.createElement("i", { "class": "glyphicon glyphicon-send" })
+                            _react2.default.createElement("i", { className: "glyphicon glyphicon-send", onClick: this.sendUsersData })
                         )
                     )
                 )
             );
+            console.log(this.state);
         }
     }]);
 
