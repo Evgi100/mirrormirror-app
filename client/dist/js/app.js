@@ -11661,7 +11661,7 @@ var _Header = __webpack_require__(205);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _routes = __webpack_require__(206);
+var _routes = __webpack_require__(247);
 
 var _routes2 = _interopRequireDefault(_routes);
 
@@ -23659,48 +23659,7 @@ var App = function (_React$Component) {
 exports.default = App;
 
 /***/ }),
-/* 206 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ = __webpack_require__(207);
-
-var _2 = _interopRequireDefault(_);
-
-var _3 = __webpack_require__(220);
-
-var _4 = _interopRequireDefault(_3);
-
-var _reactRouterDom = __webpack_require__(97);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Routes = function Routes() {
-    return _react2.default.createElement(
-        'div',
-        { className: 'container' },
-        _react2.default.createElement(
-            _reactRouterDom.Switch,
-            null,
-            _react2.default.createElement(_reactRouterDom.Route, { name: 'home', exact: true, path: '/', component: _2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '*', component: _4.default })
-        )
-    );
-};
-
-exports.default = Routes;
-
-/***/ }),
+/* 206 */,
 /* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23725,11 +23684,11 @@ var _pictureUpload = __webpack_require__(209);
 
 var _pictureUpload2 = _interopRequireDefault(_pictureUpload);
 
-var _UsersList = __webpack_require__(247);
+var _UsersList = __webpack_require__(248);
 
 var _UsersList2 = _interopRequireDefault(_UsersList);
 
-var _usersDataForm = __webpack_require__(249);
+var _usersDataForm = __webpack_require__(250);
 
 var _usersDataForm2 = _interopRequireDefault(_usersDataForm);
 
@@ -23779,8 +23738,8 @@ var App = function (_React$Component) {
                 'div',
                 null,
                 _react2.default.createElement(_navbar2.default, null),
-                _react2.default.createElement(_usersDataForm2.default, null),
                 _react2.default.createElement(_pictureUpload2.default, { onDrop: this.onDrop }),
+                _react2.default.createElement(_usersDataForm2.default, null),
                 _react2.default.createElement(_UsersList2.default, { deletePic: this.deletePic, pictures: this.state.pictures })
             );
         }
@@ -23927,31 +23886,7 @@ var ImageUpLoader = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'frame' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'center' },
-                    _react2.default.createElement('div', { className: 'bar' }),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'title' },
-                        'Drop file to upload'
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'dropzone' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'content' },
-                            _react2.default.createElement('span', { className: 'filename' }),
-                            _react2.default.createElement('input', { type: 'file', className: 'input' }),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'upload-btn', onDrop: this.props.onDrop() },
-                                'Upload file'
-                            )
-                        )
-                    )
-                ),
+                _react2.default.createElement('div', { className: 'center' }),
                 _react2.default.createElement('div', { className: 'upload-btn input', onClick: this.onDrop })
             );
         }
@@ -24351,7 +24286,126 @@ module.exports = function() {
 /* 212 */
 /***/ (function(module, exports) {
 
+/* .fileUploader {
+	width: 100%;
+}
 
+.fileContainer {
+	background: #fff;
+	box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.05);
+	position: relative;
+	border-radius: 10px;
+	padding: 20px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: 10px auto;
+	transition: all 0.3s ease-in;
+}
+
+.fileContainer input {
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.fileContainer p {
+	font-size: 12px;
+	margin: 8px 0 4px;
+}
+
+.fileContainer .errorsContainer {
+	max-width: 300px;
+	font-size: 12px;
+	color: red;
+	text-align: left;
+}
+
+.fileContainer .chooseFileButton {
+	padding: 6px 23px;
+	background: #3f4257;
+	border-radius: 30px;
+	color: white;
+	font-weight: 300;
+	font-size: 14px;
+	margin: 10px 0;
+	transition: all 0.2s ease-in;
+	cursor: pointer;
+	outline: none;
+	border: none;
+}
+
+.fileContainer .chooseFileButton:hover {
+	background: #545972;
+}
+
+.fileContainer .uploadFilesButton {
+	padding: 5px 43px;
+	background: transparent;
+	border-radius: 30px;
+	color: #3f4257;
+	font-weight: 300;
+	font-size: 14px;
+	margin: 10px 0;
+	transition: all 0.2s ease-in;
+	cursor: pointer;
+	outline: none;
+	border: 1px solid #3f4257;
+}
+
+.fileContainer .uploadFilesButton:hover {
+	background: #3f4257;
+	color: #fff;
+}
+
+.fileContainer .uploadIcon {
+	width: 50px;
+	height: 50px;
+	background: url(UploadIcon.svg);
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.fileContainer .uploadPicturesWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+}
+
+.fileContainer .uploadPictureContainer {
+	width: 25%;
+	margin: 5%;
+	padding: 10px;
+	background: #edf2f6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 90px;
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+	border: 1px solid #d0dbe4;
+	position: relative;
+}
+
+.fileContainer .uploadPictureContainer img.uploadPicture {
+	width: 40%;
+}
+
+.fileContainer .deleteImage {
+	position: absolute;
+	top: -9px;
+	right: -9px;
+	font-size: 8px;
+	color: #fff;
+	background: #ff4081;
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	cursor: pointer;
+} */
 
 /***/ }),
 /* 213 */
@@ -28946,13 +29000,55 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ = __webpack_require__(207);
+
+var _2 = _interopRequireDefault(_);
+
+var _3 = __webpack_require__(220);
+
+var _4 = _interopRequireDefault(_3);
+
+var _reactRouterDom = __webpack_require__(97);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Routes = function Routes() {
+    return _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(
+            _reactRouterDom.Switch,
+            null,
+            _react2.default.createElement(_reactRouterDom.Route, { name: 'home', exact: true, path: '/', component: _2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '*', component: _4.default })
+        )
+    );
+};
+
+exports.default = Routes;
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _userBox = __webpack_require__(248);
+var _userBox = __webpack_require__(249);
 
 var _userBox2 = _interopRequireDefault(_userBox);
 
@@ -29003,7 +29099,7 @@ var UsersListBox = function (_React$Component) {
 exports.default = UsersListBox;
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29019,7 +29115,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _UsersList = __webpack_require__(247);
+var _UsersList = __webpack_require__(248);
 
 var _UsersList2 = _interopRequireDefault(_UsersList);
 
@@ -29068,7 +29164,7 @@ var UserBox = function (_React$Component) {
 exports.default = UserBox;
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29102,29 +29198,29 @@ var UsersDataForm = function (_React$Component) {
     }
 
     _createClass(UsersDataForm, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                null,
+                'div',
+                { className: 'userInput' },
                 _react2.default.createElement(
-                    "h2",
+                    'h2',
                     null,
-                    "Fill in your user-name and your event "
+                    'Fill in your user-name and your event '
                 ),
                 _react2.default.createElement(
-                    "div",
-                    { "class": "input-group-justified" },
+                    'div',
+                    { className: 'input-group-justified' },
                     _react2.default.createElement(
-                        "div",
-                        { "class": "input-group" },
-                        _react2.default.createElement("input", { "class": "form-control input-lg", type: "email", placeholder: "user-name..." }),
-                        _react2.default.createElement("input", { "class": "form-control input-lg", type: "text", placeholder: "event..." }),
+                        'div',
+                        { className: 'input-group' },
+                        _react2.default.createElement('input', { className: 'form-control input-lg', type: 'email', placeholder: 'user-name...' }),
+                        _react2.default.createElement('input', { className: 'form-control input-lg', type: 'text', placeholder: 'event...' }),
                         _react2.default.createElement(
-                            "button",
-                            { "class": "form-control input-lg btn-success" },
-                            "Send it ",
-                            _react2.default.createElement("i", { "class": "glyphicon glyphicon-send" })
+                            'button',
+                            { className: 'form-control input-lg btn-success' },
+                            'Send it ',
+                            _react2.default.createElement('i', { className: 'glyphicon glyphicon-send' })
                         )
                     )
                 )

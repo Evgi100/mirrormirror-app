@@ -28,8 +28,8 @@ class App extends React.Component {
         return (
             <div>
                 <Navbar />
-                <UsersDataForm />
                 <ImageUpLoader onDrop={this.onDrop} />
+                <UsersDataForm />
                 <UsersList deletePic={this.deletePic} pictures={this.state.pictures} />
             </div>
         );
