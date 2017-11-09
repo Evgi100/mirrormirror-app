@@ -7,13 +7,11 @@ class ImageUpLoader extends React.Component {
     }
     render() {
         return (
-            <div className="container">
-                <div className="mirrorBox">
-                    <div className="mirror">
-                        <div className="frame"></div>
-                    </div>
-                    <div className="upload-btn"></div>
+            <div className="mirrorBox">
+                <div className="mirror">
+                    <div className="frame"></div>
                 </div>
+                <div className="upload-btn"></div>
             </div>
         );
     }

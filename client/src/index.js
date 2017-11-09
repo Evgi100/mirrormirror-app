@@ -27,7 +27,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <Navbar />
                 <UsersListBox deletePic={this.deletePic} pictures={this.state.pictures} />
                 <ImageUpLoader onDrop={this.onDrop} />

@@ -86,8 +86,7 @@
       .animate {
             transition: all 0.1s;
             -webkit-transition: all 0.1s;
-      }
-        
+      }  
         .action-button {
             display:flex;
             justify-content: center;
