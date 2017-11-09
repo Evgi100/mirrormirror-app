@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, './uploads');
+        callback(null, './server/static/uploads');
     },
     filename: function (req, file, callback) {
         callback(null, file.fieldname + '-' + Date.now() +'.jpg');
@@ -302,11 +302,11 @@ app.post('/photo', function (req, res) {
             console.log(err);
             return res.end("Error uploading file.");
         }
-        console.log(req.file);
-        const host = req.host;
-        const filePath = req.protocol + "://" + host + '/' + req.file.path;
-        console.log(filePath);
-        res.end(filePath);
+        // console.log(req.file);
+        // const host = req.host;
+        // const filePath = req.protocol + "://" + host + '/' + req.file.path;
+        // console.log(filePath);
+        res.end('filePath');
     });
 });
 /////////////////END OF EVENT ROUTES//////////////

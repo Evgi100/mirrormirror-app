@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-
+import FormData from 'form-data'
 class UsersDataForm extends React.Component {
 
     constructor(props) {
@@ -22,26 +22,35 @@ class UsersDataForm extends React.Component {
     //         .catch(error => {
     //             console.log('Error fetching and parsing data', error);
     //         });
-// hmhgjhf
+    // hmhgjhf
     // }
 
     sendImg(e) {
-
-        this.setState({ [e.target.id]: e.target.value })
+        let data = new FormData();
+        data.append('file', e.target.value);
+        this.setState({ [e.target.id]: data })
     }
 
-    uploadImage() {
+    uploadImage(event) {
         if (this.state.img) {
-            console.log(this.state.img)
+            let that = this;
             var filepath = this.state.img;
+            // let data = new FormData
+            // imgdata=
+            // data.append("data");
             event.preventDefault();
-            axios.post('/photo', filepath)
-                .then(res, function () {
-                    this.props.addPhoto(res)
+            axios.post('/photo', filepath, { headers: {
+                'accept': 'application/json',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': `multipart/form-data; boundary=${filepath._boundary}`,
+              } })
+                .then(function (res) {
+                    that.setState({ img: res })
                 })
         }
 
     }
+
 
 
     render() {
@@ -49,10 +58,16 @@ class UsersDataForm extends React.Component {
             <div className="right" >
                 <input className="bubble" placeholder="Name" type="text" value={this.state.name} onChange={(event) => this.setState({ user: event.target.value })}></input>
                 <input className="bubble" placeholder="Occasion" type="text" value={this.state.event} onChange={(event) => this.setState({ event: event.target.value })}></input>
-                <div className="buttonWrap">
-                    <input type="file" id="img" className="action-button animate blue" onChange={this.sendImg} />
+                {/* <form id="uploadForm" encType="multipart/form-data" action="/photo" method="post">
+                    <input type="file" name="userPhoto" />
+                    <input type="submit" value="Upload Image" name="submit" />
+                </form> */}
+                <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
+                    <input type="file" id="img"  className="action-button animate blue" onChange={this.sendImg} />
                     <button className="action-button animate blue" onClick={this.uploadImage}>Send</button>
-                </div>
+                    
+                </form>
+                < img src={this.state.img} />
             </div>
 
         );
