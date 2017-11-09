@@ -7,7 +7,7 @@
         background-size: cover;
       }
       
-      .container {
+      .mainContainer {
         display: flex; 
          flex-wrap: wrap;
         align-items: center;
