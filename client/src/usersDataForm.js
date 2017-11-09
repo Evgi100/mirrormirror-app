@@ -15,16 +15,15 @@ class UsersDataForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2>Fill in your name and your event </h2>
-                <div className="input-group-justified">
-                    <div className="input-group">
-                        <input className="form-control input-lg" type="email" placeholder="name..." id="name" value={this.state.name} onChange={(event) => this.setState({ name: event.target.value })}></input>
-                        <input className="form-control input-lg" type="text" placeholder="event..." id="event" value={this.state.event} onChange={(event) => this.setState({ event: event.target.value })}></input>
-                        <button className="form-control input-lg btn-success" onClick={this.sendUsersData}>Send it <i className="glyphicon glyphicon-send" ></i></button>
-                    </div>
+            <div className="right">
+                <input className="bubble" placeholder="Name"  type="text" value={this.state.name} onChange={(event) => this.setState({ name: event.target.value })}></input>
+                <input className="bubble" placeholder="Occasion" type="text" value={this.state.event} onChange={(event) => this.setState({ event: event.target.value })}></input>
+                <div className="buttonWrap">
+                    <button className="action-button animate blue">Upload pic</button>
+                    <button className="action-button animate blue" onClick={this.sendUsersData}>Send</button>
                 </div>
             </div>
+
         );
     }
 }
