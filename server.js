@@ -3,6 +3,8 @@ const path = require('path');
 const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+
 
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
@@ -12,6 +14,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
+
+
+var storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, './uploads');
+    },
+    filename: function (req, file, callback) {
+        callback(null, file.fieldname + '-' + Date.now() +'.jpg');
+    }
+});
+
+var upload = multer({ storage: storage }).single('userPhoto');
+// app.use(express.static('server/staticeventpics'));
+
 
 ////////////PRODUTION CONNECTION///////////////
 
@@ -55,6 +71,7 @@ function createDataBase() {
 
 }
 
+// FOREIGN KEY(department_id) REFERENCES departments(department_id)
 function createTables() {
 	let eventTable = `CREATE TABLE event_table (
 		eventID int NOT NULL AUTO_INCREMENT,
@@ -62,9 +79,11 @@ function createTables() {
 		outfitID int NOT NULL,
 		category varchar(255),
 		eventDate Date,
+		picture varchar(255),
 		PRIMARY KEY (eventID)
-
 	 )`;
+	//  FOREIGN KEY(userID) REFERENCES user_table(userID)
+
 	let userTable = `CREATE TABLE user_table (
 		userID int NOT NULL AUTO_INCREMENT,
 		userName VARCHAR(255), 
@@ -230,7 +249,21 @@ app.get('/event/:id', function (req, res, next) {
 });
 //Adds event to database
 app.post('/events', function (req, res) {
+	upload(req, res, function (err) {
+        if (err) {
+            console.log(err);
+            return res.end("Error uploading file.");
+        }
+        // console.log(req.file);
+        // const host = req.host;
+        // const filePath = req.protocol + "://" + host + '/' + req.file.path;
+        // console.log(filePath);
+        // res.end("File is uploaded");
+	});
+	const host = req.host;
+	const filePath = req.protocol + "://" + host + '/' + req.file.path;
 	let userData = req.body;
+	userData.picture = filePath;
 	connection.query('INSERT INTO event_table SET ?', userData, function (err, result) {
 		if (err) throw err;
 		console.log('event was added');
@@ -262,6 +295,20 @@ app.delete('/event', function (req, res) {
 		res.send(result);
 	});
 })
+
+app.post('/photo', function (req, res) {
+    upload(req, res, function (err) {
+        if (err) {
+            console.log(err);
+            return res.end("Error uploading file.");
+        }
+        console.log(req.file);
+        const host = req.host;
+        const filePath = req.protocol + "://" + host + '/' + req.file.path;
+        console.log(filePath);
+        res.end(filePath);
+    });
+});
 /////////////////END OF EVENT ROUTES//////////////
 
 
