@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
-kljl
+
 ////////////PRODUTION CONNECTION///////////////
 
 // const connection = mysql.createConnection({
@@ -148,7 +148,7 @@ app.get('/users', function (req, res, next) {
 //Gets one user from the database based on username
 app.get('/user/:username', function (req, res, next) {
 	let username = req.params.username;
-	let where = {userName: username};
+	let where = { userName: username };
 	// console.log(username);
 	connection.query("SELECT * from user_table WHERE ?", where, function (err, rows, fields) {
 		if (err) throw error;
@@ -174,7 +174,7 @@ app.put('/user', function (req, res) {
 	})
 	let username = req.body.userName;
 	// console.log(dataToUpdate, username)
-	connection.query('UPDATE user_table SET ? WHERE ?', [dataToUpdate, {userName: username}], function (err, result) {
+	connection.query('UPDATE user_table SET ? WHERE ?', [dataToUpdate, { userName: username }], function (err, result) {
 		if (err) throw err;
 		console.log(result);
 		res.send(result);
@@ -220,7 +220,7 @@ app.get('/events', function (req, res, next) {
 //Gets one event from the database based on username
 app.get('/event/:id', function (req, res, next) {
 	let username = req.params.username;
-	let where = {userName: username};
+	let where = { userName: username };
 	// console.log(username);
 	connection.query("SELECT * from event_table WHERE ?", where, function (err, rows, fields) {
 		if (err) throw error;
@@ -246,7 +246,7 @@ app.put('/event', function (req, res) {
 	})
 	let username = req.body.userName;
 	// console.log(dataToUpdate, username)
-	connection.query('UPDATE event_table SET ? WHERE ?', [dataToUpdate, {userName: username}], function (err, result) {
+	connection.query('UPDATE event_table SET ? WHERE ?', [dataToUpdate, { userName: username }], function (err, result) {
 		if (err) throw err;
 		console.log(result);
 		res.send(result);
@@ -289,7 +289,7 @@ app.get('/outfits', function (req, res, next) {
 //Gets one outfit from the database based on username
 app.get('/outfit/:id', function (req, res, next) {
 	let username = req.params.username;
-	let where = {userName: username};
+	let where = { userName: username };
 	// console.log(username);
 	connection.query("SELECT * from outfit_table WHERE ?", where, function (err, rows, fields) {
 		if (err) throw error;
@@ -315,7 +315,7 @@ app.put('/outfit', function (req, res) {
 	})
 	let username = req.body.userName;
 	// console.log(dataToUpdate, username)
-	connection.query('UPDATE outfit_table SET ? WHERE ?', [dataToUpdate, {userName: username}], function (err, result) {
+	connection.query('UPDATE outfit_table SET ? WHERE ?', [dataToUpdate, { userName: username }], function (err, result) {
 		if (err) throw err;
 		console.log(result);
 		res.send(result);
