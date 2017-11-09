@@ -17,7 +17,6 @@ class rateBox extends React.Component {
 
     render() {
         return (
-
             <div class="rate">
                 <div class="emoji">{this.state}</div>
                 <input class="emoji" type="range" min="0" max="4" step="1" onChange={this.rateFunction}></input>
