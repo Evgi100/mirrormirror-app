@@ -138,5 +138,21 @@
           outline: 2px dotted rgb(221, 221, 221);
           outline-offset: 3px;
       }
+      span { cursor: pointer; }  
+      
+.rate {
+	text-align: center;
+	width: 200px;
+	height: 200px;
+	ouline: thin solid lightgray;
+}
+.emoji {
+	font-size: 120px;
+	height: 170px;
+	line-height: 170px;
+}
 
-      span { cursor: pointer}
+.emoji {
+	cursor: ew-resize;
+}
+
