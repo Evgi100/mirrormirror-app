@@ -120,7 +120,7 @@
       }
       .ImageContainer {
           display: flex;
-          flex-wrap: wrap;
+          /* flex-wrap: wrap; */
           align-items: center;
           justify-content: space-around; 
           flex-direction: row;
@@ -144,7 +144,6 @@
 	text-align: center;
 	width: 200px;
 	height: 200px;
-	ouline: thin solid lightgray;
 }
 .emoji {
 	font-size: 120px;
