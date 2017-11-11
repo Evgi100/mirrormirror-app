@@ -18,6 +18,8 @@ class UserBox extends React.Component {
         this.props.deletePictures(this.props.index)
     }
     render() {
+        <UsersDataForm addPhoto={this.addPhoto} />
+        
         var url = ``
         return (
             <div className='UserBox'>
@@ -27,7 +29,6 @@ class UserBox extends React.Component {
                 <div className="col-md-3">
                     < img src={this.state.url} />
                     <span className="glyphicon glyphicon-trash userTrash" onClick={this.deletePictures} ></span>
-                    <UsersDataForm addPhoto={this.addPhoto} />
                 </div>
             </div>
         );

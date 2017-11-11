@@ -5,20 +5,22 @@ class UsersDataForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { name: "", event: "", eventDate: null }
+        this.state = { name: "", event: "",  }
         // this.sendImg = this.sendImg.bind(this)
         // this.uploadImage = this.uploadImage.bind(this)
         this.sendUsersData = this.sendUsersData.bind(this)
     }
 
     sendUsersData(event) {
-        this.setState({ eventDate: new Date() })
         event.preventDefault();
+        console.log(this.state)
         axios.post('/events', this.state)
             .then(response => {
-                axios.get('/user:/')
-                this.props.addUser(response.data)
-                this.setState({ name: "", event: "" })
+                axios.get('/events')
+                .then (response => {
+                    this.props.addUser(response.data)
+                    this.setState({ name: "", event: "" })
+                })
             })
             .catch(error => {
                 console.log('Error fetching and parsing data', error);
