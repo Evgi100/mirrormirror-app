@@ -8,8 +8,8 @@ class UsersDataForm extends React.Component {
         super(props);
         this.state = { name: "", event: "",  }
         // this.sendImg = this.sendImg.bind(this)
-        // this.uploadImage = this.uploadImage.bind(this)
-        this.sendUsersData = this.sendUsersData.bind(this)
+        this.uploadImage = this.uploadImage.bind(this);
+        // this.sendUsersData = this.sendUsersData.bind(this)
     }
 
 //     sendUsersData(event) {
@@ -53,7 +53,7 @@ class UsersDataForm extends React.Component {
             }
             console.log(formData.entries());
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/photo', true);
+            xhr.open('POST', '/events', true);
             xhr.onload = function () {
                 if (xhr.status === 200) {
                     // File(s) uploaded.
