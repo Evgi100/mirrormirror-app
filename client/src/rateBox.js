@@ -1,37 +1,36 @@
 import React from 'react';
 
-class rateBox extends React.Component {
+
+class RateBox extends React.Component {
 
     constructor(props) {
         super(props);
-        this.rateFunction=this.rateFunction.bind(this)
-        this.state={emojis:['😠','😦','😑','😀','😍']}
+        this.state = { rating: '' }
+        this.handleOnChange = this.handleOnChange.bind(this)
     }
 
-
-    rateFunction(e){
-        var i=e.target.value;
-         this.setState(emojis[i])
+    handleOnChange(e) {
+        this.setState({
+            rating: e.target.value
+        }, ()=> {
+        })
     }
 
 
     render() {
         return (
-
-            <div class="rate">
-                <div class="emoji">{this.state}</div>
-                <input class="emoji" type="range" min="0" max="4" step="1" onChange={this.rateFunction}></input>
+            <div>
+                <select className="rate" onChange={this.handleOnChange}>
+                    <option >Rate the outfit</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
             </div>
         );
     }
 }
 
-export default rateBox;
-
-// var emojis = ['😠','😦','😑','😀','😍'];
-
-// $("input").mousemove(function(){
-// 	var i = $(this).val();
-// 	$(".emoji").html(emojis[i]);
-// });
+export default RateBox;
 

@@ -9,7 +9,6 @@ class rateList extends React.Component {
         return (
 
             <div>
-           
             </div>
         );
     }
