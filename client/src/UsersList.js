@@ -46,6 +46,7 @@ class UsersListBox extends React.Component {
                     {this.renderPictures()}
                 </ul>
             </div>
+
         );
     }
 }
