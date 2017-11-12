@@ -21,6 +21,9 @@ class UserBox extends React.Component {
                 <span className="glyphicon glyphicon-trash userTrash" onClick={() => { this.props.deleteUser(this.props.index) }}></span>
                 <h2>{this.props.user.event}</h2>
                 <h4>{this.props.user.name}</h4>
+                <div className="submitButton">
+                    <button className="action-button animate blue">Upload pic</button>
+                </div>
                 <div className="ImageContainer">
                     <img className="ImageBox" src={url} />
                     <img className="ImageBox" src={url1} />
