@@ -21,11 +21,12 @@ var storage = multer.diskStorage({
         callback(null, './server/static/uploads');
     },
     filename: function (req, file, callback) {
-        callback(null, file.fieldname + '-' + Date.now() +'.jpg');
+		console.log(file);
+        callback(null, file.fieldname + '-' + Date.now() + '.jpeg');
     }
 });
 
-var upload = multer({ storage: storage }).single('userPhoto');
+var upload = multer({ storage: storage }).array('outfitpicture');
 // app.use(express.static('server/staticeventpics'));
 
 
@@ -169,7 +170,7 @@ app.get('/user/:username', function (req, res, next) {
 	let username = req.params.username;
 	let where = { userName: username };
 	// console.log(username);
-	connection.query("SELECT * from user_table WHERE ?", where, function (err, rows, fields) {
+	connection.query(`SELECT * from user_table WHERE ?`, where, function (err, rows, fields) {
 		if (err) throw error;
 		console.log(`/useR get req was done succ`);
 		res.send(rows);
@@ -299,7 +300,8 @@ app.delete('/event', function (req, res) {
 app.post('/photo', function (req, res) {
     upload(req, res, function (err) {
         if (err) {
-            console.log(err);
+			console.log(err);
+			console.log('yoioioioioioioi');
             return res.end("Error uploading file.");
         }
         // console.log(req.file);
@@ -362,7 +364,7 @@ app.put('/outfit', function (req, res) {
 	})
 	let username = req.body.userName;
 	// console.log(dataToUpdate, username)
-	connection.query('UPDATE outfit_table SET ? WHERE ?', [dataToUpdate, { userName: username }], function (err, result) {
+	connection.query(`UPDATE outfit_table SET ? WHERE ?`, [dataToUpdate, { userName: username }], function (err, result) {
 		if (err) throw err;
 		console.log(result);
 		res.send(result);
