@@ -1,42 +1,8 @@
-
-
-  .center {
-      display:flex;
-      height:70%;
-      width:50%;
-      display: flex;
-      background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3A92AF', endColorstr='#5CA05A',GradientType=1 );
-    color: #fff;
-    border: 5px solid silver;
-      box-shadow: 8px 10px 15px 0 rgba(0,0,0,0.2);
-      border-radius: 50%;
-  }
-
-  .upload-btn {
-        width:10%;
-        height:10%;
-        border-top:2px solid #fff;
-        border-radius:50%;
-        margin:10px auto 50px;
-        background-color:#EEEEEE;
-        background: linear-gradient(#EDEAE1,#CDC8B5);
-        text-align:center;
-        box-shadow:
-          0 5px 2px 3px rgba(158, 158, 158, 0.4), 
-          0 3px 5px #B7B6B6, 
-          0 0 0 2px #BBB7AE, 
-          inset 0 -3px 1px 2px rgba(186, 178, 165, 0.5),
-          inset 0 3px 1px 2px rgba(246, 245, 241, 0.3);
-        cursor:pointer;
-
-      /* Add css from andrea design */
-     
+   
       body {
         background-image: url("https://4.bp.blogspot.com/-gLkdjjPyg5U/UoBlwsFV-JI/AAAAAAAAAWo/QKzNWfBYdr0/s1600/Fashion+Clothes+Seamless+Patterns.jpg");
         background-color: rgb(221, 221, 221);
         background-size: cover;
-
       }
       .mainContainer {
         display: flex; 
@@ -56,17 +22,6 @@
         margin: 20px 30px 20px 0;
         text-align: center;
       }
-
-      .upload-btn span{
-        box-shadow: 
-          inset 0 1px 1px 1px #7E7E7E, 
-          0 1px 1px white;
-        height:15px; 
-        width:15px;
-        border-radius:50%;
-        background: linear-gradient(#AEADAA,#BAB7AE);
-        margin:42px auto;
-
       .mirror {
           display:flex;
           align-items: center;
@@ -113,7 +68,6 @@
         padding: 30px;
         margin: 5px;
         box-shadow: 5px 5px 10px rgb(46, 35, 35);
-
       }
       .bubble::-webkit-input-placeholder {
         font-family: 'Rozha One', serif;
@@ -147,11 +101,6 @@
             border-bottom: 1px solid;
         }
 
-
-
-.rate{
-  margin-left: 50%
-}
 
       .ImageTextContainer {
           flex-grow: 1;
@@ -189,19 +138,10 @@
       }
       span { cursor: pointer; }  
       
-.rate {
-	text-align: center;
-	width: 200px;
-	height: 200px;
-}
-.emoji {
-	font-size: 120px;
-	height: 170px;
-	line-height: 170px;
-}
 
-.emoji {
-	cursor: ew-resize;
+
+.rate{
+  margin-left: 50%
 }
 
 

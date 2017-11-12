@@ -44,7 +44,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '1234',
+	password: 'password22',
 	database: 'mirrormirror',
 	multipleStatements: true
 });
@@ -310,20 +310,20 @@ app.delete('/event/:id', function (req, res) {
 	});
 })
 
-// app.post('/photo', function (req, res) {
-// 	upload(req, res, function (err) {
-// 		if (err) {
-// 			console.log(err);
-// 			console.log('yoioioioioioioi');
-// 			return res.end("Error uploading file.");
-// 		}
-// 		// console.log(req.file);
-// 		// const host = req.host;
-// 		// const filePath = req.protocol + "://" + host + '/' + req.file.path;
-// 		// console.log(filePath);
-// 		res.end('filePath');
-// 	});
-// });
+app.post('/photo', function (req, res) {
+	upload(req, res, function (err) {
+		if (err) {
+			console.log(err);
+			console.log('yoioioioioioioi');
+			return res.end("Error uploading file.");
+		}
+		// console.log(req.file);
+		// const host = req.host;
+		// const filePath = req.protocol + "://" + host + '/' + req.file.path;
+		// console.log(filePath);
+		res.end('filePath');
+	});
+});
 /////////////////END OF EVENT ROUTES//////////////
 
 
