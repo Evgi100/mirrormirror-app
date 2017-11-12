@@ -40,12 +40,12 @@ class UserBox extends React.Component {
                     <img src={url} />
                     <span className="glyphicon glyphicon-trash userTrash" onClick={this.deletePictures} ></span>
                     <RateBox />
-
-            <div className='ImageTextContainer'>
-                <span className="glyphicon glyphicon-trash userTrash" onClick={() => { this.props.deleteUser(this.props.index) }}></span>
-                <h2>{this.props.user.event}</h2>
-                <h4>{this.props.user.name}</h4>
-
+                </div>
+                <div className='ImageTextContainer'>
+                    <span className="glyphicon glyphicon-trash userTrash" onClick={() => { this.props.deleteUser(this.props.index) }}></span>
+                    <h2>{this.props.user.event}</h2>
+                    <h4>{this.props.user.name}</h4>
+                </div>
                 <div className="submitButton">
                     <button className="action-button animate blue">Upload pic</button>
                 </div>

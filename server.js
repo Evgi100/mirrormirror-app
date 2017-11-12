@@ -44,7 +44,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'password22',
+	password: '1234',
 	database: 'mirrormirror',
 	multipleStatements: true
 });
@@ -137,11 +137,11 @@ function initDatabase() {
 	createTables();
 }
 
-connection.connect(function (err) {
-	if (err) throw err
-	console.log('connection created11111111111111');
-	initDatabase();
-});
+// connection.connect(function (err) {
+// 	if (err) throw err
+// 	console.log('connection created11111111111111');
+// 	initDatabase();
+// });
 //////////////////END OF FOR DEV DATABASE INIT/////////////////////////
 
 
