@@ -1,6 +1,7 @@
 import React from 'react';
 import UserBox from './userBox';
-import UsersDataForm from './UsersDataForm'
+import UsersDataForm from './usersDataForm'
+import axios from 'axios'
 class UsersListBox extends React.Component {
     constructor(props) {
         super(props);
@@ -24,13 +25,24 @@ class UsersListBox extends React.Component {
         }));
     }
 
+    componentDidMount() {
+        axios.get('/events')
+            .then(response => {
+                this.addUser(response.data)
+            })
+            .catch(error => {
+                console.log('Error fetching and parsing data', error);
+            })
+    }
+
+
     render() {
         const renderUsers = this.state.users.map((user, index) =>
             <UserBox user={user} index={index} deleteUser={this.deleteUser} key={index} />)
         return (
             <div>
                 <UsersDataForm addUser={this.addUser} /> {renderUsers}
-                <ul className="row">
+                <ul className="row" >
                     {this.renderPictures()}
                 </ul>
             </div>
