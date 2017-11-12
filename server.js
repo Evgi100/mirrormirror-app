@@ -43,7 +43,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '1234',
+	password: 'password22',
 	database: 'mirrormirror',
 	multipleStatements: true
 });
@@ -60,7 +60,7 @@ function createDataBase() {
 		connection = mysql.createConnection({
 			host: 'localhost',
 			user: 'root',
-			password: '1234',
+			password: 'password22',
 			database: 'mirrormirror',
 			multipleStatements: true
 		});
@@ -75,10 +75,10 @@ function createDataBase() {
 // FOREIGN KEY(department_id) REFERENCES departments(department_id)
 function createTables() {
 	let eventTable = `CREATE TABLE event_table (
-		eventID int NOT NULL AUTO_INCREMENT,
-		userID int NOT NULL,
-		outfitID int NOT NULL,
-		category varchar(255),
+		eventID int  AUTO_INCREMENT,
+		name varchar(255) ,
+		outfitID int ,
+		event varchar(255),
 		eventDate Date,
 		picture varchar(255),
 		PRIMARY KEY (eventID)
@@ -132,7 +132,7 @@ function createTables() {
 
 function initDatabase() {
 	// createDataBase();
-	// createTables();
+	createTables();
 }
 
 // connection.connect(function(err) {
@@ -239,8 +239,8 @@ app.get('/events', function (req, res, next) {
 });
 //Gets one event from the database based on username
 app.get('/event/:id', function (req, res, next) {
-	let username = req.params.username;
-	let where = { userName: username };
+	let id = req.params.id;
+	let where = { eventID: id };
 	// console.log(username);
 	connection.query("SELECT * from event_table WHERE ?", where, function (err, rows, fields) {
 		if (err) throw error;
@@ -250,21 +250,21 @@ app.get('/event/:id', function (req, res, next) {
 });
 //Adds event to database
 app.post('/events', function (req, res) {
-	upload(req, res, function (err) {
-        if (err) {
-            console.log(err);
-            return res.end("Error uploading file.");
-        }
+	// upload(req, res, function (err) {
+    //     if (err) {
+    //         console.log(err);
+    //         return res.end("Error uploading file.");
+    //     }
         // console.log(req.file);
         // const host = req.host;
         // const filePath = req.protocol + "://" + host + '/' + req.file.path;
         // console.log(filePath);
         // res.end("File is uploaded");
-	});
-	const host = req.host;
-	const filePath = req.protocol + "://" + host + '/' + req.file.path;
+	// });
+	// const host = req.host;
+	// const filePath = req.protocol + "://" + host + '/' + req.file.path;
 	let userData = req.body;
-	userData.picture = filePath;
+	// userData.picture = filePath;
 	connection.query('INSERT INTO event_table SET ?', userData, function (err, result) {
 		if (err) throw err;
 		console.log('event was added');
