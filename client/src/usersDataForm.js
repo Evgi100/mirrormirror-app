@@ -60,6 +60,11 @@ class UsersDataForm extends React.Component {
             <div className="right" >
                 <input className="bubble" placeholder="Name" type="text" value={this.state.name} onChange={(event) => this.setState({ name: event.target.value, })}></input>
                 <input className="bubble" placeholder="Occasion" type="text" value={this.state.event} onChange={(event) => this.setState({ event: event.target.value })}></input>
+
+                <div className="buttonWrap">
+                    <button className="action-button animate blue" onClick={this.sendUsersData}>Send</button>
+                </div>
+
                 {/* <form id="uploadForm" encType="multipart/form-data" action="/photo" method="post">
                     <input type="file" name="userPhoto" />
                     <input type="submit" value="Upload Image" name="submit" />
@@ -69,7 +74,10 @@ class UsersDataForm extends React.Component {
                     <button type="button" className="action-button animate blue" onClick={this.sendUsersData}>Send</button>
 
                 </form>
-                {/* < img src={this.state.img} /> */}
+
+                < img src={this.state.img} />
+
+
             </div>
 
         );
