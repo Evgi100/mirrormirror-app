@@ -3,7 +3,7 @@ import React from 'react';
 const Sidebar = (props) => {
 
     return (
-        <div id="wrapper">
+        <div id="wrapper" className="container-fluid">
             <div id="sidebar-wrapper">
                 <aside id="sidebar">
                     <ul id="sidemenu" className="sidebar-nav">

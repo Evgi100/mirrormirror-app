@@ -8,12 +8,7 @@ class AppWrapper extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Header/>
-          <div className="container">
-            <Routes/>
-          </div>
-        </div>
+          <Routes/>
       </BrowserRouter>
 
     );
