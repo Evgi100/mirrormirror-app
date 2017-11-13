@@ -7,14 +7,28 @@ import UsersDataForm from './usersDataForm'
 class UserBox extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { url: "" }
+        this.state = { event: '', eventDate: '' }
         this.deletePictures = this.deletePictures.bind(this);
-        this.addPhoto = this.addPhoto.bind(this);
+        this.handleOnChange = this.handleOnChange.bind(this)
+        this.handleOnChangeDate = this.handleOnChangeDate.bind(this)
     }
 
-    addPhoto(img) {
-        this.setState({ url: img })
+
+
+    handleOnChange(e) {
+        this.setState({
+           event : e.target.value,
+        }, () => { console.log(this.state)
+        })
     }
+
+    handleOnChangeDate(e) {
+        this.setState({
+           eventDate :e.target.value
+        }, () => { console.log(this.state)
+        })
+    }
+
 
     deletePictures(index) {
         this.props.deletePictures(this.props.index)
@@ -24,18 +38,11 @@ class UserBox extends React.Component {
 
         return (
 
-
-            // <div className='UserBox'>
-            //     <span className="glyphicon glyphicon-trash userTrash" onClick={() => { this.props.deleteUser(this.props.index) }}></span>
-            //     {/* <h2>{this.props.user.event}</h2>
-            //     <h4>{this.props.user.name}</h4> */}
-            //     <div className="col-md-3">
-            //         {/* <img src={url} /> */}
             //         <span className="glyphicon glyphicon-trash userTrash" onClick={this.deletePictures} ></span>
             <div>
                 <div className="title">
                     <div>
-                        <select style={{ border: '0', backgroundColor: 'rgb(240, 6, 84)', fontSize: '25px', fontFamily: 'Rozha One' }}>
+                        <select onChange={this.handleOnChange} style={{ border: '0', backgroundColor: 'rgb(240, 6, 84)', fontSize: '25px', fontFamily: 'Rozha One' }}>
                             <option>Choose Occasion</option>
                             <option value="Party">Party</option>
                             <option value="Concert">Concert</option>
@@ -53,67 +60,67 @@ class UserBox extends React.Component {
                             <div className="input-group-addon">
                                 <span className="glyphicon glyphicon-calendar aria-hidden=" ></span>
                             </div>
-                            <input className="form-control" id="date" placeholder="DD/MM/YYYY" type="date" />
+                            <input className="form-control" id="date" placeholder="DD/MM/YYYY" type="date" onChange={this.handleOnChangeDate} />
                         </div>
                     </div>
                 </div >
 
                 <div className="ImageContainer">
                     <div className="imageButtonContainer">
-                        <div className="ImageBox first"></div>
+                        <div className="ImageBox first"> <img src={''} /> </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-upload" aria-hidden="true"></i>
                             </button>
-                            <button className="dotted picButton">
+                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
                                 <br />
-                                <RateBox />
                             </button>
                         </div>
+                        <RateBox />
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox second"></div>
+                        <div className="ImageBox second"> <img src={''} /> </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-upload" aria-hidden="true"></i>
                             </button>
-                            <button className="dotted picButton">
+                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
                                 <br />
-                                <RateBox />
                             </button>
                         </div>
+                        <RateBox />
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox third"></div>
+                        <div className="ImageBox third"> <img src={''} /> </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-upload" aria-hidden="true"></i>
                             </button>
-                            <button className="dotted picButton">
+                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
                                 <br />
-                                <RateBox />
                             </button>
                         </div>
+                        <RateBox />
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox forth"></div>
+                        <div className="ImageBox forth"> <img src={''} /> </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-upload" aria-hidden="true"></i>
                             </button>
-                            <button className="dotted picButton">
+                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
                                 <br />
-                                <RateBox />
                             </button>
                         </div>
                     </div>
+                    {/* <RateBox /> */}
                 </div>
 
                 <div className="submitButton">
