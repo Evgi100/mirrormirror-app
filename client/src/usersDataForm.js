@@ -6,7 +6,7 @@ class UsersDataForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { userID: 1, name: "bla", event: "bla2" }
+        this.state = { userID: 2, name: "bla", event: "bla2", src1:null, src2:null, src3:null, src4:null }
         // this.sendImg = this.sendImg.bind(this)
         this.uploadImage = this.uploadImage.bind(this);
         // this.sendUsersData = this.sendUsersData.bind(this)
@@ -60,9 +60,9 @@ class UsersDataForm extends React.Component {
                 xhr.onload = function () {
                     if (xhr.status === 200) {
                         if (counter === 0) {
-                            callback(formData);
+                            callback(formData, xhr.response.eventID);
                             this.props.addUser(xhr.response);
-                            this.setState({ name: "", event: "" });
+                            this.setState({userID:this.state.userID++, name: "", event: "" });
                             counter++
                             return;
                         }
@@ -71,50 +71,60 @@ class UsersDataForm extends React.Component {
                         alert('An error occurred!');
                     }
                 };
-                console.log(that)
-                xhr.send(that.state);
+                console.log(that);
+                let data2 = {
+                    userID: that.state.userID,
+                    name: that.state.name,
+                    event: that.state.event
+                }
+                // ASK TEACHERS WHY THIS GIVES ERROR CONNECTION REFUSED!!!!!!!!!!!!! good morning :)
+                xhr.send(data2);
             }
-            function sendEventData(data) {
-                xhr.open('POST', '/outfits', true);
+            function sendEventData(data, eventID) {
+                xhr.open('POST', '/outfits/' +eventID, true);
                 xhr.send(data);
             }
             sendData(sendEventData);
         }
     }
     imagePreview(input) {
-        if (input.files && input.files[0]) {
+        let files = input.target.files;
+        let that = this;
+        if (files) {
             let missingSrc = [];
             function _findMissing() {
                 for (let i = 1; i <= 4; i++) {
-                    if (!this.state['src' + i]) {
+                    if (that.state['src' + i] === "") {
                         missingSrc.push(i);
                     }
                 }
             }
             _findMissing();
-            if (!missingSrc) {
-                for (let i = 0; i < input.files.length; i++) {
+            if (missingSrc.length===0) {
+                for (let i = 0; i < files.length; i++) {
                     var reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onloadend = function (e) {
                         let data = {
-                            key: 'src' + i + 1,
-                            src: e.target.result
+                            key: 'src' + (i + 1),
+                            src: reader.result
                         }
-                        this.props.addPrev(data);
+                        that.props.addPrev(data);
+                        that.setState( {['src' + (i + 1)]:  reader.result})
                     }
-                    reader.readAsDataURL(input.files[i]);
+                    reader.readAsDataURL(files[i]);
                 }
             } else {
                 for (let i = 0; i < missingSrc.length; i++) {
                     var reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onloadend = function (e) {
                         let data = {
                             key: 'src' + missingSrc[i],
-                            src: e.target.result
+                            src: reader.result
                         }
-                        this.props.addPrev(data);
+                        that.props.addPrev(data);
+                        that.setState( {['src' + missingSrc[i]]: reader.result})
                     }
-                    reader.readAsDataURL(input.files[i]);
+                    reader.readAsDataURL(files[i]);
                 }
             }
         }
@@ -135,7 +145,7 @@ class UsersDataForm extends React.Component {
                     <input type="submit" value="Upload Image" name="submit" />
                 </form> */}
                 <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
-                    <input type="file" id="img-select" className="action-button animate blue" onChange={() => { this.imagePreview(this) }} multiple />
+                    <input type="file" id="img-select" className="action-button animate blue" onChange={this.imagePreview} multiple />
                     <button className="action-button animate blue" onClick={this.uploadImage} id="upload-button">Send</button>
                 </form>
 

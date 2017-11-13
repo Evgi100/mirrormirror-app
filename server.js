@@ -44,7 +44,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'password22',
+	password: '1234',
 	database: 'mirrormirror',
 	multipleStatements: true
 });
@@ -262,14 +262,15 @@ app.post('/events', function (req, res) {
 		let userData = req.body;
 		connection.query(`INSERT INTO event_table SET ?`, userData, function (err, result) {
 			if (err) throw err;
-			console.log('event was added');
+			console.log('event was addedd');
 			console.log(result);
-			connection.query(`SELECT * from user_table WHERE ?`, { picture: userData.picture }, function (err, rows, fields) {
+			let whereSQL = `(name : userData.name AND event: userData.event AND userID = userData.userID)`;
+			connection.query(`SELECT * from user_table WHERE ?`, whereSQL, function (err, rows, fields) {
 				if (err) throw err;
+				console.log(rows);
 				res.send(rows);
 			})
 		});
-
 });
 //Updates event in database
 app.put('/event', function (req, res) {
@@ -303,21 +304,21 @@ app.delete('/event/:id', function (req, res) {
 	});
 })
 
-app.post('/photo', function (req, res) {
-	upload(req, res, function (err) {
-		if (err) {
-			console.log(err);
-			console.log('yoioioioioioioi');
-			return res.end("Error uploading file.");
-		}
-		console.log('oooooooooooooooooooooo')
-		console.log(req);
-		// const host = req.host;
-		// const filePath = req.protocol + "://" + host + '/' + req.file.path;
-		// console.log(filePath);
-		res.end('filePath');
-	});
-});
+// app.post('/photo', function (req, res) {
+// 	upload(req, res, function (err) {
+// 		if (err) {
+// 			console.log(err);
+// 			console.log('yoioioioioioioi');
+// 			return res.end("Error uploading file.");
+// 		}
+// 		console.log('oooooooooooooooooooooo')
+// 		console.log(req);
+// 		// const host = req.host;
+// 		// const filePath = req.protocol + "://" + host + '/' + req.file.path;
+// 		// console.log(filePath);
+// 		res.end('filePath');
+// 	});
+// });
 /////////////////END OF EVENT ROUTES//////////////
 
 
@@ -354,7 +355,7 @@ app.get('/outfit/:id', function (req, res, next) {
 	});
 });
 //Adds outfit to database
-app.post('/outfits', function (req, res) {
+app.post('/outfits/:eventID', function (req, res) {
 	upload(req, res, function (err) {
 		if (err) {
 			console.log(err);
@@ -366,7 +367,9 @@ app.post('/outfits', function (req, res) {
 			const host = req.hostname;
 			const filePath = `${req.protocol}://${host}/${image.path}`;
 			userData = req.body;
+			userData.eventID = req.params.eventID;
 			userData.picture = filePath;
+			userData.userID = 1;
 			connection.query(`INSERT INTO outfit_table SET ?`, userData, function (err, result) {
 				if (err) throw err;
 				console.log('outfit was added');

@@ -44,10 +44,12 @@ class UsersListBox extends React.Component {
 
     render() {
         const renderUsers = this.state.users.map((user, index) =>
-            <UserBox user={user} index={index} deleteUser={this.deleteUser} key={index} imgsrc={this.state['src'+index+1]} />)
+            <UserBox user={user} index={index} deleteUser={this.deleteUser} key={index} imgsrc={this.state['src'+(index+1)]} />)
         return (
+            
             <div>
-                <UsersDataForm addUser={this.addUser} /> {renderUsers}
+            <img src={this.state['src1']} />
+                <UsersDataForm addUser={this.addUser} addPrev={this.addPrev} /> {renderUsers}
                 <ul className="row" >
                     {this.renderPictures()}
                 </ul>
