@@ -6,28 +6,28 @@ class UsersDataForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { userID: 2, name: "bla", event: "bla2", src1:null, src2:null, src3:null, src4:null }
+        this.state = { userID: 2, name: "", event: "", src1:null, src2:null, src3:null, src4:null }
         // this.sendImg = this.sendImg.bind(this)
         this.uploadImage = this.uploadImage.bind(this);
-        // this.sendUsersData = this.sendUsersData.bind(this)
+        this.sendUsersData = this.sendUsersData.bind(this)
         this.imagePreview = this.imagePreview.bind(this);
     }
 
-    //     sendUsersData(event) {
-    //         event.preventDefault();
-    //         console.log(this.state)
-    //         axios.post('/events', this.state)
-    //             .then(response => {
-    //                 axios.get('/events')
-    //                 .then (response => {
-    //                     this.props.addUser(response.data)
-    //                     this.setState({ name: "", event: "" })
-    //                 })
-    //             })
-    //             .catch(error => {
-    //                 console.log('Error fetching and parsing data', error);
-    //             });
-    //     }
+        sendUsersData(event) {
+            event.preventDefault();
+            console.log(this.state)
+            axios.post('/events', this.state)
+                .then(response => {
+                    axios.get('/events')
+                    .then (response => {
+                        this.props.addUser(response.data)
+                        this.setState({ name: "", event: "" })
+                    })
+                })
+                .catch(error => {
+                    console.log('Error fetching and parsing data', error);
+                });
+        }
 
     uploadImage(event) {
         let form = document.getElementById('uploadForm');
@@ -52,6 +52,7 @@ class UsersDataForm extends React.Component {
                 // Add the file to the request.
                 formData.append('outfitpicture', file, file.name);
             }
+            console.log(files);
             console.log(formData.entries());
             let xhr = new XMLHttpRequest();
             function sendData(callback) {
@@ -78,7 +79,7 @@ class UsersDataForm extends React.Component {
                     event: that.state.event
                 }
                 // ASK TEACHERS WHY THIS GIVES ERROR CONNECTION REFUSED!!!!!!!!!!!!! good morning :)
-                xhr.send(data2);
+                xhr.send(JSON.stringify( data2));
             }
             function sendEventData(data, eventID) {
                 xhr.open('POST', '/outfits/' +eventID, true);
@@ -137,7 +138,7 @@ class UsersDataForm extends React.Component {
                 <input className="bubble" placeholder="Occasion" type="text" value={this.state.event} onChange={(event) => this.setState({ event: event.target.value })}></input>
 
                 <div className="buttonWrap">
-                    <button className="action-button animate blue" onClick={this.sendUsersData}>Send</button>
+                    <button className="action-button animate blue" onClick={this.sendUsersData}>Post Event</button>
                 </div>
 
                 {/* <form id="uploadForm" encType="multipart/form-data" action="/photo" method="post">
@@ -149,7 +150,7 @@ class UsersDataForm extends React.Component {
                     <button className="action-button animate blue" onClick={this.uploadImage} id="upload-button">Send</button>
                 </form>
 
-                < img src={this.state.img} />
+                < img src={this.state.img} /> 
 
 
             </div>

@@ -1,5 +1,6 @@
 
-      span { cursor: pointer; }  
+      span { cursor: pointer; } 
+ 
       .navbar-brand {
         font-family: 'Rozha One', serif;
         color: #f00454 !important;
@@ -13,6 +14,7 @@
         padding-top: 70px;
         padding-left: 200px;
     }
+    
     .right {
         display: flex;
         align-items: center;
@@ -387,5 +389,20 @@
     .helptext{
         font-family:'Oranienbaum', serif;
     }
-
-
+    
+    .navbar-default{
+        color:rgb(240, 6, 84) !important;
+        align-items:center;
+    }
+    
+    a {
+        color:rgb(240, 6, 84) !important;
+        cursor: pointer;
+        font-family: 'Rozha One', serif;
+        font-size: 20px;
+    }
+    
+    a:hover{
+        color:rgb(165, 1, 58) !important;
+    }
+    
