@@ -4,6 +4,7 @@ import RateBox from './rateBox'
 import UsersDataForm from './usersDataForm'
 
 
+
 class UserBox extends React.Component {
     constructor(props) {
         super(props)
@@ -91,7 +92,7 @@ class UserBox extends React.Component {
                         </div>
                     </div>
 
-                    <div className="imageButtonContainer">
+                    {/* <div className="imageButtonContainer">
                         <div className="ImageBox forth"></div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
@@ -108,9 +109,11 @@ class UserBox extends React.Component {
                     <p className="helptext" style={{fontSize:'20px'}}>
                     </p>
                     <button className="dotted post">Post Event</button>
-                </div>
-                <div><p className="helptext" style={{fontSize:'20px'}}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
+                </div> */}
+                    <UsersDataForm />
+                    <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
         </p></div>
+                </div>
             </div>
         );
     }

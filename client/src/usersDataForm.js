@@ -98,7 +98,7 @@ class UsersDataForm extends React.Component {
             axios.post('/events', data2)
                 .then(response => {
                     console.log(response);
-                    axios.post('/outfits/' +response.data[0].eventID, formData)
+                    axios.post('/outfits/' + response.data[0].eventID, formData)
                         .then(innerResponse => {
                             // that.props.addUser(response.data);
                             that.setState({ userID: that.state.userID++, name: "", event: "" });
@@ -158,14 +158,33 @@ class UsersDataForm extends React.Component {
 
     render() {
         return (
-            <div >
-                <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
+            <div>
+                {/* <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
                     <input type="file" id="img-select" className="action-button animate blue" onChange={this.imagePreview} multiple />
                     <button className="action-button animate blue" onClick={this.uploadImage} id="upload-button">Send</button>
                 </form>
                 < img src={this.state.img} />
-            </div>
+            </div> */}
 
+                <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
+                    <div className="imageButtonContainer">
+                        <div className="ImageBox forth"></div>
+                        <div className="ButtonContainer">
+                            <input type="file" id="img-select"  className="dotted picButton" onChange={this.imagePreview} multiple/>
+                                <i className="fa fa-trash-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div className="submitButton">
+                        <button className="dotted post">
+                            <i className="fa fa-upload" aria-hidden="true"></i>
+                        </button>
+                        <p className="helptext" style={{ fontSize: '20px' }}>
+                        </p>
+                        <button className="dotted post" onClick={this.uploadImage} >Post Event</button>
+                    </div>
+                </form>
+
+            </div >
         );
     }
 }
