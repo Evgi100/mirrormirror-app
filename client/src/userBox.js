@@ -1,10 +1,6 @@
 import React from 'react';
 import UsersListBox from './UsersList';
-
 import RateBox from './rateBox'
-
-
-
 import UsersDataForm from './usersDataForm'
 
 
@@ -51,12 +47,13 @@ class UserBox extends React.Component {
                     <div className="datePicker">
                         <div className="dateLabel">
                             <label className="control-label" htmlFor="date">Rate outfits until</label>
+                            {/* <label htmlFor="rate">Rate outfits until : </label><input id="rating" type="date" value=""/> */}
                         </div>
                         <div className="input-group">
                             <div className="input-group-addon">
                                 <span className="glyphicon glyphicon-calendar aria-hidden=" ></span>
                             </div>
-                            <input className="form-control" id="date" placeholder="DD/MM/YYYY" type="text" />
+                            <input className="form-control" id="date" placeholder="DD/MM/YYYY" type="date" />
                         </div>
                     </div>
                 </div >
@@ -70,6 +67,8 @@ class UserBox extends React.Component {
                             </button>
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
+                                <br />
+                                <RateBox />
                             </button>
                         </div>
                     </div>
@@ -82,6 +81,8 @@ class UserBox extends React.Component {
                             </button>
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
+                                <br />
+                                <RateBox />
                             </button>
                         </div>
                     </div>
@@ -94,6 +95,8 @@ class UserBox extends React.Component {
                             </button>
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
+                                <br />
+                                <RateBox />
                             </button>
                         </div>
                     </div>
@@ -106,6 +109,8 @@ class UserBox extends React.Component {
                             </button>
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
+                                <br />
+                                <RateBox />
                             </button>
                         </div>
                     </div>
