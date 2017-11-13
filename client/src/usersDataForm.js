@@ -6,33 +6,34 @@ class UsersDataForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { name: "", event: "",  }
+        this.state = { userID: 1, name: "bla", event: "bla2" }
         // this.sendImg = this.sendImg.bind(this)
         this.uploadImage = this.uploadImage.bind(this);
         // this.sendUsersData = this.sendUsersData.bind(this)
+        this.imagePreview = this.imagePreview.bind(this);
     }
 
-//     sendUsersData(event) {
-//         event.preventDefault();
-//         console.log(this.state)
-//         axios.post('/events', this.state)
-//             .then(response => {
-//                 axios.get('/events')
-//                 .then (response => {
-//                     this.props.addUser(response.data)
-//                     this.setState({ name: "", event: "" })
-//                 })
-//             })
-//             .catch(error => {
-//                 console.log('Error fetching and parsing data', error);
-//             });
-//     }
+    //     sendUsersData(event) {
+    //         event.preventDefault();
+    //         console.log(this.state)
+    //         axios.post('/events', this.state)
+    //             .then(response => {
+    //                 axios.get('/events')
+    //                 .then (response => {
+    //                     this.props.addUser(response.data)
+    //                     this.setState({ name: "", event: "" })
+    //                 })
+    //             })
+    //             .catch(error => {
+    //                 console.log('Error fetching and parsing data', error);
+    //             });
+    //     }
 
     uploadImage(event) {
         let form = document.getElementById('uploadForm');
         let fileSelect = document.getElementById('img-select');
         let uploadButton = document.getElementById('upload-button');
-
+        let that = this;
         form.onsubmit = function (event) {
             event.preventDefault();
             // Update button text.
@@ -52,21 +53,72 @@ class UsersDataForm extends React.Component {
                 formData.append('outfitpicture', file, file.name);
             }
             console.log(formData.entries());
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/events', true);
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    // File(s) uploaded.
-                    uploadButton.innerHTML = 'Upload';
-                } else {
-                    alert('An error occurred!');
-                }
-            };
-            xhr.send(formData);
+            let xhr = new XMLHttpRequest();
+            function sendData(callback) {
+                xhr.open('POST', '/events', true);
+                let counter = 0;
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        if (counter === 0) {
+                            callback(formData);
+                            this.props.addUser(xhr.response);
+                            this.setState({ name: "", event: "" });
+                            counter++
+                            return;
+                        }
+                        uploadButton.innerHTML = 'Upload';
+                    } else {
+                        alert('An error occurred!');
+                    }
+                };
+                console.log(that)
+                xhr.send(that.state);
+            }
+            function sendEventData(data) {
+                xhr.open('POST', '/outfits', true);
+                xhr.send(data);
+            }
+            sendData(sendEventData);
         }
     }
-
-
+    imagePreview(input) {
+        if (input.files && input.files[0]) {
+            let missingSrc = [];
+            function _findMissing() {
+                for (let i = 1; i <= 4; i++) {
+                    if (!this.state['src' + i]) {
+                        missingSrc.push(i);
+                    }
+                }
+            }
+            _findMissing();
+            if (!missingSrc) {
+                for (let i = 0; i < input.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        let data = {
+                            key: 'src' + i + 1,
+                            src: e.target.result
+                        }
+                        this.props.addPrev(data);
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            } else {
+                for (let i = 0; i < missingSrc.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        let data = {
+                            key: 'src' + missingSrc[i],
+                            src: e.target.result
+                        }
+                        this.props.addPrev(data);
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        }
+    }
 
     render() {
         return (
@@ -83,7 +135,7 @@ class UsersDataForm extends React.Component {
                     <input type="submit" value="Upload Image" name="submit" />
                 </form> */}
                 <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
-                    <input type="file" id="img-select" className="action-button animate blue" multiple/>
+                    <input type="file" id="img-select" className="action-button animate blue" onChange={() => { this.imagePreview(this) }} multiple />
                     <button className="action-button animate blue" onClick={this.uploadImage} id="upload-button">Send</button>
                 </form>
 
