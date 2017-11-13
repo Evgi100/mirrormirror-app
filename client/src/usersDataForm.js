@@ -6,28 +6,28 @@ class UsersDataForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { userID: 2, name: "", event: "", src1:null, src2:null, src3:null, src4:null }
+        this.state = { userID: 1, name: "", event: "", src1: null, src2: null, src3: null, src4: null }
         // this.sendImg = this.sendImg.bind(this)
         this.uploadImage = this.uploadImage.bind(this);
-        this.sendUsersData = this.sendUsersData.bind(this)
+        // this.sendUsersData = this.sendUsersData.bind(this)
         this.imagePreview = this.imagePreview.bind(this);
     }
 
-        sendUsersData(event) {
-            event.preventDefault();
-            console.log(this.state)
-            axios.post('/events', this.state)
-                .then(response => {
-                    axios.get('/events')
-                    .then (response => {
-                        this.props.addUser(response.data)
-                        this.setState({ name: "", event: "" })
-                    })
-                })
-                .catch(error => {
-                    console.log('Error fetching and parsing data', error);
-                });
-        }
+    // sendUsersData(event) {
+    //     event.preventDefault();
+    //     console.log(this.state)
+    //     axios.post('/events', this.state)
+    //         .then(response => {
+    //             axios.get('/events')
+    //             .then (response => {
+    //                 this.props.addUser(response.data)
+    //                 this.setState({ name: "", event: "" })
+    //             })
+    //         })
+    //         .catch(error => {
+    //             console.log('Error fetching and parsing data', error);
+    //         });
+    // }
 
     uploadImage(event) {
         let form = document.getElementById('uploadForm');
@@ -54,38 +54,63 @@ class UsersDataForm extends React.Component {
             }
             console.log(files);
             console.log(formData.entries());
-            let xhr = new XMLHttpRequest();
-            function sendData(callback) {
-                xhr.open('POST', '/events', true);
-                let counter = 0;
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        if (counter === 0) {
-                            callback(formData, xhr.response.eventID);
-                            this.props.addUser(xhr.response);
-                            this.setState({userID:this.state.userID++, name: "", event: "" });
-                            counter++
-                            return;
-                        }
-                        uploadButton.innerHTML = 'Upload';
-                    } else {
-                        alert('An error occurred!');
-                    }
-                };
-                console.log(that);
-                let data2 = {
-                    userID: that.state.userID,
-                    name: that.state.name,
-                    event: that.state.event
-                }
-                // ASK TEACHERS WHY THIS GIVES ERROR CONNECTION REFUSED!!!!!!!!!!!!! good morning :)
-                xhr.send(JSON.stringify( data2));
+            //         let xhr = new XMLHttpRequest();
+            //         function sendData(callback) {
+            //             xhr.open('POST', '/events', true);
+            //             let counter = 0;
+            //             xhr.onload = function () {
+            //                 if (xhr.status === 200) {
+            //                     if (counter === 0) {
+            //                         callback(formData, xhr.response.eventID);
+            //                         this.props.addUser(xhr.response);
+            //                         this.setState({userID:this.state.userID++, name: "", event: "" });
+            //                         counter++
+            //                         return;
+            //                     }
+            //                     uploadButton.innerHTML = 'Upload';
+            //                 } else {
+            //                     alert('An error occurred!');
+            //                 }
+            //             };
+            //             console.log(that);
+            //             let data2 = {
+            //                 userID: that.state.userID,
+            //                 name: that.state.name,
+            //                 event: that.state.event
+            //             }
+            //             // ASK TEACHERS WHY THIS GIVES ERROR CONNECTION REFUSED!!!!!!!!!!!!! good morning :)
+            //             xhr.send(JSON.stringify( data2));
+            //             ax.
+            //         }
+            //         function sendEventData(data, eventID) {
+            //             xhr.open('POST', '/outfits/' +eventID, true);
+            //             xhr.send(data);
+            //         }
+            //         sendData(sendEventData);
+
+
+
+            let data2 = {
+                userID: that.state.userID,
+                name: that.state.name,
+                event: that.state.event
             }
-            function sendEventData(data, eventID) {
-                xhr.open('POST', '/outfits/' +eventID, true);
-                xhr.send(data);
-            }
-            sendData(sendEventData);
+            axios.post('/events', data2)
+                .then(response => {
+                    console.log(response);
+                    axios.post('/outfits/' +response.data[0].eventID, formData)
+                        .then(innerResponse => {
+                            // that.props.addUser(response.data);
+                            that.setState({ userID: that.state.userID++, name: "", event: "" });
+                            uploadButton.innerHTML = 'Upload';
+                        })
+                        .catch(error => {
+                            console.log('Error fetching and parsing data', error);
+                        });
+                })
+                .catch(error => {
+                    console.log('Error fetching and parsing data', error);
+                });
         }
     }
     imagePreview(input) {
@@ -101,7 +126,7 @@ class UsersDataForm extends React.Component {
                 }
             }
             _findMissing();
-            if (missingSrc.length===0) {
+            if (missingSrc.length === 0) {
                 for (let i = 0; i < files.length; i++) {
                     var reader = new FileReader();
                     reader.onloadend = function (e) {
@@ -110,7 +135,7 @@ class UsersDataForm extends React.Component {
                             src: reader.result
                         }
                         that.props.addPrev(data);
-                        that.setState( {['src' + (i + 1)]:  reader.result})
+                        that.setState({ ['src' + (i + 1)]: reader.result })
                     }
                     reader.readAsDataURL(files[i]);
                 }
@@ -123,7 +148,7 @@ class UsersDataForm extends React.Component {
                             src: reader.result
                         }
                         that.props.addPrev(data);
-                        that.setState( {['src' + missingSrc[i]]: reader.result})
+                        that.setState({ ['src' + missingSrc[i]]: reader.result })
                     }
                     reader.readAsDataURL(files[i]);
                 }
@@ -150,7 +175,7 @@ class UsersDataForm extends React.Component {
                     <button className="action-button animate blue" onClick={this.uploadImage} id="upload-button">Send</button>
                 </form>
 
-                < img src={this.state.img} /> 
+                < img src={this.state.img} />
 
 
             </div>
