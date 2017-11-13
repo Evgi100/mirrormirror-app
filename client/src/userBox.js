@@ -89,7 +89,7 @@ class UserBox extends React.Component {
 
                     <div className="imageButtonContainer">
 
-                       <div className="ImageBox third"> <img src={this.props.src3} /> </div>
+                        <div className="ImageBox third"> <img src={this.props.src3} /> </div>
 
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
@@ -114,16 +114,15 @@ class UserBox extends React.Component {
                     <button className="dotted post">
                         <i className="fa fa-upload" aria-hidden="true"></i>
                     </button>
-                    <p className="helptext" style={{fontSize:'20px'}}>
+                    <p className="helptext" style={{ fontSize: '20px' }}>
                     </p>
                     <button className="dotted post">Post Event</button>
-                </div> */}
-                {/* // Passed the component so we can use the functionality */}
-                    <UsersDataForm />
-                    <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
+                </div> 
+                <UsersDataForm />
+                <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
         </p></div>
-                </div>
             </div>
+
         );
     }
 }
