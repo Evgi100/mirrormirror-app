@@ -4,6 +4,7 @@ import Page404 from './common/404';
 import HomeView from './home'
 import {Switch, Route, Redirect} from 'react-router-dom';
 
+
 const Routes = () => (
     <div>
         <Switch>
