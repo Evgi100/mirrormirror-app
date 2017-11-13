@@ -50,10 +50,7 @@ class UserBox extends React.Component {
                     <button className="action-button animate blue">Upload pic</button>
                 </div>
                 <div className="ImageContainer">
-                    <img className="ImageBox" src={url} />
-                    <img className="ImageBox" src={url1} />
-                    <img className="ImageBox" src={url2} />
-                    <img className="ImageBox" src={url3} />
+                    <img className="ImageBox" src={this.props.imgSrc} />
                     {/* <span className="glyphicon glyphicon-trash userTrash" onClick={this.deletePictures} ></span> */}
 
 

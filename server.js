@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
 		callback(null, './server/static/uploads');
 	},
 	filename: function (req, file, callback) {
-		console.log(file);
+		// console.log(file);
 		callback(null, file.fieldname + '-' + Date.now() + '.jpeg');
 	}
 });
@@ -259,24 +259,17 @@ app.get('/event/:id', function (req, res, next) {
 });
 //Adds event to database
 app.post('/events', function (req, res) {
-	upload(req, res, function (err) {
-		if (err) {
-			console.log(err);
-			return res.end("Error uploading file.");
-		}
-		const host = req.host;
-		const filePath = req.protocol + "://" + host + '/' + req.file.path;
 		let userData = req.body;
-		userData.picture = filePath;
 		connection.query(`INSERT INTO event_table SET ?`, userData, function (err, result) {
 			if (err) throw err;
 			console.log('event was added');
+			console.log(result);
 			connection.query(`SELECT * from user_table WHERE ?`, { picture: userData.picture }, function (err, rows, fields) {
 				if (err) throw err;
 				res.send(rows);
 			})
 		});
-	});
+
 });
 //Updates event in database
 app.put('/event', function (req, res) {
@@ -298,7 +291,7 @@ app.delete('/event/:id', function (req, res) {
 	let id = req.params.id;
 	let sql = `DELETE FROM event_table WHERE ?`;
 	let deleteOutfitSQL =
-	`SELECT picture
+		`SELECT picture
 	FROM  outfit_table
 	WHERE ?
 	INNER JOIN event_table ON outfit_table.eventID = event.CustomerID`
@@ -317,7 +310,8 @@ app.post('/photo', function (req, res) {
 			console.log('yoioioioioioioi');
 			return res.end("Error uploading file.");
 		}
-		// console.log(req.file);
+		console.log('oooooooooooooooooooooo')
+		console.log(req);
 		// const host = req.host;
 		// const filePath = req.protocol + "://" + host + '/' + req.file.path;
 		// console.log(filePath);
@@ -361,11 +355,24 @@ app.get('/outfit/:id', function (req, res, next) {
 });
 //Adds outfit to database
 app.post('/outfits', function (req, res) {
-	let userData = req.body;
-	connection.query('INSERT INTO outfit_table SET ?', userData, function (err, result) {
-		if (err) throw err;
-		console.log('outfit was added');
-		res.send(result);
+	upload(req, res, function (err) {
+		if (err) {
+			console.log(err);
+			// console.log('yoioioioioioioi');
+			return res.end("Error uploading file.");
+		}
+		console.log('images were uploaded to uploads folder');
+		req.files.forEach(function (image) {
+			const host = req.hostname;
+			const filePath = `${req.protocol}://${host}/${image.path}`;
+			userData = req.body;
+			userData.picture = filePath;
+			connection.query(`INSERT INTO outfit_table SET ?`, userData, function (err, result) {
+				if (err) throw err;
+				console.log('outfit was added');
+				res.send(result);
+			});
+		});
 	});
 });
 //Updates outfit in database
