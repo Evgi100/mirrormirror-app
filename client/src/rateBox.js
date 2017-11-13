@@ -18,6 +18,8 @@ class RateBox extends React.Component {
     }
 
 
+    
+
     render() {
         return (
             <div>
@@ -29,8 +31,6 @@ class RateBox extends React.Component {
                     <option value="3">3</option>
                     <option value="4">4</option>
                 </select>
-
-                
 
             </div>
         );

@@ -5,6 +5,7 @@ import UsersListBox from './UsersList.js';
 import userBox from './userBox'
 import rateBox from './rateBox'
 import Sidebar from './sidebar'
+import HomeView from './home'
 
 
 
