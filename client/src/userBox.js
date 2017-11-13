@@ -17,15 +17,17 @@ class UserBox extends React.Component {
 
     handleOnChange(e) {
         this.setState({
-           event : e.target.value,
-        }, () => { console.log(this.state)
+            event: e.target.value,
+        }, () => {
+            console.log(this.state)
         })
     }
 
     handleOnChangeDate(e) {
         this.setState({
-           eventDate :e.target.value
-        }, () => { console.log(this.state)
+            eventDate: e.target.value
+        }, () => {
+            console.log(this.state)
         })
     }
 
@@ -67,7 +69,7 @@ class UserBox extends React.Component {
 
                 <div className="ImageContainer">
                     <div className="imageButtonContainer">
-                        <div className="ImageBox first"> <img src={''} /> </div>
+                        <div className="ImageBox first"> <img src={this.props.src1} /> </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-upload" aria-hidden="true"></i>
@@ -81,7 +83,7 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox second"> <img src={''} /> </div>
+                        <div className="ImageBox second"> <img src={this.props.src2} /> </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-upload" aria-hidden="true"></i>
@@ -95,7 +97,7 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox third"> <img src={''} /> </div>
+                        <div className="ImageBox third"> <img src={this.props.src3} /> </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-upload" aria-hidden="true"></i>
@@ -109,7 +111,7 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox forth"> <img src={''} /> </div>
+                        <div className="ImageBox forth"> <img src={this.props.src4} /> </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-upload" aria-hidden="true"></i>

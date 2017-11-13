@@ -98,7 +98,7 @@ class UsersDataForm extends React.Component {
             axios.post('/events', data2)
                 .then(response => {
                     console.log(response);
-                    axios.post('/outfits/' +response.data[0].eventID, formData)
+                    axios.post('/outfits/' + response.data[0].eventID, formData)
                         .then(innerResponse => {
                             // that.props.addUser(response.data);
                             that.setState({ userID: that.state.userID++, name: "", event: "" });
@@ -154,11 +154,13 @@ class UsersDataForm extends React.Component {
                 }
             }
         }
+        input.target.value = null;
     }
 
     render() {
         return (
             <div className="right" >
+
                 <input className="bubble" placeholder="Name" type="text" value={this.state.name} onChange={(event) => this.setState({ name: event.target.value, })}></input>
                 <input className="bubble" placeholder="Occasion" type="text" value={this.state.event} onChange={(event) => this.setState({ event: event.target.value })}></input>
 
@@ -166,17 +168,10 @@ class UsersDataForm extends React.Component {
                     <button className="action-button animate blue" onClick={this.sendUsersData}>Post Event</button>
                 </div>
 
-                {/* <form id="uploadForm" encType="multipart/form-data" action="/photo" method="post">
-                    <input type="file" name="userPhoto" />
-                    <input type="submit" value="Upload Image" name="submit" />
-                </form> */}
                 <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
                     <input type="file" id="img-select" className="action-button animate blue" onChange={this.imagePreview} multiple />
                     <button className="action-button animate blue" onClick={this.uploadImage} id="upload-button">Send</button>
                 </form>
-
-                < img src={this.state.img} />
-
 
             </div>
 
