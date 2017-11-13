@@ -13,8 +13,6 @@ class UserBox extends React.Component {
         this.handleOnChangeDate = this.handleOnChangeDate.bind(this)
     }
 
-
-
     handleOnChange(e) {
         this.setState({
            event : e.target.value,
@@ -28,7 +26,6 @@ class UserBox extends React.Component {
         }, () => { console.log(this.state)
         })
     }
-
 
     deletePictures(index) {
         this.props.deletePictures(this.props.index)
@@ -77,7 +74,6 @@ class UserBox extends React.Component {
                                 <br />
                             </button>
                         </div>
-                        <RateBox />
                     </div>
 
                     <div className="imageButtonContainer">
@@ -91,7 +87,6 @@ class UserBox extends React.Component {
                                 <br />
                             </button>
                         </div>
-                        <RateBox />
                     </div>
 
                     <div className="imageButtonContainer">
@@ -105,7 +100,6 @@ class UserBox extends React.Component {
                                 <br />
                             </button>
                         </div>
-                        <RateBox />
                     </div>
 
                     <div className="imageButtonContainer">
@@ -130,9 +124,6 @@ class UserBox extends React.Component {
                     <button className="dotted post">Post Event</button>
                 </div>
             </div>
-
-            //             {/* <span className="glyphicon glyphicon-trash userTrash" onClick={this.deletePictures} ></span> */ }
-            // {/* <span className="glyphicon glyphicon-trash userTrash" onClick={() => { this.props.deleteUser(this.props.index) }}></span> */ }
 
         );
     }
