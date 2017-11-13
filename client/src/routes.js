@@ -4,7 +4,7 @@ import Page404 from './common/404';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 const Routes = () => (
-    <div className="container">
+    <div>
         <Switch>
             <Route name="home" exact path='/' component={MainApp} />
             <Route path="*" component={Page404}/>

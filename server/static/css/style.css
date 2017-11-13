@@ -1,12 +1,11 @@
 
       span { cursor: pointer; } 
- 
       .navbar-brand {
         font-family: 'Rozha One', serif;
         color: #f00454 !important;
         font-size: 28px;
     }
-    
+
     body {
         /* background-image: url("https://4.bp.blogspot.com/-gLkdjjPyg5U/UoBlwsFV-JI/AAAAAAAAAWo/QKzNWfBYdr0/s1600/Fashion+Clothes+Seamless+Patterns.jpg"); */
         background-color: rgb(202, 198, 198);
@@ -14,7 +13,7 @@
         padding-top: 70px;
         padding-left: 200px;
     }
-    
+
     .right {
         display: flex;
         align-items: center;
@@ -23,7 +22,7 @@
         margin-top: 20px;
         height: 270px;
     }
-    
+
     .title{
         display: flex;
         flex-wrap: wrap;
@@ -86,10 +85,11 @@
         flex-wrap: wrap;
         flex-direction: column;
         background-color: rgb(240, 6, 84);
-        margin: 5%;
-        border-radius:5px;
-        padding:25px;
+        margin: auto;
+        border-radius: 5px;
+        padding: 25px;
         box-shadow: 3px 3px 5px 6px rgba(134, 12, 80, 0.36);
+        width: 90%;
     }
     
     .ImageContainer {
@@ -232,7 +232,7 @@
     
     #sidebar-wrapper .sidebar-nav {
         position: absolute;
-        top: 0;
+        top: 15px;
         width: 225px;
         font-size: 14px;
         margin: 0;
@@ -395,6 +395,11 @@
         align-items:center;
     }
     
+    .navbar{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
     a {
         color:rgb(240, 6, 84) !important;
         cursor: pointer;
@@ -406,3 +411,6 @@
         color:rgb(165, 1, 58) !important;
     }
     
+    .date {
+        margin-left:20px;
+    }

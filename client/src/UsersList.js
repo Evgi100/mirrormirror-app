@@ -47,7 +47,7 @@ class UsersListBox extends React.Component {
             <UserBox user={user} index={index} deleteUser={this.deleteUser} key={index} imgsrc={this.state['src' + (index + 1)]} />)
         return (
 
-            <div>
+            <div className="ImageTextContainer">
                 <img src={this.state['src1']} />
                 <UserBox />
                 <UsersDataForm addUser={this.addUser} addPrev={this.addPrev} /> {renderUsers}
