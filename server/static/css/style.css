@@ -135,7 +135,7 @@
         align-items: center;
     }
     
-    .first{
+    /* .first{
         background-image: url("http://img.thedailybeast.com/image/upload/v1492785141/galleries/2013/05/20/liberace-s-wild-style-through-the-years-photos/liberace-7_k9l7ds.jpg");
         background-size: cover;
     }
@@ -154,7 +154,7 @@
         background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
         /* background-image: url("https://img.thedailybeast.com/image/upload/d_placeholder_euli9k/dpr_2.0/c_limit,w_585/fl_lossy,q_auto/v1/galleries/2013/05/20/liberace-s-wild-style-through-the-years-photos/liberace-12_bcdyfh"); */
         background-size: cover;
-    }
+    } */
     .row{
         margin-left:0px;
         margin-right:0px;

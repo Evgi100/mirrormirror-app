@@ -33,8 +33,6 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Navbar />
-                <Sidebar />
                 <UsersListBox deletePic={this.deletePic} pictures={this.state.pictures} />
                 {/* <ImageUpLoader onDrop={this.onDrop} /> */}
             </div>
