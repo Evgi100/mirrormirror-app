@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
 // import FormData from 'form-data'
 
 class UsersDataForm extends React.Component {
@@ -163,10 +163,7 @@ class UsersDataForm extends React.Component {
                     <input type="file" id="img-select" className="action-button animate blue" onChange={this.imagePreview} multiple />
                     <button className="action-button animate blue" onClick={this.uploadImage} id="upload-button">Send</button>
                 </form>
-
                 < img src={this.state.img} />
-
-
             </div>
 
         );

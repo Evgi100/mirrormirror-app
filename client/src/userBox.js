@@ -15,15 +15,17 @@ class UserBox extends React.Component {
 
     handleOnChange(e) {
         this.setState({
-           event : e.target.value,
-        }, () => { console.log(this.state)
+            event: e.target.value,
+        }, () => {
+            console.log(this.state)
         })
     }
 
     handleOnChangeDate(e) {
         this.setState({
-           eventDate :e.target.value
-        }, () => { console.log(this.state)
+            eventDate: e.target.value
+        }, () => {
+            console.log(this.state)
         })
     }
 
@@ -61,70 +63,55 @@ class UserBox extends React.Component {
                         </div>
                     </div>
                 </div >
-
                 <div className="ImageContainer">
                     <div className="imageButtonContainer">
-                        <div className="ImageBox first"> <img src={''} /> </div>
+                        <div className="ImageBox first"></div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
-                                <i className="fa fa-upload" aria-hidden="true"></i>
-                            </button>
-                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                <br />
                             </button>
                         </div>
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox second"> <img src={''} /> </div>
+                        <div className="ImageBox second"></div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
-                                <i className="fa fa-upload" aria-hidden="true"></i>
-                            </button>
-                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                <br />
                             </button>
                         </div>
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox third"> <img src={''} /> </div>
+                        <div className="ImageBox third"></div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
-                                <i className="fa fa-upload" aria-hidden="true"></i>
-                            </button>
-                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                <br />
                             </button>
                         </div>
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox forth"> <img src={''} /> </div>
+                        <div className="ImageBox forth"></div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
-                                <i className="fa fa-upload" aria-hidden="true"></i>
-                            </button>
-                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                <br />
                             </button>
                         </div>
                     </div>
-                    {/* <RateBox /> */}
                 </div>
 
                 <div className="submitButton">
-                    <p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion.
-                <br /> Filetype: jpg. Maximum file size: 2MB.
-            </p>
+                    <button className="dotted post">
+                        <i className="fa fa-upload" aria-hidden="true"></i>
+                    </button>
+                    <p className="helptext" style={{fontSize:'20px'}}>
+                    </p>
                     <button className="dotted post">Post Event</button>
                 </div>
+                <div><p className="helptext" style={{fontSize:'20px'}}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
+        </p></div>
             </div>
-
         );
     }
 }
