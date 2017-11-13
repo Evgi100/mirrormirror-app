@@ -30,12 +30,12 @@ const Navbar = (props) => {
                             </form>
                             <ul className="nav navbar-nav">
                                 <li>
-                                    <a href="#">Create event
+                                    <a href="/event">Create event
                                     <span className="sr-only">(current)</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">Browse
+                                    <a href="/">Browse
                                     <span className="sr-only">(current)</span>
                                     </a>
                                 </li>
