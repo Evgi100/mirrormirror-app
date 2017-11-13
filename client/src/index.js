@@ -7,14 +7,10 @@ import rateBox from './rateBox'
 import Sidebar from './sidebar'
 import HomeView from './home'
 
-
-
-
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = { pictures: [] };
-
     }
 
     onDrop(picture) {
@@ -32,7 +28,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+
+            <div>                <Sidebar />
+
                 <UsersListBox deletePic={this.deletePic} pictures={this.state.pictures} />
                 {/* <ImageUpLoader onDrop={this.onDrop} /> */}
             </div>

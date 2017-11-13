@@ -4,6 +4,7 @@ import RateBox from './rateBox'
 import UsersDataForm from './usersDataForm'
 
 
+
 class UserBox extends React.Component {
     constructor(props) {
         super(props)
@@ -63,70 +64,66 @@ class UserBox extends React.Component {
                         </div>
                     </div>
                 </div >
-
                 <div className="ImageContainer">
                     <div className="imageButtonContainer">
+
                         <div className="ImageBox first"> <img src={this.props.src1} /> </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
-                                <i className="fa fa-upload" aria-hidden="true"></i>
-                            </button>
-                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                <br />
                             </button>
                         </div>
                     </div>
 
                     <div className="imageButtonContainer">
+
                         <div className="ImageBox second"> <img src={this.props.src2} /> </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
-                                <i className="fa fa-upload" aria-hidden="true"></i>
-                            </button>
-                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                <br />
                             </button>
                         </div>
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox third"> <img src={this.props.src3} /> </div>
+
+                       <div className="ImageBox third"> <img src={this.props.src3} /> </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
-                                <i className="fa fa-upload" aria-hidden="true"></i>
-                            </button>
-                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                <br />
                             </button>
                         </div>
                     </div>
+
 
                     <div className="imageButtonContainer">
                         <div className="ImageBox forth"> <img src={this.props.src4} /> </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
-                                <i className="fa fa-upload" aria-hidden="true"></i>
-                            </button>
-                            <button className="dotted picButton" onClick={this.deletePictures}>
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
-                                <br />
                             </button>
                         </div>
                     </div>
-                    {/* <RateBox /> */}
                 </div>
 
                 <div className="submitButton">
-                    <p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion.
-                <br /> Filetype: jpg. Maximum file size: 2MB.
-            </p>
+                    <button className="dotted post">
+                        <i className="fa fa-upload" aria-hidden="true"></i>
+                    </button>
+                    <p className="helptext" style={{fontSize:'20px'}}>
+                    </p>
                     <button className="dotted post">Post Event</button>
+                </div> */}
+                // Passed the component so we can use the functionality
+                    <UsersDataForm />
+                    <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
+        </p></div>
                 </div>
             </div>
-
         );
     }
 }
