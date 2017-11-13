@@ -44,7 +44,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'password22',
+	password: '1234',
 	database: 'mirrormirror',
 	multipleStatements: true
 });
@@ -88,25 +88,21 @@ function createTables() {
 
 	let eventTable = `CREATE TABLE event_table (
 		eventID int  AUTO_INCREMENT,
-		userID int NOT NULL,
+		userID int,
 		name varchar(255) ,
-		outfitID int ,
 		event varchar(255),
 		eventDate Date,
-		picture varchar(255),
 		PRIMARY KEY (eventID),
 		FOREIGN KEY(userID) REFERENCES user_table(userID)
 	)`;
 
 	let outfitTable = `CREATE TABLE outfit_table (
-		outfitID int NOT NULL AUTO_INCREMENT,
-		userID int NOT NULL,
-		eventID int NOT NULL,
+		outfitID int AUTO_INCREMENT, 
+		eventID int,
 		picture varchar(255),
 		rating int,
 		PRIMARY KEY (outfitID),
-		FOREIGN KEY(eventID) REFERENCES event_table(eventID),
-		FOREIGN KEY(userID) REFERENCES user_table(userID)
+		FOREIGN KEY(eventID) REFERENCES event_table(eventID)
 	 )`;
 
 	function _formatSqlCommands(sqlArr) {
@@ -142,7 +138,7 @@ function initDatabase() {
 // 	console.log('connection created11111111111111');
 // 	initDatabase();
 // });
-//////////////////END OF FOR DEV DATABASE INIT/////////////////////////
+//////////////////END OF FOR DEV DATABASE INIT//////////////////////////
 
 
 
@@ -184,8 +180,9 @@ app.post('/users', function (req, res) {
 	connection.query(`INSERT INTO user_table SET ?`, userData, function (err, result) {
 		if (err) throw err;
 		console.log('user was added');
-		username = userData.userName;
-		connection.query(`SELECT * from user_table WHERE ?`, username, function (err, rows, fields) {
+		let username = userData.userName;
+		console.log(userData.userName, username);
+		connection.query(`SELECT * from user_table WHERE ?`, {userName: username}, function (err, rows, fields) {
 			if (err) throw err;
 			res.send(rows);
 		})
@@ -210,10 +207,10 @@ app.put('/user', function (req, res) {
 	});
 });
 //Deletes user from database
-app.delete('/user', function (req, res) {
-	let username = req.body;
+app.delete('/user/:username', function (req, res) {
+	let username = req.body.username||req.params.username;
 	let sql = `DELETE FROM user_table WHERE ?`;
-	connection.query(sql, username, function (err, result) {
+	connection.query(sql, {userName: username}, function (err, result) {
 		if (err) throw err;
 		console.log(result);
 		res.send(result);
@@ -261,12 +258,12 @@ app.get('/event/:id', function (req, res, next) {
 app.post('/events', function (req, res) {
 		let userData = req.body;
 		console.log(userData);
-		connection.query("INSERT INTO event_table SET ?", userData, function (err, result) {
+		connection.query(`INSERT INTO event_table SET ?`, userData, function (err, result) {
 			if (err) throw err;
 			console.log('event was addedd');
-			console.log(result);
-			let whereSQL = `(name : userData.name AND event: userData.event AND userID = userData.userID)`;
-			connection.query(`SELECT * from user_table WHERE ?`, whereSQL, function (err, rows, fields) {
+			// console.log(result);
+			let whereSQL = {eventID : result.insertId };
+			connection.query(`SELECT * from event_table WHERE ?`, whereSQL, function (err, rows, fields) {
 				if (err) throw err;
 				console.log(rows);
 				res.send(rows);
@@ -364,19 +361,22 @@ app.post('/outfits/:eventID', function (req, res) {
 			return res.end("Error uploading file.");
 		}
 		console.log('images were uploaded to uploads folder');
+		let toSend = [];
+		console.log(req.files.length)
 		req.files.forEach(function (image) {
 			const host = req.hostname;
 			const filePath = `${req.protocol}://${host}/${image.path}`;
-			userData = req.body;
+			let userData = req.body;
 			userData.eventID = req.params.eventID;
 			userData.picture = filePath;
-			userData.userID = 1;
+			// userData.userID = 1;
 			connection.query(`INSERT INTO outfit_table SET ?`, userData, function (err, result) {
 				if (err) throw err;
 				console.log('outfit was added');
-				res.send(result);
+				toSend.push(result);
 			});
 		});
+		res.send(toSend);
 	});
 });
 //Updates outfit in database
