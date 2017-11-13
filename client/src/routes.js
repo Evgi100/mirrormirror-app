@@ -15,3 +15,10 @@ const Routes = () => (
 )
 
 export default Routes;
+
+
+// <Route name="login" component={} />
+// <Route name="register" component={} />
+// <Route name="profile" component={} />
+// <Route name="event-rate" component={} />
+// <Route name="post-register" component={} />

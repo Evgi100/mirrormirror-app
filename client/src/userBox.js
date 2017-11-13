@@ -66,7 +66,9 @@ class UserBox extends React.Component {
                 </div >
                 <div className="ImageContainer">
                     <div className="imageButtonContainer">
-                        <div className="ImageBox first"></div>
+
+                        <div className="ImageBox first"> <img src={this.props.src1} /> </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -75,7 +77,9 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox second"></div>
+
+                        <div className="ImageBox second"> <img src={this.props.src2} /> </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -84,7 +88,9 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox third"></div>
+
+                       <div className="ImageBox third"> <img src={this.props.src3} /> </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -92,8 +98,10 @@ class UserBox extends React.Component {
                         </div>
                     </div>
 
-                    {/* <div className="imageButtonContainer">
-                        <div className="ImageBox forth"></div>
+
+                    <div className="imageButtonContainer">
+                        <div className="ImageBox forth"> <img src={this.props.src4} /> </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
