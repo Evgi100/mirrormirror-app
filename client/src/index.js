@@ -3,6 +3,12 @@ import Navbar from './navbar.js';
 import ImageUpLoader from './pictureUpload.js';
 import UsersListBox from './UsersList.js';
 
+import userBox from './userBox'
+import rateBox from './rateBox'
+import Sidebar from './sidebar'
+
+
+
 
 class App extends React.Component {
     constructor(props) {
@@ -28,6 +34,7 @@ class App extends React.Component {
         return (
             <div className="mainContainer">
                 <Navbar />
+                <Sidebar />
                 <UsersListBox deletePic={this.deletePic} pictures={this.state.pictures} />
                 <ImageUpLoader onDrop={this.onDrop} />
             </div>
