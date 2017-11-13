@@ -110,6 +110,7 @@ class UserBox extends React.Component {
                     </p>
                     <button className="dotted post">Post Event</button>
                 </div> */}
+                // Passed the component so we can use the functionality
                     <UsersDataForm />
                     <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
         </p></div>
