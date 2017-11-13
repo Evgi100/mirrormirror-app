@@ -44,7 +44,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '1234',
+	password: 'password22',
 	database: 'mirrormirror',
 	multipleStatements: true
 });
@@ -61,7 +61,7 @@ function createDataBase() {
 		connection = mysql.createConnection({
 			host: 'localhost',
 			user: 'root',
-			password: '1234',
+			password: 'password22',
 			database: 'mirrormirror',
 			multipleStatements: true
 		});
@@ -260,7 +260,8 @@ app.get('/event/:id', function (req, res, next) {
 //Adds event to database
 app.post('/events', function (req, res) {
 		let userData = req.body;
-		connection.query(`INSERT INTO event_table SET ?`, userData, function (err, result) {
+		console.log(userData);
+		connection.query("INSERT INTO event_table SET ?", userData, function (err, result) {
 			if (err) throw err;
 			console.log('event was addedd');
 			console.log(result);

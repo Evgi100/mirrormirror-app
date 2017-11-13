@@ -20,11 +20,19 @@ const Sidebar = (props) => {
                             <ul id="submenu-2" className="panel-collapse collapse panel-switch" role="menu">
                                 <li>
                                     <a href="#">
-                                        <i className="fa fa-caret-right"></i>Users</a>
+                                        <i className="fa fa-caret-right"></i>Party</a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i className="fa fa-caret-right"></i>Roles</a>
+                                        <i className="fa fa-caret-right"></i>Concert</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>Clubbing</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>Wedding</a>
                                 </li>
                             </ul>
                         </li>
@@ -36,31 +44,89 @@ const Sidebar = (props) => {
                             <ul id="submenu-3" className="panel-collapse collapse panel-switch" role="menu">
                                 <li>
                                     <a href="#">
-                                        <i className="fa fa-caret-right"></i>Posts</a>
+                                        <i className="fa fa-caret-right"></i>Male</a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i className="fa fa-caret-right"></i>Comments</a>
+                                        <i className="fa fa-caret-right"></i>Female</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a className="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-4">
                                 <span className="sidebar-title">Age</span>
                                 <b className="caret"></b>
                             </a>
+                            <ul id="submenu-4" className="panel-collapse collapse panel-switch" role="menu">
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>13 - 20</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>21 - 30</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>31 - 40</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>41 - 50</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>51 - 60</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>61 - 70</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>71+</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="#">
-                                <span className="sidebar-title">Citz</span>
+                            <a className="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-5">
+                                <span className="sidebar-title">City</span>
                                 <b className="caret"></b>
                             </a>
+                            <ul id="submenu-5" className="panel-collapse collapse panel-switch" role="menu">
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>New York</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>London</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>Rome</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>Paris</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>Berlin</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>Stockholm</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="fa fa-caret-right"></i>Tel Aviv</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </aside>
             </div>
-            <main id="page-content-wrapper" role="main">
-            </main>
         </div>
     );
 }
