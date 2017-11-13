@@ -15,7 +15,6 @@ class RateBox extends React.Component {
             rating: e.target.value
         }, ()=> {
         })
-
     }
 
 
