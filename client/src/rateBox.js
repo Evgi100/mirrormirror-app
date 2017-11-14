@@ -54,7 +54,7 @@ jquery(){
                   <div className="ImageContainerHome">
             <div className="ImageRatingBox">
                 <div className="ImageBoxHome first"></div>
-                      <fieldset className="rating" onChange={this.jquery}>
+                      <fieldset className="rating" onChange={this.jquery} onClick={this.handleOnChange} value={this.state.rateOutfit_1}>
 								<input type="radio" id="field1_star5" name="rating1" value="5" /><label className = "full" htmlFor="field1_star5"></label>
 								<input type="radio" id="field1_star4" name="rating1" value="4" /><label className = "full" htmlFor="field1_star4"></label>
 								<input type="radio" id="field1_star3" name="rating1" value="3" /><label className = "full" htmlFor="field1_star3"></label>
@@ -66,23 +66,23 @@ jquery(){
 
             <div className="ImageRatingBox">
                 <div className="ImageBoxHome second"></div>
-                <fieldset className="rating">
-								<input type="radio" id="field1_star5" name="rating1" value="5" /><label className = "full" htmlFor="field1_star5"></label>
-								<input type="radio" id="field1_star4" name="rating1" value="4" /><label className = "full" htmlFor="field1_star4"></label>
-								<input type="radio" id="field1_star3" name="rating1" value="3" /><label className = "full" htmlFor="field1_star3"></label>
-								<input type="radio" id="field1_star2" name="rating1" value="2" /><label className = "full" htmlFor="field1_star2"></label>
-								<input type="radio" id="field1_star1" name="rating1" value="1" /><label className = "full" htmlFor="field1_star1"></label>
+                <fieldset className="rating" onChange={this.handleOnChange1} >
+								<input type="radio" id="field2_star5" name="rating1" value="5" /><label className = "full" htmlFor="field2_star5"></label>
+								<input type="radio" id="field2_star4" name="rating1" value="4" /><label className = "full" htmlFor="field2_star4"></label>
+								<input type="radio" id="field2_star3" name="rating1" value="3" /><label className = "full" htmlFor="field2_star3"></label>
+								<input type="radio" id="field2_star2" name="rating1" value="2" /><label className = "full" htmlFor="field2_star2"></label>
+								<input type="radio" id="field2_star1" name="rating1" value="1" /><label className = "full" htmlFor="field2_star1"></label>
 							</fieldset>
             </div>
 
             <div className="ImageRatingBox">
                 <div className="ImageBoxHome third"></div>
-                <fieldset className="rating">
-								<input type="radio" id="field1_star5" name="rating1" value="5" /><label className = "full" htmlFor="field1_star5"></label>
-								<input type="radio" id="field1_star4" name="rating1" value="4" /><label className = "full" htmlFor="field1_star4"></label>
-								<input type="radio" id="field1_star3" name="rating1" value="3" /><label className = "full" htmlFor="field1_star3"></label>
-								<input type="radio" id="field1_star2" name="rating1" value="2" /><label className = "full" htmlFor="field1_star2"></label>
-								<input type="radio" id="field1_star1" name="rating1" value="1" /><label className = "full" htmlFor="field1_star1"></label>
+                <fieldset className="rating"onChange={this.handleOnChange2} >
+								<input type="radio" id="field3_star5" name="rating1" value="5" /><label className = "full" htmlFor="field3_star5"></label>
+								<input type="radio" id="field3_star4" name="rating1" value="4" /><label className = "full" htmlFor="field3_star4"></label>
+								<input type="radio" id="field3_star3" name="rating1" value="3" /><label className = "full" htmlFor="field3_star3"></label>
+								<input type="radio" id="field3_star2" name="rating1" value="2" /><label className = "full" htmlFor="field3_star2"></label>
+								<input type="radio" id="field3_star1" name="rating1" value="1" /><label className = "full" htmlFor="field3_star1"></label>
 							</fieldset>
             </div>
        
