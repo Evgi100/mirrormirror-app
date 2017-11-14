@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Header from './common/Header';
 import Routes from './routes';
+
 import rateBox from './rateBox'
 import Navbar from './navbar.js';
 import Sidebar from './sidebar'
