@@ -40,7 +40,7 @@ class HomeView extends React.Component {
                                 <h1 className="name">Valentino</h1>
                             </div>
                             <div className="submitButton">
-                                <button className="dottedHome postHome">Rate</button>
+                                <button className="dottedHome postHome"><a href="/rate">Rate</a></button>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ class HomeView extends React.Component {
                                 <h1 className="name">Liz</h1>
                             </div>
                             <div className="submitButton">
-                                <button className="dottedHome postHome">Rate</button>
+                                <button className="dottedHome postHome"><a href="/rate">Rate</a></button>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@ class HomeView extends React.Component {
                                 <h1 className="name">Karl</h1>
                             </div>
                             <div className="submitButton">
-                                <button className="dottedHome postHome">Rate</button>
+                                <button className="dottedHome postHome"><a href="/rate">Rate</a></button>
                             </div>
                         </div>
                     </div>
