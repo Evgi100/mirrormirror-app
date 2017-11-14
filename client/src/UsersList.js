@@ -5,10 +5,12 @@ import axios from 'axios'
 class UsersListBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { users: [], src1: "", src2: "", src3: "", src4: "" }
+        this.state = { users: [], src1: "", src2: "", src3: "", src4: "", event: '', eventDate: ''  }
         this.addUser = this.addUser.bind(this);
         this.deleteUser = this.deleteUser.bind(this);
         this.addPrev = this.addPrev.bind(this);
+        this.addEvent=this.addEvent.bind(this);
+        this.addEventDate=this.addEventDate.bind(this)
     }
 
     renderPictures() {
@@ -31,6 +33,22 @@ class UsersListBox extends React.Component {
         this.setState({ [key]: data.src })
     }
 
+    addEvent (e) {
+        this.setState({
+                    event: e.target.value,
+                }, () => {
+                    console.log(this.state)
+                })
+    }
+
+    addEventDate (e) {
+        this.setState({
+                    eventDate: e.target.value
+               }, () => {
+                    console.log(this.state)
+                })
+    }
+
     // componentDidMount() {
     //     axios.get('/events')
     //         .then(response => {
@@ -49,8 +67,8 @@ class UsersListBox extends React.Component {
         //     <UserBox user={user} index={index} deleteUser={this.deleteUser} key={index} imgsrc={this.state['src' + (index + 1)]} />)
         return (
             <div className="ImageTextContainer" >
-                <UserBox src1={this.state.src1} src2={this.state.src2} src3={this.state.src3} src4={this.state.src4}/>
-                <UsersDataForm addPrev={this.addPrev}  />
+                <UserBox addEvent ={this.addEvent} addEventDate ={this.addEventDate}  src1={this.state.src1} src2={this.state.src2} src3={this.state.src3} src4={this.state.src4}/>
+                <UsersDataForm event-data={this.state.eventData} addPrev={this.addPrev}  />
             </div>
 
         );

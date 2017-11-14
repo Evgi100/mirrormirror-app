@@ -29,8 +29,7 @@ class UserBox extends React.Component {
     //     }, () => {
     //         console.log(this.state)
     //     })
-    // }
-
+    // } 
     deletePictures(index) {
         this.props.deletePictures(this.props.index)
     }
@@ -64,7 +63,7 @@ class UserBox extends React.Component {
                     </div>
                 </div > */}
 
-< EventDataForm />
+< EventDataForm addEvent={this.props.addEvent} addEventDate={this.props.addEventDate} />
                     <div className="ImageContainer">
                     <div className="imageButtonContainer">
                         <div className="ImageBox">

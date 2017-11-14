@@ -13,21 +13,7 @@ class UsersDataForm extends React.Component {
         this.imagePreview = this.imagePreview.bind(this);
     }
 
-    // sendUsersData(event) {
-    //     event.preventDefault();
-    //     console.log(this.state)
-    //     axios.post('/events', this.state)
-    //         .then(response => {
-    //             axios.get('/events')
-    //             .then (response => {
-    //                 this.props.addUser(response.data)
-    //                 this.setState({ name: "", event: "" })
-    //             })
-    //         })
-    //         .catch(error => {
-    //             console.log('Error fetching and parsing data', error);
-    //         });
-    // }
+
 
     uploadImage(event) {
         let form = this.uploadForm;
@@ -57,7 +43,7 @@ class UsersDataForm extends React.Component {
 
             let data2 = {
                 userID: that.state.userID,
-                name: that.state.eventDate,
+                name: that.props.eventDate,
                 event: that.state.event
             }
             axios.post('/events', data2)
