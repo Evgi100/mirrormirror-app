@@ -6,7 +6,7 @@ class UsersDataForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { userID: 1, name: "", event: "", src1: null, src2: null, src3: null, src4: null }
+        this.state = { userID: 1, eventDate: "", event: "", src1: null, src2: null, src3: null, src4: null }
         // this.sendImg = this.sendImg.bind(this)
         this.uploadImage = this.uploadImage.bind(this);
         // this.sendUsersData = this.sendUsersData.bind(this)
@@ -30,9 +30,9 @@ class UsersDataForm extends React.Component {
     // }
 
     uploadImage(event) {
-        let form = document.getElementById('uploadForm');
-        let fileSelect = document.getElementById('img-select');
-        let uploadButton = document.getElementById('upload-button');
+        let form = this.uploadForm;
+        let fileSelect = this.imgSelect;
+        let uploadButton = this.upButton;
         let that = this;
         form.onsubmit = function (event) {
             event.preventDefault();
@@ -57,7 +57,7 @@ class UsersDataForm extends React.Component {
 
             let data2 = {
                 userID: that.state.userID,
-                name: that.state.name,
+                name: that.state.eventDate,
                 event: that.state.event
             }
             axios.post('/events', data2)
@@ -133,13 +133,14 @@ class UsersDataForm extends React.Component {
                 < img src={this.state.img} />
             </div> */}
 
-                <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
+                <form  ref={(input) => { this.uploadForm = input; }} encType="multipart/form-data" className="buttonWrap">
                     <div className="submitButton">
                         <button className="dotted post">
                             <i className="fa fa-upload" aria-hidden="true"></i>
-                            <input type="file" id="img-select"  onChange={this.imagePreview} multiple/>
+                            <input type="file"  ref={(input) => { this.imgSelect = input; }} id="img-select"  onChange={this.imagePreview} multiple/>
                         </button>
-                        <button className="dotted post" onClick={this.uploadImage} >Post Event</button>
+                        <button className="dotted post"  ref={(input) => { this.upButton = input; }}
+                             onClick={this.uploadImage} >Post Event</button>
                     </div>
                 </form>
 
