@@ -66,8 +66,10 @@ class UserBox extends React.Component {
 < EventDataForm addEvent={this.props.addEvent} addEventDate={this.props.addEventDate} />
                     <div className="ImageContainer">
                     <div className="imageButtonContainer">
+
                         <div className="ImageBox">
                             <img  className="image" src={this.props.src1}/ ></div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -76,9 +78,11 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
+
                         <div className="ImageBox ">
                         <img  className="image" src={this.props.src2}/>
                         </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -87,20 +91,24 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
+
                         <div className="ImageBox">
                         <img  className="image" src={this.props.src3}/>
                         </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
+
 
                     <div className="imageButtonContainer">
                         <div className="ImageBox ">
                         <img  className="image" src={this.props.src4}/>
                         </div>
+
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -109,9 +117,11 @@ class UserBox extends React.Component {
                     </div>
                 </div>
 
+
                     <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
         </p></div>
                 </div>
+
         );
     }
 }

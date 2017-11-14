@@ -1,7 +1,7 @@
 import React from 'react';
 import UserBox from './userBox';
-import UsersDataForm from './usersDataForm'
-import axios from 'axios'
+import UsersDataForm from './usersDataForm';
+import axios from 'axios';
 class UsersListBox extends React.Component {
     constructor(props) {
         super(props);
@@ -61,11 +61,12 @@ class UsersListBox extends React.Component {
 
 
     render() {
-        // <UsersDataForm addUser={this.addUser} addPrev={this.addPrev} />
+
 
         // const renderUsers = this.state.users.map((user, index) =>
         //     <UserBox user={user} index={index} deleteUser={this.deleteUser} key={index} imgsrc={this.state['src' + (index + 1)]} />)
         return (
+
             <div className="ImageTextContainer" >
                 <UserBox addEvent ={this.addEvent} addEventDate ={this.addEventDate}  src1={this.state.src1} src2={this.state.src2} src3={this.state.src3} src4={this.state.src4}/>
                 <UsersDataForm event-data={this.state.eventData} addPrev={this.addPrev}  />

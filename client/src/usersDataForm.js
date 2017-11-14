@@ -107,10 +107,12 @@ class UsersDataForm extends React.Component {
                 }
             }
         }
+        input.target.value = null;
     }
 
     render() {
         return (
+
             <div>
                 {/* <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
                     <input type="file" id="img-select" className="action-button animate blue" onChange={this.imagePreview} multiple />
@@ -131,6 +133,7 @@ class UsersDataForm extends React.Component {
                 </form>
 
             </div >
+
         );
     }
 }
