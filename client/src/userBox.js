@@ -66,7 +66,8 @@ class UserBox extends React.Component {
                 </div >
                 <div className="ImageContainer">
                     <div className="imageButtonContainer">
-                        <div className="ImageBox first"></div>
+                        <div className="ImageBox">
+                            <img  className="image" src={this.props.src1}/ ></div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -75,7 +76,9 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox second"></div>
+                        <div className="ImageBox ">
+                        <img  className="image" src={this.props.src2}/>
+                        </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -84,7 +87,9 @@ class UserBox extends React.Component {
                     </div>
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox third"></div>
+                        <div className="ImageBox">
+                        <img  className="image" src={this.props.src3}/>
+                        </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -92,8 +97,10 @@ class UserBox extends React.Component {
                         </div>
                     </div>
 
-                    {/* <div className="imageButtonContainer">
-                        <div className="ImageBox forth"></div>
+                    <div className="imageButtonContainer">
+                        <div className="ImageBox ">
+                        <img  className="image" src={this.props.src4}/>
+                        </div>
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -101,21 +108,19 @@ class UserBox extends React.Component {
                         </div>
                     </div>
                 </div>
-
-                <div className="submitButton">
-                    <button className="dotted post">
-                        <i className="fa fa-upload" aria-hidden="true"></i>
-                    </button>
-                    <p className="helptext" style={{fontSize:'20px'}}>
-                    </p>
-                    <button className="dotted post">Post Event</button>
-                </div> */}
-                {/* // Passed the component so we can use the functionality */}
-                    <UsersDataForm />
+{/* 
+                //     <button className="dotted post">
+                //         <i className="fa fa-upload" aria-hidden="true"></i>
+                //     </button>
+                //     <p className="helptext" style={{fontSize:'20px'}}>
+                // </div> 
+                //     </p>
+                // <div className="submitButton">
+                //     <button className="dotted post">Post Event</button> */}
+             
                     <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
         </p></div>
                 </div>
-            </div>
         );
     }
 }

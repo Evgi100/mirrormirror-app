@@ -54,41 +54,6 @@ class UsersDataForm extends React.Component {
             }
             console.log(files);
             console.log(formData.entries());
-            //         let xhr = new XMLHttpRequest();
-            //         function sendData(callback) {
-            //             xhr.open('POST', '/events', true);
-            //             let counter = 0;
-            //             xhr.onload = function () {
-            //                 if (xhr.status === 200) {
-            //                     if (counter === 0) {
-            //                         callback(formData, xhr.response.eventID);
-            //                         this.props.addUser(xhr.response);
-            //                         this.setState({userID:this.state.userID++, name: "", event: "" });
-            //                         counter++
-            //                         return;
-            //                     }
-            //                     uploadButton.innerHTML = 'Upload';
-            //                 } else {
-            //                     alert('An error occurred!');
-            //                 }
-            //             };
-            //             console.log(that);
-            //             let data2 = {
-            //                 userID: that.state.userID,
-            //                 name: that.state.name,
-            //                 event: that.state.event
-            //             }
-            //             // ASK TEACHERS WHY THIS GIVES ERROR CONNECTION REFUSED!!!!!!!!!!!!! good morning :)
-            //             xhr.send(JSON.stringify( data2));
-            //             ax.
-            //         }
-            //         function sendEventData(data, eventID) {
-            //             xhr.open('POST', '/outfits/' +eventID, true);
-            //             xhr.send(data);
-            //         }
-            //         sendData(sendEventData);
-
-
 
             let data2 = {
                 userID: that.state.userID,
@@ -116,6 +81,8 @@ class UsersDataForm extends React.Component {
     imagePreview(input) {
         let files = input.target.files;
         let that = this;
+        console.log(that);
+        console.log(this.props)
         if (files) {
             let missingSrc = [];
             function _findMissing() {
@@ -167,19 +134,11 @@ class UsersDataForm extends React.Component {
             </div> */}
 
                 <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
-                    <div className="imageButtonContainer">
-                        <div className="ImageBox forth"></div>
-                        <div className="ButtonContainer">
-                            <input type="file" id="img-select"  className="dotted picButton" onChange={this.imagePreview} multiple/>
-                                <i className="fa fa-trash-o" aria-hidden="true"></i>
-                        </div>
-                    </div>
                     <div className="submitButton">
                         <button className="dotted post">
                             <i className="fa fa-upload" aria-hidden="true"></i>
+                            <input type="file" id="img-select"  onChange={this.imagePreview} multiple/>
                         </button>
-                        <p className="helptext" style={{ fontSize: '20px' }}>
-                        </p>
                         <button className="dotted post" onClick={this.uploadImage} >Post Event</button>
                     </div>
                 </form>

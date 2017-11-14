@@ -619,3 +619,8 @@
     background: -ms-linear-gradient(top, black 0%, black 25%, #FFF 25%, #FFF 100%);
     background: linear-gradient(to bottom, black 0%, black 25%, #FFF 25%, #FFF 100%);
     }
+
+    .image {
+        position: relative;
+        width: 100%;
+    }
