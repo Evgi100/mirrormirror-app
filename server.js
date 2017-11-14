@@ -403,11 +403,11 @@ app.put('/outfit', function (req, res) {
 	let keys = Object.keys(req.body);
 	let dataToUpdate = {};
 	keys.forEach((key, index, arr) => {
-		if (key !== 'userName') dataToUpdate[key] = req.body[key];
+		if (key !== 'outfitID') dataToUpdate[key] = req.body[key];
 	})
-	let username = req.body.userName;
+	let outfitID= req.body.outfitID;
 	// console.log(dataToUpdate, username)
-	connection.query(`UPDATE outfit_table SET ? WHERE ?`, [dataToUpdate, { userName: username }], function (err, result) {
+	connection.query(`UPDATE outfit_table SET ? WHERE ?`, [dataToUpdate, { outfitID: outfitID }], function (err, result) {
 		if (err) throw err;
 		console.log(result);
 		res.send(result);
