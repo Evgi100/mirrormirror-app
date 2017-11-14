@@ -19,6 +19,9 @@ class UsersDataForm extends React.Component {
         let form = this.uploadForm;
         let fileSelect = this.imgSelect;
         let uploadButton = this.upButton;
+        // let form = document.getElementById('uploadForm');
+        // let fileSelect = document.getElementById('img-select');
+        // let uploadButton = document.getElementById('upload-button');
         let that = this;
         form.onsubmit = function (event) {
             event.preventDefault();
@@ -38,8 +41,8 @@ class UsersDataForm extends React.Component {
                 // Add the file to the request.
                 formData.append('outfitpicture', file, file.name);
             }
-            console.log(files);
-            console.log(formData.entries());
+            // console.log(files);
+            // console.log(formData.entries());
 
             let data2 = {
                 userID: that.state.userID,
@@ -51,7 +54,14 @@ class UsersDataForm extends React.Component {
                     console.log(response);
                     axios.post('/outfits/' + response.data[0].eventID, formData)
                         .then(innerResponse => {
-                            // that.props.addUser(response.data);
+                            let data ={
+                                event: response.data[0].event,
+                                date: response.data[0].eventDate,
+                                eventID: response.data[0].eventID,
+                                outfitsArr: innerResponse
+                            }
+                            console.log(data);
+                            // that.props.addUser(response.data);/
                             that.setState({ userID: that.state.userID++, name: "", event: "" });
                             uploadButton.innerHTML = 'Upload';
                         })
@@ -67,8 +77,8 @@ class UsersDataForm extends React.Component {
     imagePreview(input) {
         let files = input.target.files;
         let that = this;
-        console.log(that);
-        console.log(this.props)
+        // console.log(that);
+        // console.log(this.props)
         if (files) {
             let missingSrc = [];
             function _findMissing() {
@@ -107,7 +117,7 @@ class UsersDataForm extends React.Component {
                 }
             }
         }
-        input.target.value = null;
+        // console.log(input.target/* = null;*/)
     }
 
     render() {
@@ -121,25 +131,21 @@ class UsersDataForm extends React.Component {
                 < img src={this.state.img} />
             </div> */}
 
-                <form  ref={(input) => { this.uploadForm = input; }} encType="multipart/form-data" className="buttonWrap">
+                <form ref={(input) => { this.uploadForm = input; }} id="uploadForm" encType="multipart/form-data" className="buttonWrap">
                     <div className="submitButton">
                         <button className="dotted post">
                             <i className="fa fa-upload" aria-hidden="true"></i>
-                            <input type="file"  ref={(input) => { this.imgSelect = input; }} id="img-select"  onChange={this.imagePreview} multiple/>
+                            <input type="file" ref={(input) => { this.imgSelect = input; }}id="img-select" onChange={this.imagePreview} multiple />
                         </button>
-                        <button className="dotted post"  ref={(input) => { this.upButton = input; }}
-                             onClick={this.uploadImage} >Post Event</button>
+                        <button className="dotted post" ref={(input) => { this.upButton = input; }} id="upload-button"
+                            onClick={this.uploadImage} >Post Event</button>
                     </div>
                 </form>
 
-            </div >
+            </div>
 
         );
     }
 }
-
-// let form = document.getElementById('uploadForm');
-// let fileSelect = document.getElementById('img-select');
-// let uploadButton = document.getElementById('upload-button');
 
 export default UsersDataForm;

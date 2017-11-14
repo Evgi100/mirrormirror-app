@@ -39,7 +39,7 @@ class UserBox extends React.Component {
         return (
 
             <div>
-{/*          
+                {/*          
                 <div className="title">
                     <div>
                         <select onChange={this.handleOnChange} style={{ border: '0', backgroundColor: 'rgb(240, 6, 84)', fontSize: '25px', fontFamily: 'Rozha One' }}>
@@ -63,12 +63,12 @@ class UserBox extends React.Component {
                     </div>
                 </div > */}
 
-< EventDataForm addEvent={this.props.addEvent} addEventDate={this.props.addEventDate} />
-                    <div className="ImageContainer">
+                < EventDataForm addEvent={this.props.addEvent} addEventDate={this.props.addEventDate} />
+                <div className="ImageContainer">
                     <div className="imageButtonContainer">
 
                         <div className="ImageBox">
-                            <img  className="image" src={this.props.src1}/ ></div>
+                            <img className="image" src={this.props.src1} /></div>
 
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
@@ -80,7 +80,7 @@ class UserBox extends React.Component {
                     <div className="imageButtonContainer">
 
                         <div className="ImageBox ">
-                        <img  className="image" src={this.props.src2}/>
+                            <img className="image" src={this.props.src2} />
                         </div>
 
                         <div className="ButtonContainer">
@@ -93,7 +93,7 @@ class UserBox extends React.Component {
                     <div className="imageButtonContainer">
 
                         <div className="ImageBox">
-                        <img  className="image" src={this.props.src3}/>
+                            <img className="image" src={this.props.src3} />
                         </div>
 
                         <div className="ButtonContainer">
@@ -106,7 +106,7 @@ class UserBox extends React.Component {
 
                     <div className="imageButtonContainer">
                         <div className="ImageBox ">
-                        <img  className="image" src={this.props.src4}/>
+                            <img className="image" src={this.props.src4} />
                         </div>
 
                         <div className="ButtonContainer">
@@ -118,9 +118,9 @@ class UserBox extends React.Component {
                 </div>
 
 
-                    <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
+                <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
         </p></div>
-                </div>
+            </div>
 
         );
     }
