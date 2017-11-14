@@ -164,7 +164,7 @@ class HomeView extends React.Component {
                                 <h1 className="name">Some User</h1>
                             </div>
                             <div className="submitButton">
-                                <button className="dottedHome postHome">Rate</button>
+                                <button className="dottedHome postHome"> <a href="/rate">Rate </a></button>
                             </div>
                         </div>
                     </div>
