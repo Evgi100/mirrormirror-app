@@ -67,7 +67,8 @@ class UserBox extends React.Component {
                 <div className="ImageContainer">
                     <div className="imageButtonContainer">
 
-                        <div className="ImageBox first"> <img src={this.props.src1} /> </div>
+                        <div className="ImageBox">
+                            <img  className="image" src={this.props.src1}/ ></div>
 
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
@@ -78,7 +79,9 @@ class UserBox extends React.Component {
 
                     <div className="imageButtonContainer">
 
-                        <div className="ImageBox second"> <img src={this.props.src2} /> </div>
+                        <div className="ImageBox ">
+                        <img  className="image" src={this.props.src2}/>
+                        </div>
 
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
@@ -89,7 +92,9 @@ class UserBox extends React.Component {
 
                     <div className="imageButtonContainer">
 
-                        <div className="ImageBox third"> <img src={this.props.src3} /> </div>
+                        <div className="ImageBox">
+                        <img  className="image" src={this.props.src3}/>
+                        </div>
 
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
@@ -100,7 +105,9 @@ class UserBox extends React.Component {
 
 
                     <div className="imageButtonContainer">
-                        <div className="ImageBox forth"> <img src={this.props.src4} /> </div>
+                        <div className="ImageBox ">
+                        <img  className="image" src={this.props.src4}/>
+                        </div>
 
                         <div className="ButtonContainer">
                             <button className="dotted picButton">
@@ -110,18 +117,10 @@ class UserBox extends React.Component {
                     </div>
                 </div>
 
-                <div className="submitButton">
-                    <button className="dotted post">
-                        <i className="fa fa-upload" aria-hidden="true"></i>
-                    </button>
-                    <p className="helptext" style={{ fontSize: '20px' }}>
-                    </p>
-                    <button className="dotted post">Post Event</button>
-                </div>
-                <UsersDataForm />
-                <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
+
+                    <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
         </p></div>
-            </div>
+                </div>
 
         );
     }
@@ -130,3 +129,4 @@ class UserBox extends React.Component {
 export default UserBox;
 
 
+``
