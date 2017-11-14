@@ -2,34 +2,34 @@ import React from 'react';
 import UsersListBox from './UsersList';
 import RateBox from './rateBox'
 import UsersDataForm from './usersDataForm'
+import EventDataForm from './eventDataForm'
 
 
 
 class UserBox extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { event: '', eventDate: '' }
+        // this.state = { event: '', eventDate: '' }
         this.deletePictures = this.deletePictures.bind(this);
-        this.handleOnChange = this.handleOnChange.bind(this)
-        this.handleOnChangeDate = this.handleOnChangeDate.bind(this)
+        // this.handleOnChange = this.handleOnChange.bind(this)
+        // this.handleOnChangeDate = this.handleOnChangeDate.bind(this)
     }
 
-    handleOnChange(e) {
-        this.setState({
-            event: e.target.value,
-        }, () => {
-            console.log(this.state)
-        })
-    }
+    // handleOnChange(e) {
+    //     this.setState({
+    //         event: e.target.value,
+    //     }, () => {
+    //         console.log(this.state)
+    //     })
+    // }
 
-    handleOnChangeDate(e) {
-        this.setState({
-            eventDate: e.target.value
-        }, () => {
-            console.log(this.state)
-        })
-    }
-
+    // handleOnChangeDate(e) {
+    //     this.setState({
+    //         eventDate: e.target.value
+    //     }, () => {
+    //         console.log(this.state)
+    //     })
+    // } 
     deletePictures(index) {
         this.props.deletePictures(this.props.index)
     }
@@ -38,8 +38,8 @@ class UserBox extends React.Component {
 
         return (
 
-            //         <span className="glyphicon glyphicon-trash userTrash" onClick={this.deletePictures} ></span>
             <div>
+{/*          
                 <div className="title">
                     <div>
                         <select onChange={this.handleOnChange} style={{ border: '0', backgroundColor: 'rgb(240, 6, 84)', fontSize: '25px', fontFamily: 'Rozha One' }}>
@@ -48,13 +48,11 @@ class UserBox extends React.Component {
                             <option value="Concert">Concert</option>
                             <option value="Clubbing">Clubbing</option>
                             <option value="Wedding">Wedding</option>
-                        </select>
-                        {/* <!-- <input class="bubble textInput" placeholder="Enter Occasion" type="text" /> --> */}
+                        </select>                      
                     </div>
                     <div className="datePicker">
                         <div className="dateLabel">
                             <label className="control-label" htmlFor="date">Rate outfits until</label>
-                            {/* <label htmlFor="rate">Rate outfits until : </label><input id="rating" type="date" value=""/> */}
                         </div>
                         <div className="input-group">
                             <div className="input-group-addon">
@@ -63,8 +61,10 @@ class UserBox extends React.Component {
                             <input className="form-control" id="date" placeholder="DD/MM/YYYY" type="date" onChange={this.handleOnChangeDate} />
                         </div>
                     </div>
-                </div >
-                <div className="ImageContainer">
+                </div > */}
+
+< EventDataForm addEvent={this.props.addEvent} addEventDate={this.props.addEventDate} />
+                    <div className="ImageContainer">
                     <div className="imageButtonContainer">
 
                         <div className="ImageBox">
