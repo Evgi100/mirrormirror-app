@@ -108,16 +108,7 @@ class UserBox extends React.Component {
                         </div>
                     </div>
                 </div>
-{/* 
-                //     <button className="dotted post">
-                //         <i className="fa fa-upload" aria-hidden="true"></i>
-                //     </button>
-                //     <p className="helptext" style={{fontSize:'20px'}}>
-                // </div> 
-                //     </p>
-                // <div className="submitButton">
-                //     <button className="dotted post">Post Event</button> */}
-             
+
                     <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
         </p></div>
                 </div>
@@ -128,3 +119,4 @@ class UserBox extends React.Component {
 export default UserBox;
 
 
+``
