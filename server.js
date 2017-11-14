@@ -44,7 +44,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'password22',
+	password: '1234',
 	database: 'mirrormirror',
 	multipleStatements: true
 });
@@ -89,7 +89,6 @@ function createTables() {
 	let eventTable = `CREATE TABLE event_table (
 		eventID int  AUTO_INCREMENT,
 		userID int,
-		name varchar(255) ,
 		event varchar(255),
 		eventDate Date,
 		PRIMARY KEY (eventID),
@@ -182,7 +181,7 @@ app.post('/users', function (req, res) {
 		console.log('user was added');
 		let username = userData.userName;
 		console.log(userData.userName, username);
-		connection.query(`SELECT * from user_table WHERE ?`, {userName: username}, function (err, rows, fields) {
+		connection.query(`SELECT * from user_table WHERE ?`, { userName: username }, function (err, rows, fields) {
 			if (err) throw err;
 			res.send(rows);
 		})
@@ -208,9 +207,9 @@ app.put('/user', function (req, res) {
 });
 //Deletes user from database
 app.delete('/user/:username', function (req, res) {
-	let username = req.body.username||req.params.username;
+	let username = req.body.username || req.params.username;
 	let sql = `DELETE FROM user_table WHERE ?`;
-	connection.query(sql, {userName: username}, function (err, result) {
+	connection.query(sql, { userName: username }, function (err, result) {
 		if (err) throw err;
 		console.log(result);
 		res.send(result);
@@ -256,19 +255,19 @@ app.get('/event/:id', function (req, res, next) {
 });
 //Adds event to database
 app.post('/events', function (req, res) {
-		let userData = req.body;
-		console.log(userData);
-		connection.query(`INSERT INTO event_table SET ?`, userData, function (err, result) {
+	let userData = req.body;
+	console.log(userData);
+	connection.query(`INSERT INTO event_table SET ?`, userData, function (err, result) {
+		if (err) throw err;
+		console.log('event was addedd');
+		// console.log(result);
+		let whereSQL = { eventID: result.insertId };
+		connection.query(`SELECT * from event_table WHERE ?`, whereSQL, function (err, rows, fields) {
 			if (err) throw err;
-			console.log('event was addedd');
-			// console.log(result);
-			let whereSQL = {eventID : result.insertId };
-			connection.query(`SELECT * from event_table WHERE ?`, whereSQL, function (err, rows, fields) {
-				if (err) throw err;
-				console.log(rows);
-				res.send(rows);
-			})
-		});
+			console.log(rows);
+			res.send(rows);
+		})
+	});
 });
 //Updates event in database
 app.put('/event', function (req, res) {
@@ -357,28 +356,48 @@ app.post('/outfits/:eventID', function (req, res) {
 	upload(req, res, function (err) {
 		if (err) {
 			console.log(err);
-			// console.log('yoioioioioioioi');
 			return res.end("Error uploading file.");
 		}
 		console.log('images were uploaded to uploads folder');
 		let toSend = [];
-		console.log(req.files.length)
+		let userData = req.body;
+		userData.eventID = req.params.eventID;
+		let outfitsCounter = 0;
+		let eventID =userData.eventID;
 		req.files.forEach(function (image) {
 			const host = req.hostname;
 			const filePath = `${req.protocol}://${host}/${image.path}`;
-			let userData = req.body;
-			userData.eventID = req.params.eventID;
 			userData.picture = filePath;
-			// userData.userID = 1;
 			connection.query(`INSERT INTO outfit_table SET ?`, userData, function (err, result) {
 				if (err) throw err;
 				console.log('outfit was added');
 				toSend.push(result);
+				outfitsCounter++;
+				console.log(outfitsCounter);
+				if(outfitsCounter===req.files.length) {
+					console.log(outfitsCounter, req.files.length);
+					sendData()
+				}
 			});
 		});
-		res.send(toSend);
+
+
+		function sendData() {
+			let sendDataSQL = mysql.format(
+			`SELECT	outfit_table.outfitID, outfit_table.picture, outfit_table.rating
+			FROM event_table
+			INNER JOIN outfit_table on event_table.eventID = outfit_table.eventID
+			WHERE event_table.eventID =?`, [eventID]);
+			console.log(sendDataSQL);
+			connection.query(sendDataSQL, function (err, rows, fields) {
+				if (err) throw err;
+				console.log(rows);
+				res.send(rows);
+			});
+		}
 	});
 });
+
 //Updates outfit in database
 app.put('/outfit', function (req, res) {
 	let keys = Object.keys(req.body);
