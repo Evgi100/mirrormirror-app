@@ -28,7 +28,7 @@ class EventCompo extends Component {
             return this.props.outfits.map((outfit, index) => {
 
                 return (<div className="imageButtonContainer" key={index}>
-                    <div className="ImageBoxHome "><img src={outfit.picture} /></div>
+                    <div><img className="ImageBoxHome " src={outfit.picture} /></div>
                 </div>
                 );
 
@@ -46,7 +46,7 @@ class EventCompo extends Component {
                         <h1>{this.props.eventName}</h1>
                     </div>
                     <div className="date">
-                        <h1>{this.props.eventDate}</h1>
+                        <h1>{this.renderTime()}</h1>
                     </div>
                 </div>
                 <div className="ImageContainerHome">
