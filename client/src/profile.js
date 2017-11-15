@@ -82,7 +82,7 @@ const Profile = () => (
             </div>
 
             <div className="imageButtonContainer">
-                <div className="ImageBoxHome profileBestTwo"></div>
+                <div className="ImageBoxProfile profileBestTwo"></div>
                 <div className="ratingNumber">1</div>
             </div>
         </div>
