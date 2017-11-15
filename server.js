@@ -8,6 +8,7 @@ const fs = require('fs');
 
 
 app.use(express.static('./server/static/'));
+app.use(express.static('./server/static/uploads'));
 app.use(express.static('./client/dist/'));
 app.use(express.static('node_modules'));
 
@@ -390,7 +391,11 @@ app.post('/outfits/:eventID', function (req, res) {
 		req.files.forEach(function (image) {
 			const host = req.hostname;
 			const filePath = `${req.protocol}://${host}/${image.path}`;
-			userData.picture = filePath;
+			console.log(host)
+			console.log(image.path);
+			console.log(req.protocol);
+			console.log(image);
+			userData.picture = image.filename;
 			connection.query(`INSERT INTO outfit_table SET ?`, userData, function (err, result) {
 				if (err) throw err;
 				console.log('outfit was added');
