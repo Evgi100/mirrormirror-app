@@ -41,24 +41,24 @@ class UsersDataForm extends React.Component {
                 // Add the file to the request.
                 formData.append('outfitpicture', file, file.name);
             }
-            // console.log(files);
+            // console.log(files);/
             // console.log(formData.entries());
 
             let data2 = {
                 userID: that.state.userID,
-                name: that.props.eventDate,
-                event: that.state.event
+                event: that.props.eventName,
+                eventDate: that.props.eventDate
             }
             axios.post('/events', data2)
                 .then(response => {
                     console.log(response);
                     axios.post('/outfits/' + response.data[0].eventID, formData)
                         .then(innerResponse => {
-                            let data ={
+                            let data = {
                                 event: response.data[0].event,
                                 date: response.data[0].eventDate,
                                 eventID: response.data[0].eventID,
-                                outfitsArr: innerResponse
+                                outfitsArr: innerResponse.data
                             }
                             console.log(data);
                             // that.props.addUser(response.data);/
@@ -118,24 +118,54 @@ class UsersDataForm extends React.Component {
             }
         }
         // console.log(input.target/* = null;*/)
+
+
+
+        // let that = this;
+        // let files = this.imgSelect.files;
+
+        //     if (!this.fileSelect) {
+        //         this.setState({ fileSelect: files },_imagePrev);
+        //     } else {
+        //         if (this.state.fileSelect.length > 4) {
+        //             console.log('too many images');
+        //         }
+        //         else {
+        //             this.setState({
+        //                 fileSelect: this.state.fileSelect.filter((file, index, arr) => {
+        //                     return file == files[index];
+        //                 },_imagePrev)
+        //             })
+        //         }
+
+        //     }
+
+        //     function _imagePrev() {
+        //         console.log(that.state)
+        //         // that.state.fileSelect.forEach((element, i, arr)=> {
+        //         //     var reader = new FileReader();
+        //         //     reader.onloadend = function (e) {
+        //         //         let data = {
+        //         //             key: 'src' + (i + 1),
+        //         //             src: reader.result
+        //         //         }
+        //         //         that.props.addPrev(data);
+        //         //         that.setState({ ['src' + (i + 1)]: reader.result })
+        //         //     }
+        //         //     reader.readAsDataURL(files[i]);
+        //         // });
+        //     }
     }
 
     render() {
         return (
 
             <div>
-                {/* <form id="uploadForm" encType="multipart/form-data" className="buttonWrap">
-                    <input type="file" id="img-select" className="action-button animate blue" onChange={this.imagePreview} multiple />
-                    <button className="action-button animate blue" onClick={this.uploadImage} id="upload-button">Send</button>
-                </form>
-                < img src={this.state.img} />
-            </div> */}
-
                 <form ref={(input) => { this.uploadForm = input; }} id="uploadForm" encType="multipart/form-data" className="buttonWrap">
                     <div className="submitButton">
                         <button className="dotted post">
                             <i className="fa fa-upload" aria-hidden="true"></i>
-                            <input type="file" ref={(input) => { this.imgSelect = input; }}id="img-select" onChange={this.imagePreview} multiple />
+                            <input type="file" ref={(input) => { this.imgSelect = input; }} id="img-select" onChange={this.imagePreview} multiple />
                         </button>
                         <button className="dotted post" ref={(input) => { this.upButton = input; }} id="upload-button"
                             onClick={this.uploadImage} >Post Event</button>
