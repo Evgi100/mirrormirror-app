@@ -236,11 +236,34 @@ app.delete('/user/:username', function (req, res) {
 /////////////////EVENT ROUTES//////////////
 //Gets all events from the database
 app.get('/events', function (req, res, next) {
-	connection.query("SELECT * from event_table", function (err, rows, fields) {
+	connection.query("SELECT * from event_table", function (err, rows1, fields1) {
 		if (err) throw error;
 		console.log(`/eventS get req was done succ`);
-		res.send(rows);
+		let sql = `SELECT *
+		FROM event_table
+		INNER JOIN outfit_table on event_table.eventID = outfit_table.eventID`;
+		connection.query(sql, function (err, rows2, fields2) {
+			if (err) throw error;
+			// console.log(rows1,rows2);
+			res.send(formatData(rows1,rows2));
+		});
 	});
+	function formatData(rows1, rows2) {
+		// let result = {};
+		for(let i =0, l = rows1.length; i<l; i++) {
+			let row1 = rows1[i];
+			let eventID = row1.eventID;
+			row1.outfits = [];
+			for(let j =0, l =rows2.length; j<l; j++) {
+				let row2 = rows2[j];
+				let outfitEventID = row2.eventID
+				if(eventID === outfitEventID) {
+					row1.outfits.push(row2)
+				}
+			}
+		}
+		return rows1;
+	}
 });
 //Gets one event from the database based on username
 app.get('/event/:id', function (req, res, next) {
@@ -363,7 +386,7 @@ app.post('/outfits/:eventID', function (req, res) {
 		let userData = req.body;
 		userData.eventID = req.params.eventID;
 		let outfitsCounter = 0;
-		let eventID =userData.eventID;
+		let eventID = userData.eventID;
 		req.files.forEach(function (image) {
 			const host = req.hostname;
 			const filePath = `${req.protocol}://${host}/${image.path}`;
@@ -374,7 +397,7 @@ app.post('/outfits/:eventID', function (req, res) {
 				toSend.push(result);
 				outfitsCounter++;
 				console.log(outfitsCounter);
-				if(outfitsCounter===req.files.length) {
+				if (outfitsCounter === req.files.length) {
 					console.log(outfitsCounter, req.files.length);
 					sendData()
 				}
@@ -384,7 +407,7 @@ app.post('/outfits/:eventID', function (req, res) {
 
 		function sendData() {
 			let sendDataSQL = mysql.format(
-			`SELECT	outfit_table.outfitID, outfit_table.picture, outfit_table.rating
+				`SELECT	outfit_table.outfitID, outfit_table.picture, outfit_table.rating
 			FROM event_table
 			INNER JOIN outfit_table on event_table.eventID = outfit_table.eventID
 			WHERE event_table.eventID =?`, [eventID]);
@@ -405,7 +428,7 @@ app.put('/outfit', function (req, res) {
 	keys.forEach((key, index, arr) => {
 		if (key !== 'outfitID') dataToUpdate[key] = req.body[key];
 	})
-	let outfitID= req.body.outfitID;
+	let outfitID = req.body.outfitID;
 	// console.log(dataToUpdate, username)
 	connection.query(`UPDATE outfit_table SET ? WHERE ?`, [dataToUpdate, { outfitID: outfitID }], function (err, result) {
 		if (err) throw err;

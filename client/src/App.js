@@ -11,13 +11,13 @@ import { BrowserRouter } from 'react-router-dom';
 class AppWrapper extends React.Component {
   render() {
     return (
-      <div>
-        <Navbar />
-        <Sidebar />
-        <BrowserRouter>
+      <BrowserRouter>
+        <div>
+          <Navbar />
+          <Sidebar />
           <Routes />
-        </BrowserRouter>
-      </div >
+        </div>
+      </BrowserRouter>
     );
   }
 }

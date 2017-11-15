@@ -3,6 +3,7 @@ import UsersListBox from './UsersList';
 import RateBox from './rateBox'
 import UsersDataForm from './usersDataForm'
 import EventDataForm from './eventDataForm'
+import ImageContainer from './createEventImg/imageContainer';
 
 
 
@@ -29,97 +30,23 @@ class UserBox extends React.Component {
     //     }, () => {
     //         console.log(this.state)
     //     })
-    // } 
+    // }
+
     deletePictures(index) {
         this.props.deletePictures(this.props.index)
     }
+
     render() {
-
-
         return (
-
             <div>
-                {/*          
-                <div className="title">
-                    <div>
-                        <select onChange={this.handleOnChange} style={{ border: '0', backgroundColor: 'rgb(240, 6, 84)', fontSize: '25px', fontFamily: 'Rozha One' }}>
-                            <option>Choose Occasion</option>
-                            <option value="Party">Party</option>
-                            <option value="Concert">Concert</option>
-                            <option value="Clubbing">Clubbing</option>
-                            <option value="Wedding">Wedding</option>
-                        </select>                      
-                    </div>
-                    <div className="datePicker">
-                        <div className="dateLabel">
-                            <label className="control-label" htmlFor="date">Rate outfits until</label>
-                        </div>
-                        <div className="input-group">
-                            <div className="input-group-addon">
-                                <span className="glyphicon glyphicon-calendar aria-hidden=" ></span>
-                            </div>
-                            <input className="form-control" id="date" placeholder="DD/MM/YYYY" type="date" onChange={this.handleOnChangeDate} />
-                        </div>
-                    </div>
-                </div > */}
-
-                < EventDataForm addEvent={this.props.addEvent} addEventDate={this.props.addEventDate} />
+                <EventDataForm addEvent={this.props.addEvent} addEventDate={this.props.addEventDate} />
                 <div className="ImageContainer">
-                    <div className="imageButtonContainer">
-
-                        <div className="ImageBox">
-                            <img className="image" src={this.props.src1} /></div>
-
-                        <div className="ButtonContainer">
-                            <button className="dotted picButton">
-                                <i className="fa fa-trash-o" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="imageButtonContainer">
-
-                        <div className="ImageBox ">
-                            <img className="image" src={this.props.src2} />
-                        </div>
-
-                        <div className="ButtonContainer">
-                            <button className="dotted picButton">
-                                <i className="fa fa-trash-o" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="imageButtonContainer">
-
-                        <div className="ImageBox">
-                            <img className="image" src={this.props.src3} />
-                        </div>
-
-                        <div className="ButtonContainer">
-                            <button className="dotted picButton">
-                                <i className="fa fa-trash-o" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div className="imageButtonContainer">
-                        <div className="ImageBox ">
-                            <img className="image" src={this.props.src4} />
-                        </div>
-
-                        <div className="ButtonContainer">
-                            <button className="dotted picButton">
-                                <i className="fa fa-trash-o" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <ImageContainer imgsrc={this.props.src1} />
+                    <ImageContainer imgsrc={this.props.src2} />
+                    <ImageContainer imgsrc={this.props.src3} />
+                    <ImageContainer imgsrc={this.props.src4} />
+                    <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.</p></div>
                 </div>
-
-
-                <div><p className="helptext" style={{ fontSize: '20px' }}>Upload up to 4 outfit pictures for one occasion. Filetype: jpg. Maximum file size: 2MB.
-        </p></div>
             </div>
 
         );
@@ -127,6 +54,3 @@ class UserBox extends React.Component {
 }
 
 export default UserBox;
-
-
-``

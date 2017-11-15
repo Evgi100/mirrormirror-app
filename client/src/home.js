@@ -1,15 +1,25 @@
 import React from 'react';
+import axios from 'axios';
 
 
 class HomeView extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {events: []}
+    }
+
+    componentDidMount() {
+        axios.get('/events')
+        .then(response=> {
+            this.setState({events: this.state.events.concat(response.data)},()=> console.log(this.state));
+        });
     }
 
     render() {
         return (
             <div>
+            
                 <div className="ImageTextContainerHome">
                     <div className="titleHome">
                         <div className="occasion">
