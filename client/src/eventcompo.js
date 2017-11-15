@@ -18,8 +18,9 @@ class EventCompo extends Component {
         }
     }
 
+
+    //  This is a function for going 
     renderPics() {
-    
         if(this.props.outfits) {
             return this.props.outfits.map((outfit, index)=> {
                 return (<div className="imageButtonContainer" key={index}>
@@ -27,8 +28,7 @@ class EventCompo extends Component {
             </div>
                 );
             }) 
-        }
-        
+        }   
     }
 
     render() {
