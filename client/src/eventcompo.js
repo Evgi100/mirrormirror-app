@@ -1,30 +1,54 @@
 import React, { Component } from 'react';
 
 class EventCompo extends Component {
-    //
+    constructor(props) {
+        super(props);
+        this.renderPics = this.renderPics.bind(this);
+    }
+
+    renderPics() {
+        if(this.props.outfits) {
+            return this.props.outfits.map((outfit, index)=> {
+                return (<div className="imageButtonContainer" key={index}>
+                <div className="ImageBoxHome "><img src={outfit.picture}/></div>
+            </div>
+                );
+            }) 
+        }
+        
+    }
+
     render() {
+        // console.log(this.props.outfits)
+        // console.log(this.props.outfits[0].picture)
         return (
             <div className="ImageTextContainerHome">
             <div className="titleHome">
                 <div className="occasion">
-                    <h1>{this.props.event}</h1>
+                    <h1>{this.props.eventName}</h1>
                 </div>
                 <div className="date">
-                    <h1>{this.props.date}</h1>
+                    <h1>{this.props.eventDate}</h1>
                 </div>
             </div>
             <div className="ImageContainerHome">
+           {this.renderPics()}
+              {/* <div className="imageButtonContainer">
+                    <div className="ImageBoxHome "><img src={this.props.outfits.}/>
+</div>
+                </div> */}
+{/* 
                 <div className="imageButtonContainer">
-                    <div className="ImageBoxHome first"></div>
+                    <div className="ImageBoxHome "><img src={this.props.outfits[1].picture}/></div>
                 </div>
 
                 <div className="imageButtonContainer">
-                    <div className="ImageBoxHome second"></div>
+                    <div className="ImageBoxHome "><img src={this.props.outfits[2].picture}/></div>
                 </div>
 
                 <div className="imageButtonContainer">
-                    <div className="ImageBoxHome third"></div>
-                </div>
+                    <div className="ImageBoxHome "><img src={this.props.outfits[3].picture}/></div>
+                </div>   */}
 
                 <div className="imageButtonContainerHome">
                     <div className="picture">
