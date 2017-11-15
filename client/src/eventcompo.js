@@ -6,6 +6,18 @@ class EventCompo extends Component {
         super(props);
         this.state = {event: this.props.entireEvent};
         this.renderPics = this.renderPics.bind(this);
+        this.renderTime=this.renderTime.bind(this);
+    }
+    
+
+    renderTime () {
+        if(this.props.eventDate) {
+        let date=this.props.eventDate;
+        let newDate=date.split('',10)
+        let dateToShow=newDate.join("")
+        return dateToShow
+            
+        }
     }
 
     renderPics() {
