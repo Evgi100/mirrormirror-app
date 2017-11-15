@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router'
 // import FormData from 'form-data'
 
 class UsersDataForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { userID: 1, eventDate: "", event: "", src1: null, src2: null, src3: null, src4: null }
+        this.state = { userID: 1, eventDate: "", event: "", src1: null, src2: null, src3: null, src4: null, redirect:false}
         // this.sendImg = this.sendImg.bind(this)
         this.uploadImage = this.uploadImage.bind(this);
         // this.sendUsersData = this.sendUsersData.bind(this)
@@ -62,8 +63,9 @@ class UsersDataForm extends React.Component {
                             }
                             console.log(data);
                             // that.props.addUser(response.data);/
-                            that.setState({ userID: that.state.userID++, name: "", event: "" });
+                            that.setState({ userID: that.state.userID++, name: "", event: "",redirect:true });
                             uploadButton.innerHTML = 'Upload';
+                            // <Redirect to="/"/
                         })
                         .catch(error => {
                             console.log('Error fetching and parsing data', error);
@@ -158,6 +160,9 @@ class UsersDataForm extends React.Component {
     }
 
     render() {
+        if (this.state.redirect) {
+           return <Redirect to="/" />
+        }
         return (
 
             <div>
@@ -168,7 +173,7 @@ class UsersDataForm extends React.Component {
                             <input type="file" ref={(input) => { this.imgSelect = input; }} id="img-select" onChange={this.imagePreview} multiple />
                         </button>
                         <button className="dotted post" ref={(input) => { this.upButton = input; }} id="upload-button"
-                            onClick={this.uploadImage} >Post Event</button>
+                            onClick={this.uploadImage}  >Post Event</button>
                     </div>
                 </form>
 
