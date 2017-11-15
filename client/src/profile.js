@@ -71,7 +71,7 @@ const Profile = () => (
             </div>
 
             <div className="imageButtonContainer">
-                <div className="ImageBoxHome profileBestOne"></div>
+                <div className="ImageBoxProfile profileBestOne"></div>
                 <div className="ratingNumber">1</div>
             </div>
         </div>
@@ -93,7 +93,7 @@ const Profile = () => (
             </div>
 
             <div className="imageButtonContainer">
-                <div className="ImageBoxHome profileBestThree"></div>
+                <div className="ImageBoxProfile profileBestThree"></div>
                 <div className="ratingNumber">1</div>
             </div>
         </div>
@@ -104,7 +104,7 @@ const Profile = () => (
             </div>
 
             <div className="imageButtonContainer">
-                <div className="ImageBoxHome profileBestFour"></div>
+                <div className="ImageBoxProfile profileBestFour"></div>
                 <div className="ratingNumber">1</div>
             </div>
         </div>

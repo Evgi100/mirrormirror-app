@@ -428,7 +428,17 @@
         outline-offset: 3px;
         box-shadow: 3px 3px 6px 1px rgba(134, 131, 133, 0.36);
     }
+    .ImageBoxProfile {
+        display: flex;
+        height: 200px;
+        width: 150px;
+        border-radius: 5px;
+        margin: 13px;
+        outline-offset: 3px;
+        box-shadow: 3px 3px 6px 1px rgba(134, 131, 133, 0.36);
+    }
     
+
     .portrait {
         display: flex;
         width: 100px;
