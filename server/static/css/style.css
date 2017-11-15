@@ -674,3 +674,146 @@
            background-color:#7ED321 !important;
          cursor:pointer;
        } 
+
+       
+.info {
+    color:grey;
+   }
+   
+   .starbox{
+       display:flex;
+       flex-direction:row;
+       justify-content: center;
+       padding:20px;
+   }
+   
+   .ImageTextContainerProfileBest {
+       font-family: 'Rozha One', serif;
+       font-size: 25px;
+       color: #FFF;
+       display: flex;
+       flex-wrap: wrap;
+       flex-direction: column;
+       background-color: rgb(240, 6, 84);
+       margin: auto;
+       margin-bottom: 30px;
+       border-radius: 5px;
+       padding: 25px;
+       box-shadow: 3px 3px 6px 1px rgba(134, 131, 133, 0.36);
+       width: 211px;;
+       height: auto;
+       background: rgb(240, 6, 84);
+       background: -moz-linear-gradient(top, rgb(240, 6, 84) 0%, rgb(240, 6, 84) 25%, #FFF 25%, #FFF 100%);
+       background: -webkit-gradient(left top, left bottom, color-stop(0%, rgb(240, 6, 84)), color-stop(25%, rgb(240, 6, 84)), color-stop(25%, #FFF), color-stop(100%, #FFF));
+       background: -webkit-linear-gradient(top, rgb(240, 6, 84) 0%, rgb(240, 6, 84) 25%, #FFF 25%, #FFF 100%);
+       background: -o-linear-gradient(top, rgb(240, 6, 84) 0%, rgb(240, 6, 84) 25%, #FFF 25%, #FFF 100%);
+       background: -ms-linear-gradient(top, rgb(240, 6, 84) 0%, rgb(240, 6, 84) 25%, #FFF 25%, #FFF 100%);
+       background: linear-gradient(to bottom, rgb(240, 6, 84) 0%, rgb(240, 6, 84) 25%, #FFF 25%, #FFF 100%);
+   }
+   
+   .profileBestOne {
+       background-image: url("https://www.hellomagazine.com/imagenes/royalty/2016052731645/the-queen-wedding-coronation-dress-exhibition/0-155-463/the-queen4-z.jpg");
+       background-size: cover;
+   }
+   
+   .profileBestTwo {
+       background-image: url("https://www.hellomagazine.com/imagenes/royalty/2015103027982/the-queen-to-display-150-dresses/0-138-999/Queen-Elizabeth3--a.jpg");
+       background-size: cover;
+   }
+   
+   .profileBestThree {
+       background-image: url("https://www.hellomagazine.com/imagenes/royalty/2015103027982/the-queen-to-display-150-dresses/0-139-5/Queen-Elizabeth7--a.jpg");
+       background-size: cover;
+   }
+   
+   .profileBestFour {
+       background-image: url("https://www.hellomagazine.com/imagenes/royalty/2015103027982/the-queen-to-display-150-dresses/0-139-12/Queen-Elizabeth14--a.jpg");
+       background-size: cover;
+   }
+   
+   .containerExpired {
+       flex-grow:1;
+       display: flex;
+       flex-direction:row;
+       flex-wrap:wrap;
+       justify-content: center;
+       width: 95%;
+       margin:auto;
+   }
+   
+   .ImageTextContainerProfile {
+       font-family: 'Rozha One', serif;
+       font-size: 25px;
+       color: #FFF;
+       display: flex;
+       flex-wrap: wrap;
+       flex-direction: row;
+       background-image: url("https://apetcher.files.wordpress.com/2009/06/queen-garden-party1-a.jpg");
+       background-size: cover;
+       margin: auto;
+       margin-bottom: 30px;
+       border-radius: 5px;
+       padding: 25px;
+       box-shadow: 3px 3px 6px 1px rgba(134, 131, 133, 0.36);
+       width: 90%;
+       height: auto;
+       align-items: center;
+       justify-content: space-between;
+   }
+   
+   .profileBoxPicture {
+       display:flex;
+       width: 20%;
+   }
+   
+   .profileBoxName {
+       width:300px;
+       height:50px;
+       justify-content: center;
+       text-align: center;
+       align-items: center;
+       vertical-align: middle;
+       color:white;
+       font-size: 50px;
+       text-shadow:1px 1px 0px #0a0000;
+   }
+   
+   .profileBoxButton {
+       display:flex;
+       justify-content: flex-end;
+       align-items: flex-end;
+       color:white;
+   }
+   
+   .edit {
+       background:transparent;
+       border:none;
+       color: white;
+       margin-top: 142px;
+       text-shadow:1px 1px 0px #0a0000;
+   }
+
+   .ratingNumber {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    flex: 1;
+    background: #BADA55;
+    border-radius: 50%;
+    margin-right: -11px;
+    margin-left: 121px;
+    margin-top: -232px;
+    margin-bottom: 174px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.ImageRatingBox {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    border-radius:5px;
+ }

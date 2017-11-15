@@ -3,6 +3,7 @@ import MainApp from './';
 import Page404 from './common/404';
 import HomeView from './home';
 import RateBox from './rateBox'
+import Profile from './profile' 
 import {Switch, Route, Redirect} from 'react-router-dom';
 ////
 
@@ -12,6 +13,7 @@ const Routes = () => (
             <Route name="home" exact path='/' component={HomeView} />
             <Route name="create-event" path='/event' component={MainApp} />
             <Route name="rate" path='/rate/:eventID' component={RateBox} />
+            <Route name="profile" path='/profile' component={Profile} />            
             <Route path="*" component={Page404}/>
         </Switch>
     </div>

@@ -24,7 +24,6 @@ class HomeView extends React.Component {
 
     renderEvents() {
         return this.state.events.map((event, index) => {
-            console.log(event)
             return <EventCompo key={index} index={index} eventName={event.event} eventDate={event.eventDate} outfits={event.outfits} entireEvent={event} eventID={event.eventID} />;
 
         })
