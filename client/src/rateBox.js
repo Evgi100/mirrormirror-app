@@ -19,7 +19,7 @@ class OutfitCompo extends Component {
                 <input type="radio" id="field1_star2" name="rating1" value="2" /><label className="full" htmlFor="field1_star2"></label>
                 <input type="radio" id="field1_star1" name="rating1" value="1" /><label className="full" htmlFor="field1_star1"></label>
             </fieldset>
-            <img src={`/uploads/${this.props.imgsrc}`}/>
+            <img className="ImageBoxHome" src={`/uploads/${this.props.imgsrc}`}/>
         </div>
         );
     }
