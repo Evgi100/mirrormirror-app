@@ -422,7 +422,7 @@
     .ImageBoxHome {
         display: flex;
         height: 200px;
-        width: 130px;
+        width: 180px;
         border-radius: 5px;
         margin: 13px;
         outline-offset: 3px;
@@ -454,7 +454,7 @@
     .ImageTextContainerHome {
         flex-grow: 1;
         font-family: 'Rozha One', serif;
-        font-size: 25px;
+        font-size: 15px;
         color: #FFF;
         display: flex;
         flex-wrap: wrap;
@@ -644,7 +644,7 @@
        .rating > label:before { 
          margin-top: 2px;
          padding:0px 5px 0px 5px;
-         font-size: 1.25em;
+         /* font-size: 1.25em; */
          font-family: FontAwesome;
          display: inline-block;
          content: "\f005";
