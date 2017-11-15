@@ -4,13 +4,26 @@ class EventCompo extends Component {
     constructor(props) {
         super(props);
         this.renderPics = this.renderPics.bind(this);
+        this.renderTime=this.renderTime.bind(this);
+    }
+    
+
+    renderTime () {
+        if(this.props.eventDate) {
+        let date=this.props.eventDate;
+        let newDate=date.split('',10)
+        let dateToShow=newDate.join("")
+        return dateToShow
+            
+        }
     }
 
     renderPics() {
+    
         if(this.props.outfits) {
             return this.props.outfits.map((outfit, index)=> {
                 return (<div className="imageButtonContainer" key={index}>
-                <div className="ImageBoxHome "><img src={outfit.picture}/></div>
+                <img className="ImageBoxHome" src={outfit.picture}/>
             </div>
                 );
             }) 
@@ -19,36 +32,18 @@ class EventCompo extends Component {
     }
 
     render() {
-        // console.log(this.props.outfits)
-        // console.log(this.props.outfits[0].picture)
         return (
-            <div className="ImageTextContainerHome">
+          <div className="ImageTextContainerHome">
             <div className="titleHome">
                 <div className="occasion">
                     <h1>{this.props.eventName}</h1>
                 </div>
                 <div className="date">
-                    <h1>{this.props.eventDate}</h1>
+                    <h1>{this.renderTime()}</h1>
                 </div>
             </div>
-            <div className="ImageContainerHome">
+            <div className="ImageContainerHome">  
            {this.renderPics()}
-              {/* <div className="imageButtonContainer">
-                    <div className="ImageBoxHome "><img src={this.props.outfits.}/>
-</div>
-                </div> */}
-{/* 
-                <div className="imageButtonContainer">
-                    <div className="ImageBoxHome "><img src={this.props.outfits[1].picture}/></div>
-                </div>
-
-                <div className="imageButtonContainer">
-                    <div className="ImageBoxHome "><img src={this.props.outfits[2].picture}/></div>
-                </div>
-
-                <div className="imageButtonContainer">
-                    <div className="ImageBoxHome "><img src={this.props.outfits[3].picture}/></div>
-                </div>   */}
 
                 <div className="imageButtonContainerHome">
                     <div className="picture">
