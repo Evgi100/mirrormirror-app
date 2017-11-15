@@ -17,6 +17,7 @@ class HomeView extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div>
             
@@ -142,7 +143,7 @@ class HomeView extends React.Component {
 
                     <div className="titleHome">
                         <div className="occasion">
-                            <h1>{'Occasion placeholder'}</h1>
+                            <h1>{this.state.events.event}</h1>
                         </div>
                         <div className="date">
                             <h1>{'date placeholder'}</h1>
