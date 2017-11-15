@@ -77,48 +77,49 @@ class UsersDataForm extends React.Component {
         }
     }
     imagePreview(input) {
-        let files = input.target.files;
+        let files = this.imgSelect.files;
         let that = this;
-        // console.log(that);
-        // console.log(this.props)
-        if (files) {
-            let missingSrc = [];
-            function _findMissing() {
-                for (let i = 1; i <= 4; i++) {
-                    if (that.state['src' + i] === "") {
-                        missingSrc.push(i);
-                    }
-                }
-            }
-            _findMissing();
-            if (missingSrc.length === 0) {
-                for (let i = 0; i < files.length; i++) {
-                    var reader = new FileReader();
-                    reader.onloadend = function (e) {
-                        let data = {
-                            key: 'src' + (i + 1),
-                            src: reader.result
-                        }
-                        that.props.addPrev(data);
-                        that.setState({ ['src' + (i + 1)]: reader.result })
-                    }
-                    reader.readAsDataURL(files[i]);
-                }
-            } else {
-                for (let i = 0; i < missingSrc.length; i++) {
-                    var reader = new FileReader();
-                    reader.onloadend = function (e) {
-                        let data = {
-                            key: 'src' + missingSrc[i],
-                            src: reader.result
-                        }
-                        that.props.addPrev(data);
-                        that.setState({ ['src' + missingSrc[i]]: reader.result })
-                    }
-                    reader.readAsDataURL(files[i]);
-                }
-            }
-        }
+        // // console.log(that);
+        // // console.log(this.props)
+        // if (files) {
+        //     let missingSrc = [];
+        //     function _findMissing() {
+        //         for (let i = 1; i <= 4; i++) {
+        //             if (that.state['src' + i] === "") {
+        //                 missingSrc.push(i);
+        //             }
+        //         }
+        //     }
+        //     _findMissing();
+        //     if (missingSrc.length === 0) {
+        //         for (let i = 0; i < files.length; i++) {
+        //             var reader = new FileReader();
+        //             reader.onloadend = function (e) {
+        //                 let data = {
+        //                     key: 'src' + (i + 1),
+        //                     src: reader.result
+        //                 }
+        //                 that.props.addPrev(data);
+        //                 that.setState({ ['src' + (i + 1)]: reader.result })
+        //             }
+        //             reader.readAsDataURL(files[i]);
+        //         }
+        //     }
+        //     else {
+        //         for (let i = 0; i < missingSrc.length; i++) {
+        //             var reader = new FileReader();
+        //             reader.onloadend = function (e) {
+        //                 let data = {
+        //                     key: 'src' + missingSrc[i],
+        //                     src: reader.result
+        //                 }
+        //                 that.props.addPrev(data);
+        //                 that.setState({ ['src' + missingSrc[i]]: reader.result })
+        //             }
+        //             reader.readAsDataURL(files[i]);
+        //         }
+        //     }
+        // }
         // console.log(input.target/* = null;*/)
 
 
@@ -157,6 +158,22 @@ class UsersDataForm extends React.Component {
         //         //     reader.readAsDataURL(files[i]);
         //         // });
         //     }
+
+        for (let i = 0; i < files.length; i++) {
+            let reader= new FileReader();
+            reader.onloadend = function (e) {
+                let prevSrc = 'src' + (i + 1);
+                let data = {
+                    key: prevSrc,
+                    src: reader.result
+                }
+                that.setState({ [prevSrc]: reader.result }, () => {
+                    that.props.addPrev(data);
+                    console.log(that.state)
+                })
+            }
+            reader.readAsDataURL(files[i]);
+        }
     }
 
     render() {

@@ -32,7 +32,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 // app.use(express.static('server/staticeventpics'));
 
 
-////////////PRODUTION CONNECTION///////////////
+////////////PRODUTION CONNECTION////////////////
 
 // const connection = mysql.createConnection({
 // 	host: 'localhost',
