@@ -30,7 +30,9 @@ class UsersListBox extends React.Component {
 
     addPrev(data) {
         let key = data.key;
-        this.setState({ [key]: data.src })
+        console.log(key);
+        // console.log(data.src);
+        this.setState({ [key]: data.src }, ()=> console.log(this.state.key))
     }
 
     addEvent(eventName) {
@@ -61,7 +63,7 @@ class UsersListBox extends React.Component {
 
 
     render() {
-
+        // console.log(this.state);
 
         // const renderUsers = this.state.users.map((user, index) =>
         //     <UserBox user={user} index={index} deleteUser={this.deleteUser} key={index} imgsrc={this.state['src' + (index + 1)]} />)
