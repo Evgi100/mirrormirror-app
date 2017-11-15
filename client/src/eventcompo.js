@@ -9,7 +9,7 @@ class EventCompo extends Component {
         this.renderTime=this.renderTime.bind(this);
     }
     
-
+// Change the date format to viewvable
     renderTime () {
         if(this.props.eventDate) {
         let date=this.props.eventDate;
@@ -21,7 +21,7 @@ class EventCompo extends Component {
     }
 
 
-    //  This is a function for going 
+    //  This is a function for going through the images
     renderPics() {
 
         if (this.props.outfits) {
