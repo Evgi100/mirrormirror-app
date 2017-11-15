@@ -10,7 +10,8 @@ class OutfitCompo extends Component {
     render() {
         return (
             <div className="ImageRatingBox">
-           <img src={this.props.imgsrc}/>
+           <img />
+           {this.props.imgsrc}
             <fieldset className="rating" onChange={this.props.jquery} onClick={this.props.handleOnChange} value={this.props.valueOutfits}>
                 <input type="radio" id="field1_star5" name="rating1" value="5" /><label className="full" htmlFor="field1_star5"></label>
                 <input type="radio" id="field1_star4" name="rating1" value="4" /><label className="full" htmlFor="field1_star4"></label>
@@ -18,7 +19,7 @@ class OutfitCompo extends Component {
                 <input type="radio" id="field1_star2" name="rating1" value="2" /><label className="full" htmlFor="field1_star2"></label>
                 <input type="radio" id="field1_star1" name="rating1" value="1" /><label className="full" htmlFor="field1_star1"></label>
             </fieldset>
-            <img src={this.props.imgsrc}/>
+            <img src={`/uploads/${this.props.imgsrc}`}/>
         </div>
         );
     }
