@@ -19,7 +19,7 @@ class EventCompo extends Component {
             
         }
     }
-// Change the timestamp format
+
     renderPics() {
         if (this.props.outfits) {
             return this.props.outfits.map((outfit, index) => {
