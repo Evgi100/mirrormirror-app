@@ -45,11 +45,11 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 let connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '1234',
+	password: 'password22',
 	database: 'mirrormirror',
 	multipleStatements: true
 });
-
+//
 // connection.connect(function(err) {
 //     if (err) throw err
 // });
