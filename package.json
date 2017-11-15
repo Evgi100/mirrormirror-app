@@ -43,7 +43,7 @@
     "startDev": "nodemon --use_strict server.js",
     "bundle": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC"

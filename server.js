@@ -49,7 +49,7 @@ let connection = mysql.createConnection({
 	database: 'mirrormirror',
 	multipleStatements: true
 });
-
+//
 // connection.connect(function(err) {
 //     if (err) throw err
 // });
@@ -271,10 +271,27 @@ app.get('/event/:id', function (req, res, next) {
 	let id = req.params.id;
 	let where = { eventID: id };
 	// console.log(username);
-	connection.query("SELECT * from event_table WHERE ?", where, function (err, rows, fields) {
+	connection.query("SELECT * from event_table WHERE ?", where, function (err, rows1, fields) {
 		if (err) throw error;
 		console.log(`/evenT get req was done succ`);
-		res.send(rows);
+		// res.send(rows);
+		let sendDataSQL = mysql.format(
+			`SELECT	outfit_table.outfitID, outfit_table.picture, outfit_table.rating
+		FROM event_table
+		INNER JOIN outfit_table on event_table.eventID = outfit_table.eventID
+		WHERE event_table.eventID =?`, [id]);
+		// console.log(sendDataSQL);
+		// rows1.outfits = [];
+		connection.query(sendDataSQL, function (err, rows2, fields) {
+			if (err) throw err;
+			// rows1.outfits.push(JSON.stringify(rows2));
+			console.log(rows1);
+			// rows1.outfits = rows2;
+			res.send({
+				event: rows1,
+				outfits: rows2
+			});
+		});
 	});
 });
 //Adds event to database
