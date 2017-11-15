@@ -47,17 +47,11 @@ const Navbar = (props) => {
                                         <img src="https://queerty-prodweb.s3.amazonaws.com/wp/docs/2014/10/liberace-lee.jpg" className="img-responsive img-thumbnail img-circle" />Valentino</a>
                                     <ul className="dropdown-menu">
                                         <li>
-                                            <a href="#">Action</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Another action</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Something else here</a>
+                                            <Link to="/profile">Profile</Link>
                                         </li>
                                         <li role="separator" className="divider"></li>
                                         <li>
-                                            <a href="#">Separated link</a>
+                                            <a href="#">Logout</a>
                                         </li>
                                     </ul>
                                 </li>
