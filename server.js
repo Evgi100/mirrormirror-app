@@ -49,7 +49,7 @@ let connection = mysql.createConnection({
 	database: 'mirrormirror',
 	multipleStatements: true
 });
-
+//
 // connection.connect(function(err) {
 //     if (err) throw err
 // });
