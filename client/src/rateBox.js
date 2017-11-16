@@ -18,7 +18,7 @@ class OutfitCompo extends Component {
                     <input type="radio" id="field1_star2" name="rating1" value="2" /><label className="full" htmlFor="field1_star2"></label>
                     <input type="radio" id="field1_star1" name="rating1" value="1" /><label className="full" htmlFor="field1_star1"></label>
                 </fieldset>
-                
+
             </div >
         );
     }
@@ -136,14 +136,25 @@ class RateBox extends React.Component {
                 <div className="ImageContainerHome">
                     {this.renderPics()}
                     <div className="ImageRatingBox">
-                        
+
                         {/* <img className="ImageBoxHome"  /> */}
                         {/* < OutfitCompo /> */}
 
                     </div>
+                    <div className="imageButtonContainerHome">
+                        <div className="picture">
+                            <img src="https://queerty-prodweb.s3.amazonaws.com/wp/docs/2014/10/liberace-lee.jpg" className="img-responsive img-thumbnailHome img-circle" />
+                        </div>
+                        <div className="userNameHome">
+                            <h1 className="name">Valentino</h1>
+                        </div>
+                        <div className="submitButton">
+                            <button className="dottedHome postHome">Rate</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
