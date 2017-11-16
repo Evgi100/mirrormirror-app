@@ -34,21 +34,21 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 
 ////////////PRODUTION CONNECTION////////////////
 
-const connection = mysql.createConnection({
-	host: '35.203.149.151',
-	user: 'olinsoffer',
-	password: '1234',
-	database: 'mirrormirror'
-});
+// const connection = mysql.createConnection({
+// 	host: '35.203.149.151',
+// 	user: 'olinsoffer',
+// 	password: '1234',
+// 	database: 'mirrormirror'
+// });
 
 ////////////////DEVELOPMENT DATABASE INIT//////////////////
-// let connection = mysql.createConnection({
-// 	host: 'localhost',
-// 	user: 'root',
-// 	password: '1234',
-// 	database: 'mirrormirror',
-// 	multipleStatements: true
-// });
+let connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: '1234',
+	database: 'mirrormirror',
+	multipleStatements: true
+});
 //
 // connection.connect(function(err) {
 //     if (err) throw err
