@@ -187,7 +187,7 @@ class UsersDataForm extends React.Component {
                     <div className="submitButton">
                         <button className="dotted post">
                             <i className="fa fa-upload" aria-hidden="true"></i>
-                            <input type="file" ref={(input) => { this.imgSelect = input; }} id="img-select" onChange={this.imagePreview} multiple />
+                            <input className="upload" type="file" ref={(input) => { this.imgSelect = input; }} id="img-select" onChange={this.imagePreview} multiple />
                         </button>
                         <button className="dotted post" ref={(input) => { this.upButton = input; }} id="upload-button"
                             onClick={this.uploadImage}  >Post Event</button>
