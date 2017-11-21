@@ -41,7 +41,7 @@ const connection = mysql.createConnection({
 	database: 'mirrormirror'
 });
 
-////////////////DEVELOPMENT DATABASE INIT//////////////////
+////////////////DEVELOPMENT DATABASE INIT////////////////////
 // let connection = mysql.createConnection({
 // 	host: 'localhost',
 // 	user: 'root',
