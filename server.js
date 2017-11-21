@@ -157,20 +157,21 @@ function initDatabase() {
 	createTables();
 }
 
-connection.connect(function (err) {
-	if (err) throw err
-	console.log('connection created11111111111111');
-	initDatabase();
-});
+// connection.connect(function (err) {
+// 	if (err) throw err
+// 	console.log('connection created11111111111111');
+// 	initDatabase();
+// });
+
+// initDatabase();
+createTables();
 //////////////////END OF FOR DEV DATABASE INIT//////////////////////////
 
 
 
 
 
-connection.connect(function (err) {
-	if (err) throw err
-	console.log('connection created');
+
 
 	/////////////////////////////////////////ROUTES/////////////////////////////////
 
@@ -500,7 +501,6 @@ connection.connect(function (err) {
 	app.get('/*', (req, res) => {
 		res.sendFile(path.join(__dirname, './server/static/index.html'))
 	})
-});
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
