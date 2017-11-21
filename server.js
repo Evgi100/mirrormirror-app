@@ -44,7 +44,7 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 
 // const connection = mysql.createConnection(process.env.JAWSDB_URL)
 
-const connection = mysql.createPool({
+const connection = mysql.createConnection({
     connectionLimit : 100,
     host : 'us-cdbr-iron-east-05.cleardb.net',
     user : 'b7c1714d25437c',
