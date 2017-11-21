@@ -146,11 +146,11 @@ function initDatabase() {
 	createTables();
 }
 
-connection.connect(function (err) {
-	if (err) throw err
-	console.log('connection created11111111111111');
-	initDatabase();
-});
+// connection.connect(function (err) {
+// 	if (err) throw err
+// 	console.log('connection created11111111111111');
+// 	initDatabase();
+// });
 //////////////////END OF FOR DEV DATABASE INIT//////////////////////////
 
 
