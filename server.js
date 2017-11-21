@@ -34,7 +34,8 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 
 ////////////PRODUTION CONNECTION////////////////
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
+	connectionLimit : 10,
 	server: '35.203.149.151',
 	user: 'olinsoffer',
 	password: '1234',
