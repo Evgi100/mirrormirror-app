@@ -164,7 +164,7 @@ function initDatabase() {
 // });
 
 // initDatabase();
-createTables();
+// createTables();
 //////////////////END OF FOR DEV DATABASE INIT//////////////////////////
 
 
