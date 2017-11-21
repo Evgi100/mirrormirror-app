@@ -35,11 +35,19 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 ////////////PRODUTION CONNECTION////////////////
 
 const connection = mysql.createConnection({
-	host: '35.203.149.151',
+	server: '35.203.149.151',
 	user: 'olinsoffer',
 	password: '1234',
 	database: 'mirrormirror'
 });
+
+// const config =  {
+//     server: '35.203.149.151',
+//     database: 'mirrormirror',
+//     user: 'olinsoffer',
+//     password: '1234'
+//     // port: 1433
+// };
 
 ////////////////DEVELOPMENT DATABASE INIT////////////////////
 // let connection = mysql.createConnection({
