@@ -32,42 +32,6 @@ class HomeView extends React.Component {
         return (
             <div>
 
-                <div className="ImageTextContainerHome">
-                    <div className="titleHome">
-                        <div className="occasion">
-                            <h1>Wedding</h1>
-                        </div>
-                        <div className="date">
-                            <h1>16.11.2017</h1>
-                        </div>
-                    </div>
-                    <div className="ImageContainerHome">
-                        <div className="imageButtonContainer">
-                            <div className="ImageBoxHome first"></div>
-                        </div>
-
-                        <div className="imageButtonContainer">
-                            <div className="ImageBoxHome second"></div>
-                        </div>
-
-                        <div className="imageButtonContainer">
-                            <div className="ImageBoxHome third"></div>
-                        </div>
-
-                        <div className="imageButtonContainerHome">
-                            <div className="picture">
-                                <img src="https://queerty-prodweb.s3.amazonaws.com/wp/docs/2014/10/liberace-lee.jpg" className="img-responsive img-thumbnailHome img-circle" />
-                            </div>
-                            <div className="userNameHome">
-                                <h1 className="name">Valentino</h1>
-                            </div>
-                            <div className="submitButton">
-                                <button className="dottedHome postHome"><a href="/rate">Rate</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div className="ImageTextContainerHome colorGarden">
                     <div className="titleHome">
                         <div className="occasion">
@@ -150,47 +114,6 @@ class HomeView extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* <div className="ImageTextContainerHome">
-
-                    <div className="titleHome">
-                        <div className="occasion">
-                            <h1>{this.state.events.event}</h1>
-                        </div>
-                        <div className="date">
-                            <h1>{'date placeholder'}</h1>
-                        </div>
-                    </div>
-
-                    <div className="ImageContainerHome">
-                        <div className="imageButtonContainer">
-                            <div className="ImageBoxHome"></div>
-                        </div>
-
-                        <div className="imageButtonContainer">
-                            <div className="ImageBoxHome "></div>
-                        </div>
-
-                        <div className="imageButtonContainer">
-                            <div className="ImageBoxHome "></div>
-                        </div>
-
-                        <div className="imageButtonContainer">
-                            <div className="ImageBoxHome"></div>
-                        </div>
-
-                        <div className="imageButtonContainerHome">
-                            <div className="picture">
-                                <img src="https://static.webshopapp.com/shops/071467/files/029113561/my-name-is-simone-karl-lagerfeld-my-name-is-simone.jpg" className="img-responsive img-thumbnailHome img-circle" />
-                            </div>
-                            <div className="userNameHome">
-                                <h1 className="name">Some User</h1>
-                            </div>
-                            <div className="submitButton">
-                                <button className="dottedHome postHome"> <a href="/rate">Rate </a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
                 <EventCompo />{this.renderEvents()}
             </div>
         );
