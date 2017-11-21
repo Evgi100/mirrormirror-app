@@ -34,13 +34,17 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 
 ////////////PRODUTION CONNECTION////////////////
 
-const connection = mysql.createPool({
-	connectionLimit : 10,
-	server: '35.203.149.151',
-	user: 'olinsoffer',
-	password: '1234',
-	database: 'mirrormirror'
-});
+// const connection = mysql.createPool({
+// 	connectionLimit : 10,
+// 	server: '35.203.149.151',
+// 	user: 'olinsoffer',
+// 	password: '1234',
+// 	database: 'mirrormirror'
+// });
+
+const connection = mysql.createConnection(process.env.JAWSDB_URL);
+
+
 
 // const config =  {
 //     server: '35.203.149.151',
@@ -142,11 +146,11 @@ function initDatabase() {
 	createTables();
 }
 
-// connection.connect(function (err) {
-// 	if (err) throw err
-// 	console.log('connection created11111111111111');
-// 	initDatabase();
-// });
+connection.connect(function (err) {
+	if (err) throw err
+	console.log('connection created11111111111111');
+	initDatabase();
+});
 //////////////////END OF FOR DEV DATABASE INIT//////////////////////////
 
 
