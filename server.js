@@ -42,7 +42,18 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 // 	database: 'mirrormirror'
 // });
 
-const connection = mysql.createConnection(process.env.JAWSDB_URL);
+// const connection = mysql.createConnection(process.env.JAWSDB_URL)
+
+const connection = mysql.createPool({
+    connectionLimit : 100,
+    host : 'us-cdbr-iron-east-05.cleardb.net',
+    user : 'b7c1714d25437c',
+    password : 'c3a0f008',
+    database : 'heroku_cbe0c2feed7c7f3',
+    debug : 'false'
+});
+
+// mysql://b7c1714d25437c:c3a0f008@us-cdbr-iron-east-05.cleardb.net/heroku_cbe0c2feed7c7f3?reconnect=true
 
 
 
@@ -146,11 +157,11 @@ function initDatabase() {
 	createTables();
 }
 
-// connection.connect(function (err) {
-// 	if (err) throw err
-// 	console.log('connection created11111111111111');
-// 	initDatabase();
-// });
+connection.connect(function (err) {
+	if (err) throw err
+	console.log('connection created11111111111111');
+	initDatabase();
+});
 //////////////////END OF FOR DEV DATABASE INIT//////////////////////////
 
 
