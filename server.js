@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const cloudinary = require('cloudinary');
 const fs = require('fs');
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart();
 
 
 app.use(express.static('./server/static/'));
@@ -17,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
+
+// app.use(multipart());
 
 
 const storage = multer.diskStorage({
@@ -31,17 +35,41 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).array('outfitpicture');
 
-////////////PRODUTION CONNECTION////////////////
 
 
-const connection = mysql.createPool({
+
+
+////////////CONNECTIONS////////////////
+let useCloud;
+
+devConfig = {
+	host: 'localhost',
+	user: 'root',
+	password: '1234',
+	database: 'mirrormirror',
+	multipleStatements: true
+}
+
+productionConfig = {
 	connectionLimit: 100,
 	host: 'us-cdbr-iron-east-05.cleardb.net',
 	user: 'b7c1714d25437c',
 	password: 'c3a0f008',
 	database: 'heroku_cbe0c2feed7c7f3',
 	debug: 'false'
-});
+}
+
+function config(connectionType, debugCloud=true) {
+	if(connectionType==='dev') {
+		cloud = debugCloud;
+		return mysql.createConnection(devConfig);
+	} else if(connectionType==='production') {
+		cloud=debugCloud;
+		return mysql.createPool(productionConfig);
+	}
+}
+
+const connection = process.env.PORT ? config('production') : config('dev', true);
 
 cloudinary.config({
 	cloud_name: 'mirrormirror',
@@ -49,18 +77,19 @@ cloudinary.config({
 	api_secret: 'gWPCwpHlg_cF8the06bAhzrPA8U'
 });
 
+
+
+/////////////END OF CONNECTIONS/////////////////////////
+
+
+
+
+
+
+
+
+
 //////////////DEVELOPMENT DATABASE INIT////////////////////
-// let connection = mysql.createConnection({
-// 	host: 'localhost',
-// 	user: 'root',
-// 	password: '1234',
-// 	database: 'mirrormirror',
-// 	multipleStatements: true
-// });
-//
-// connection.connect(function(err) {
-//     if (err) throw err
-// });
 
 function createDataBase() {
 	connection.query("CREATE DATABASE mirrormirror", function (err, result) {
@@ -74,15 +103,9 @@ function createDataBase() {
 			database: 'mirrormirror',
 			multipleStatements: true
 		});
-		// connection.connect(function(err) {
-		// 	if (err) throw err
-		// 	console.log('connection created11111111111111');
-		// });
 	});
-
 }
 
-// FOREIGN KEY(department_id) REFERENCES departments(department_id)
 function createTables() {
 
 	let userTable = `CREATE TABLE user_table (
@@ -150,6 +173,21 @@ function initDatabase() {
 // initDatabase();
 // createTables();
 //////////////////END OF FOR DEV DATABASE INIT//////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -303,7 +341,7 @@ app.get('/event/:id', function (req, res, next) {
 //Adds event to database
 app.post('/events', function (req, res) {
 	let userData = req.body;
-	console.log(userData);
+	// console.log(userData);
 	connection.query(`INSERT INTO event_table SET ?`, userData, function (err, result) {
 		if (err) throw err;
 		console.log('event was addedd');
@@ -311,7 +349,7 @@ app.post('/events', function (req, res) {
 		let whereSQL = { eventID: result.insertId };
 		connection.query(`SELECT * from event_table WHERE ?`, whereSQL, function (err, rows, fields) {
 			if (err) throw err;
-			console.log(rows);
+			// console.log(rows);
 			res.send(rows);
 		})
 	});
@@ -400,27 +438,34 @@ app.get('/outfit/:id', function (req, res, next) {
 });
 
 //Adds outfit to database
-app.post('/outfits/:eventID', function (req, res) {
-	if (!process.env.PORT) {
+
+app.post('/outfits/:eventID', multipartMiddleware, function (req, res) {
+	if (!cloud) {
+		console.log(req.files);
 		multerUpload();
 	}
 	else {
+		console.log(req.files);
 		cloudUpload();
 	}
 
 
 
 	function multerUpload() {
+		console.log(req.files);
 		upload(req, res, function (err) {
 			if (err) {
 				console.log(err);
 				return res.end(err);
 			}
+			console.log(req.files);
 			storeImage('multer');
 		});
 	}
 
 	function cloudUpload() {
+		// app.use(multipartMiddleware);
+		console.log(req.files);
 		storeImage('cloud');
 	}
 
@@ -431,7 +476,15 @@ app.post('/outfits/:eventID', function (req, res) {
 		userData.eventID = req.params.eventID;
 		let outfitsCounter = 0;
 		let eventID = userData.eventID;
-		req.files.forEach(function (image) {
+		console.log(req.files);
+		let theseFiles;
+		if(uploadType === 'cloud') {
+			theseFiles = req.files.outfitpicture;
+		}
+		else if(uploadType === 'multer') {
+			theseFiles = req.files;
+		}
+		theseFiles.forEach(function (image) {
 			// const host = req.hostname;
 			// const filePath = `${req.protocol}://${host}/${image.path}`;
 			// console.log(host);
@@ -470,10 +523,10 @@ app.post('/outfits/:eventID', function (req, res) {
 						FROM event_table
 						INNER JOIN outfit_table on event_table.eventID = outfit_table.eventID
 						WHERE event_table.eventID =?`, [eventID]);
-						console.log(sendDataSQL);
+						// console.log(sendDataSQL);
 						connection.query(sendDataSQL, function (err, rows, fields) {
 							if (err) throw err;
-							console.log(rows);
+							// console.log(rows);
 							res.send(rows);
 						});
 					}
