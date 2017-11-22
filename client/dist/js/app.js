@@ -13591,6 +13591,8 @@ var UsersDataForm = function (_React$Component) {
                 _axios2.default.post('/events', data2).then(function (response) {
                     console.log(response);
                     _axios2.default.post('/outfits/' + response.data[0].eventID, formData).then(function (innerResponse) {
+                        console.log('WWWWWWWWWWWWWWWWWWAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAM');
+                        console.log(innerResponse.data);
                         var data = {
                             event: response.data[0].event,
                             date: response.data[0].eventDate,
@@ -13599,7 +13601,7 @@ var UsersDataForm = function (_React$Component) {
                         };
                         console.log(data);
                         // that.props.addUser(response.data);/
-                        that.setState({ userID: that.state.userID++, name: "", event: "", redirect: true });
+                        that.setState({ name: "", event: "", redirect: true });
                         uploadButton.innerHTML = 'Upload';
                         // <Redirect to="/"/
                     }).catch(function (error) {

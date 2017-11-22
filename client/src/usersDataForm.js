@@ -55,6 +55,8 @@ class UsersDataForm extends React.Component {
                     console.log(response);
                     axios.post('/outfits/' + response.data[0].eventID, formData)
                         .then(innerResponse => {
+                            console.log('WWWWWWWWWWWWWWWWWWAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAM');
+                            console.log(innerResponse.data);
                             let data = {
                                 event: response.data[0].event,
                                 date: response.data[0].eventDate,
@@ -63,7 +65,7 @@ class UsersDataForm extends React.Component {
                             }
                             console.log(data);
                             // that.props.addUser(response.data);/
-                            that.setState({ userID: that.state.userID++, name: "", event: "",redirect:true });
+                            that.setState({name: "", event: "",redirect:true });
                             uploadButton.innerHTML = 'Upload';
                             // <Redirect to="/"/
                         })
