@@ -398,7 +398,7 @@ function initDatabase() {
 		upload(req, res, function (err) {
 			if (err) {
 				console.log(err);
-				return res.end("Error uploading file.");
+				return res.end(err);
 			}
 			console.log('images were uploaded to uploads folder');
 			let toSend = [];
