@@ -55,6 +55,7 @@ class UsersDataForm extends React.Component {
                     console.log(response);
                     axios.post('/outfits/' + response.data[0].eventID, formData)
                         .then(innerResponse => {
+                            console.log('WWWWWWWWWWWWWWWWWWAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAM')
                             let data = {
                                 event: response.data[0].event,
                                 date: response.data[0].eventDate,

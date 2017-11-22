@@ -34,15 +34,6 @@ var upload = multer({ storage: storage }).array('outfitpicture');
 
 ////////////PRODUTION CONNECTION////////////////
 
-// const connection = mysql.createPool({
-// 	connectionLimit : 10,
-// 	server: '35.203.149.151',
-// 	user: 'olinsoffer',
-// 	password: '1234',
-// 	database: 'mirrormirror'
-// });
-
-// const connection = mysql.createConnection(process.env.JAWSDB_URL)
 
 const connection = mysql.createPool({
     connectionLimit : 100,
@@ -52,18 +43,6 @@ const connection = mysql.createPool({
     database : 'heroku_cbe0c2feed7c7f3',
     debug : 'false'
 });
-
-// mysql://b7c1714d25437c:c3a0f008@us-cdbr-iron-east-05.cleardb.net/heroku_cbe0c2feed7c7f3?reconnect=true
-
-
-
-// const config =  {
-//     server: '35.203.149.151',
-//     database: 'mirrormirror',
-//     user: 'olinsoffer',
-//     password: '1234'
-//     // port: 1433
-// };
 
 ////////////////DEVELOPMENT DATABASE INIT////////////////////
 // let connection = mysql.createConnection({
