@@ -34,14 +34,14 @@ const upload = multer({ storage: storage }).array('outfitpicture');
 ////////////PRODUTION CONNECTION////////////////
 
 
-const connection = mysql.createPool({
-	connectionLimit: 100,
-	host: 'us-cdbr-iron-east-05.cleardb.net',
-	user: 'b7c1714d25437c',
-	password: 'c3a0f008',
-	database: 'heroku_cbe0c2feed7c7f3',
-	debug: 'false'
-});
+// const connection = mysql.createPool({
+// 	connectionLimit: 100,
+// 	host: 'us-cdbr-iron-east-05.cleardb.net',
+// 	user: 'b7c1714d25437c',
+// 	password: 'c3a0f008',
+// 	database: 'heroku_cbe0c2feed7c7f3',
+// 	debug: 'false'
+// });
 
 cloudinary.config({
 	cloud_name: 'mirrormirror',
@@ -49,14 +49,14 @@ cloudinary.config({
 	api_secret: 'gWPCwpHlg_cF8the06bAhzrPA8U'
 });
 
-////////////////DEVELOPMENT DATABASE INIT////////////////////
-// let connection = mysql.createConnection({
-// 	host: 'localhost',
-// 	user: 'root',
-// 	password: '1234',
-// 	database: 'mirrormirror',
-// 	multipleStatements: true
-// });
+//////////////DEVELOPMENT DATABASE INIT////////////////////
+let connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: '1234',
+	database: 'mirrormirror',
+	multipleStatements: true
+});
 //
 // connection.connect(function(err) {
 //     if (err) throw err
@@ -416,26 +416,21 @@ app.post('/outfits/:eventID', function (req, res) {
 				console.log(err);
 				return res.end(err);
 			}
-			toDataBase('multer');
+			storeImage('multer');
 		});
 	}
 
 	function cloudUpload() {
-		toDataBase('cloud');
+		storeImage('cloud');
 	}
 
 
-
-	function toDataBase(option) {
+	function storeImage(uploadType) {
 		let toSend = [];
 		let userData = req.body;
 		userData.eventID = req.params.eventID;
 		let outfitsCounter = 0;
 		let eventID = userData.eventID;
-		storeImage(option);
-	}
-
-	function storeImage(uploadType) {
 		req.files.forEach(function (image) {
 			// const host = req.hostname;
 			// const filePath = `${req.protocol}://${host}/${image.path}`;
@@ -466,23 +461,27 @@ app.post('/outfits/:eventID', function (req, res) {
 						// console.log(outfitsCounter, req.files.length);
 						__sendData()
 					}
+
+
+
+					function __sendData() {
+						let sendDataSQL = mysql.format(
+							`SELECT	outfit_table.outfitID, outfit_table.picture, outfit_table.rating
+						FROM event_table
+						INNER JOIN outfit_table on event_table.eventID = outfit_table.eventID
+						WHERE event_table.eventID =?`, [eventID]);
+						console.log(sendDataSQL);
+						connection.query(sendDataSQL, function (err, rows, fields) {
+							if (err) throw err;
+							console.log(rows);
+							res.send(rows);
+						});
+					}
 				});
 			}
 		});
 	}
-	function __sendData() {
-		let sendDataSQL = mysql.format(
-			`SELECT	outfit_table.outfitID, outfit_table.picture, outfit_table.rating
-		FROM event_table
-		INNER JOIN outfit_table on event_table.eventID = outfit_table.eventID
-		WHERE event_table.eventID =?`, [eventID]);
-		console.log(sendDataSQL);
-		connection.query(sendDataSQL, function (err, rows, fields) {
-			if (err) throw err;
-			console.log(rows);
-			res.send(rows);
-		});
-	}
+
 });
 
 //Updates outfit in database
