@@ -13592,6 +13592,7 @@ var UsersDataForm = function (_React$Component) {
                     console.log(response);
                     _axios2.default.post('/outfits/' + response.data[0].eventID, formData).then(function (innerResponse) {
                         console.log('WWWWWWWWWWWWWWWWWWAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAM');
+                        console.log(innerResponse.data);
                         var data = {
                             event: response.data[0].event,
                             date: response.data[0].eventDate,
