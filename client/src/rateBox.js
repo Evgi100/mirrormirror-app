@@ -10,7 +10,7 @@ class OutfitCompo extends Component {
     render() {
         return (
             <div>
-                <img className="ImageBoxHome" src={`/uploads/${this.props.imgsrc}`} />
+                <img className="ImageBoxHome" src={this.props.imgsrc} />
                 <fieldset className="rating" onChange={this.props.jquery} onClick={this.props.handleOnChange} value={this.props.valueOutfits}>
                     <input type="radio" id="field1_star5" name="rating1" value="5" /><label className="full" htmlFor="field1_star5"></label>
                     <input type="radio" id="field1_star4" name="rating1" value="4" /><label className="full" htmlFor="field1_star4"></label>

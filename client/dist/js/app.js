@@ -5610,7 +5610,7 @@ var OutfitCompo = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement('img', { className: 'ImageBoxHome', src: '/uploads/' + this.props.imgsrc }),
+                _react2.default.createElement('img', { className: 'ImageBoxHome', src: this.props.imgsrc }),
                 _react2.default.createElement(
                     'fieldset',
                     { className: 'rating', onChange: this.props.jquery, onClick: this.props.handleOnChange, value: this.props.valueOutfits },
