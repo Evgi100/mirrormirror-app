@@ -13600,7 +13600,7 @@ var UsersDataForm = function (_React$Component) {
                         };
                         console.log(data);
                         // that.props.addUser(response.data);/
-                        that.setState({ userID: that.state.userID++, name: "", event: "", redirect: true });
+                        that.setState({ name: "", event: "", redirect: true });
                         uploadButton.innerHTML = 'Upload';
                         // <Redirect to="/"/
                     }).catch(function (error) {
