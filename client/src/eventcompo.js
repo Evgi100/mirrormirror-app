@@ -4,19 +4,19 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 class EventCompo extends Component {
     constructor(props) {
         super(props);
-        this.state = {event: this.props.entireEvent};
+        this.state = { event: this.props.entireEvent };
         this.renderPics = this.renderPics.bind(this);
-        this.renderTime=this.renderTime.bind(this);
+        this.renderTime = this.renderTime.bind(this);
     }
-    
-// Change the date format to viewvable
-    renderTime () {
-        if(this.props.eventDate) {
-        let date=this.props.eventDate;
-        let newDate=date.split('',10)
-        let dateToShow=newDate.join("")
-        return dateToShow
-            
+
+    // Change the date format to viewvable
+    renderTime() {
+        if (this.props.eventDate) {
+            let date = this.props.eventDate;
+            let newDate = date.split('', 10)
+            let dateToShow = newDate.join("")
+            return dateToShow
+
         }
     }
 
@@ -59,7 +59,7 @@ class EventCompo extends Component {
                             <h1 className="name">{this.props.username}</h1>
                         </div>
                         <div className="submitButton">
-                        <Link to={'/rate/' + this.props.eventID}><button className="dottedHome postHome"> rate</button></Link>
+                            <Link to={'/rate/' + this.props.eventID}><button className="dottedHome postHome"> rate</button></Link>
 
                         </div>
                     </div>
