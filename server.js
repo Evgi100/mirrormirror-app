@@ -34,14 +34,14 @@ const upload = multer({ storage: storage }).array('outfitpicture');
 ////////////PRODUTION CONNECTION////////////////
 
 
-// const connection = mysql.createPool({
-// 	connectionLimit: 100,
-// 	host: 'us-cdbr-iron-east-05.cleardb.net',
-// 	user: 'b7c1714d25437c',
-// 	password: 'c3a0f008',
-// 	database: 'heroku_cbe0c2feed7c7f3',
-// 	debug: 'false'
-// });
+const connection = mysql.createPool({
+	connectionLimit: 100,
+	host: 'us-cdbr-iron-east-05.cleardb.net',
+	user: 'b7c1714d25437c',
+	password: 'c3a0f008',
+	database: 'heroku_cbe0c2feed7c7f3',
+	debug: 'false'
+});
 
 cloudinary.config({
 	cloud_name: 'mirrormirror',
@@ -50,13 +50,13 @@ cloudinary.config({
 });
 
 //////////////DEVELOPMENT DATABASE INIT////////////////////
-let connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: '1234',
-	database: 'mirrormirror',
-	multipleStatements: true
-});
+// let connection = mysql.createConnection({
+// 	host: 'localhost',
+// 	user: 'root',
+// 	password: '1234',
+// 	database: 'mirrormirror',
+// 	multipleStatements: true
+// });
 //
 // connection.connect(function(err) {
 //     if (err) throw err
